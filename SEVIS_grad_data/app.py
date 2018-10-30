@@ -6,7 +6,6 @@ from major_advisor_data import master_deg_adv, bachelor_deg_adv
 from SEVIS_grad_data.build_graduated_student_data import add_advisor, match_SEVISID, add_work_type, add_emails, add_work_enddate, add_profile_enddate
 
 
-
 """
 Build an app that allows the user to choose which spreadsheet they
 want to update and what on that spreadsheet they'd like to update.
