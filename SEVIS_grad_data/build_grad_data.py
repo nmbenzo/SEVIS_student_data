@@ -17,6 +17,7 @@ for rowNum in range(2, ws.max_row):
     id = ws.cell(row=rowNum, column=1).value
     campusID.append(id)
 
+
 SEVISID = []
 
 for rowNum in range(2, ws.max_row):

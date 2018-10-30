@@ -22,12 +22,12 @@ def add_advisor(master_deg_adv, bachelor_deg_adv):
     sheet2.insert_cols(1)
     title = ws2.cell(row=1, column=1)
     title.value = 'Advisor'
-    for rowNum in range(2, ws2.max_row):
-        major = ws2.cell(row=rowNum, column=6).value
+    for row in range(2, ws2.max_row):
+        major = ws2.cell(row=row, column=6).value
         if major in master_deg_adv:
-            ws2.cell(row=rowNum, column=1).value = master_deg_adv[major]
+            ws2.cell(row=row, column=1).value = master_deg_adv[major]
         if major in bachelor_deg_adv:
-            ws2.cell(row=rowNum, column=1).value = bachelor_deg_adv[major]
+            ws2.cell(row=row, column=1).value = bachelor_deg_adv[major]
 
     wb2.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
 
@@ -123,3 +123,4 @@ add_work_type(campusID_work_auth)
 add_work_enddate(campusID_workend)
 add_profile_enddate(campusID_end_date)
 add_emails(campusID_emails)
+
