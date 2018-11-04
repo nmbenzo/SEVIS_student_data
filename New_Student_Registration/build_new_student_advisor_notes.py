@@ -1,10 +1,7 @@
 import os
 os.getcwd()
-import gspread
-from border_formatting import thin_border
-from oauth2client.service_account import ServiceAccountCredentials
 from major_advisor_data import advisor_major_ug, advisor_major_gr
-from build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
+from New_Student_Registration.build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
 
 
 
