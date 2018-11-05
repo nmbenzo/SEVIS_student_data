@@ -27,6 +27,7 @@ Please select one of the following:
 - 'c' - Access COMPLETED Student Module
 - 'g' - Access GRADUATED Module
 - 'n' - Access NEW Student Module
+- 's' - Sync XLSX with Google Sheets
 - 'q' - Quit
 
 """
@@ -64,5 +65,14 @@ Please select one of the following:
 - 's' - Update Cell Email
 
 """
+
+SYNC_GOOGLESHEETS = """
+Which xlsx file would you like to upload to GoogleSheets: 
+- 'n' - NEW Student Reg xlsx
+- 'a' - ACTIVE Student Reg xlsx
+- 'g' - GRADUATED Student xlsx
+- 'c' - COMPLETED Student xlsx
+"""
+# Need to add Completed_student_cleaning
 
 
