@@ -1,26 +1,6 @@
 from import_app_modules import *
 
 
-def global_menu():
-    """
-    Master menu that allows user to select which spreadsheet they'd like to run
-    """
-    user_input = input(GLBL_USER_CHOICE)
-    while user_input != 'q':
-        if user_input == 'n':
-            new_menu()
-        if user_input == 'a':
-            active_menu()
-        if user_input == 'g':
-            grad_menu()
-        if user_input == 'gs': # for google sheets
-            pass
-        else:
-            print('Unknown command.')
-            user_input = input(GLBL_USER_CHOICE)
-
-
-
 def new_menu():
     """
     menu where users can select a section of the
