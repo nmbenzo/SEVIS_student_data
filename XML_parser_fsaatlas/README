@@ -1,0 +1,10 @@
+This file will only work if you have access to following the daily-created files:
+
+NewSASStudent.xml 
+ArchivedStudentDrop
+ResponseDocument.xml
+UnProcessedIndividuals.xml
+
+You will need to specificy the directory in the app in order to parse the data correctly. 
+
+Please email nmbenzo@gmail.com for any questions. :) 
