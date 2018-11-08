@@ -36,6 +36,8 @@ def global_choose_menu():
             grad_menu()
         if user_input == 'gs':  # for google sheets
             pass
+        if user_input == 'e': # to send emails
+            pass
         else:
             print('Unknown command.')
 
