@@ -28,6 +28,7 @@ Please select one of the following:
 - 'g' - Access GRADUATED Module
 - 'n' - Access NEW Student Module
 - 's' - Sync XLSX with Google Sheets
+- 'e' - Send Email
 - 'q' - Quit
 
 """
@@ -72,7 +73,26 @@ Which xlsx file would you like to upload to GoogleSheets:
 - 'a' - ACTIVE Student Reg xlsx
 - 'g' - GRADUATED Student xlsx
 - 'c' - COMPLETED Student xlsx
+
 """
+
+SEND_EMAIL_TO_STUDENT_template = """
+Choose an email template to send to the student: 
+- 'c' - MANDATORY CHECK-IN INCOMPLETE
+- 'o' - ISSS ORIENTATION INCOMPLETE
+- 'a' - INSUFFICIENT / INACCURATE STUDENT DATA
+- 'i' - I-901 FEE DUE
+
+"""
+
+SEND_EMAIL_TO_STUDENT_population = """
+Which population would you like to send this email to: 
+- 'n' - NEW Student Reg xlsx
+- 'a' - ACTIVE Student Reg xlsx
+
+"""
+
+
 # Need to add Completed_student_cleaning
 
 
