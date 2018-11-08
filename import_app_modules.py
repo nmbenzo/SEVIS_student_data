@@ -76,7 +76,7 @@ Which xlsx file would you like to upload to GoogleSheets:
 
 """
 
-SEND_EMAIL_TO_STUDENT_template = """
+EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
 - 'c' - MANDATORY CHECK-IN INCOMPLETE
 - 'o' - ISSS ORIENTATION INCOMPLETE
@@ -85,7 +85,7 @@ Choose an email template to send to the student:
 
 """
 
-SEND_EMAIL_TO_STUDENT_population = """
+EMAIL_TO_STUDENT_population = """
 Which population would you like to send this email to: 
 - 'n' - NEW Student Reg xlsx
 - 'a' - ACTIVE Student Reg xlsx
