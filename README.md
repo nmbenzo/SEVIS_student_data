@@ -10,3 +10,10 @@ Originally, my process was to copy and paste data from various profiles into a s
 
 Due to FERPA regulations, I cannot include the actual .xlsx files as they contain sensitive student data, however, please feel free to reach out to me if you'd like to set up a similar process for automating data population in Excel with Python.
 nmbenzo@gmail.com
+
+
+---Future Development---
+***Add SMTP Email capability
+***Create "Search for" module to search for files. This will improve scalability
+***Add logging 
+***Add threading and async to improve performance
