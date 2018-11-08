@@ -14,12 +14,9 @@ The app should have a menu asks the user what they'd like to do:
 ***What would you like to do with this spreadsheet
 ***Update A,B,C, or All
 ***See Menu Again
-***Upload to GS
+***Upload to Google Spreadsheets
+***Send an email to a specific student population
 ***Quit
-
----Future Development---
-***Add logging 
-***Add threading and async to improve performance
 
 """
 
