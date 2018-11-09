@@ -9,7 +9,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', s
 client = gspread.authorize(creds)
 
 
-# Find a workbook by name and open the first sheet
+# Find a workbook by name and open a particular sheet
 # Make sure you use the right name here.
 COL = client.open("201920 SEVIS Registration").sheet1
 transferUG = client.open("201920 SEVIS Registration").sheet2
