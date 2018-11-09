@@ -12,7 +12,7 @@ Due to FERPA regulations, I cannot include the actual .xlsx files as they contai
 nmbenzo@gmail.com
 
 
----Future Development---
+---Short-Term Future Development---
 
 ***Add SMTP Email capability
 
@@ -21,3 +21,12 @@ nmbenzo@gmail.com
 ***Add logging 
 
 ***Add threading and async to improve performance
+
+
+---Long-Term Future Development---
+
+***Pull data directly from ISSM and SEVIS
+
+***Build web app GUI
+
+
