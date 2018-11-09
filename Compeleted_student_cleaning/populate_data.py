@@ -23,7 +23,7 @@ def match_SEVISID(SEVISID):
         sevis_ID = sheet.cell(row=row, column=3).value
         for x in SEVISID:
             if x == sevis_ID:
-                sheet.cell(row=row, column=1). value = 'Student is completed in SEVIS, but ACTIVE in ISSM.'
+                sheet.cell(row=row, column=1). value = 'Student is COMPLETED in SEVIS, but ACTIVE in ISSM.'
 
     wb2.save('/Users/nbenzschawel/Downloads/Completed_Students_Cleanup_Report_201840.xlsx')
 

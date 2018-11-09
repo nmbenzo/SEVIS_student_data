@@ -3,6 +3,16 @@ os.getcwd()
 import openpyxl
 from openpyxl.styles import NamedStyle
 
+"""
+This file builds dictionaries containing the following data: 
+campusIDs : SEVISIDs
+campusIDs : Work Authorization Types
+campusIDs : Work Authorization End Dates
+campusIDs : Profile End Dates
+campusIDs : Student Emails
+
+"""
+
 wb1 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/All_SEVIS-Active_Student_Tracking.xlsx')
 
 
@@ -40,15 +50,6 @@ for rowNum in range(2, ws.max_row):
 campusID_work_auth = dict(zip(campusID, work_auth_type))
 
 
-profile_end_date = []
-
-for rowNum in range(2, ws.max_row):
-    end_date = ws.cell(row=rowNum, column=10).value # need to check column in spreadsheet
-    profile_end_date.append(end_date)
-
-campusID_end_date = dict(zip(campusID, profile_end_date))
-
-
 work_auth_enddate = []
 
 for x in range(2, ws.max_row):
@@ -56,6 +57,15 @@ for x in range(2, ws.max_row):
     work_auth_enddate.append(work_end)
 
 campusID_workend = dict(zip(campusID, work_auth_enddate))
+
+
+profile_end_date = []
+
+for rowNum in range(2, ws.max_row):
+    end_date = ws.cell(row=rowNum, column=10).value # need to check column in spreadsheet
+    profile_end_date.append(end_date)
+
+campusID_end_date = dict(zip(campusID, profile_end_date))
 
 
 emails = []

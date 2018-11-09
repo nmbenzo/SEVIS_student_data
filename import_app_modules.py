@@ -1,5 +1,4 @@
 import os
-
 os.getcwd()
 
 from SEVIS_grad_data.build_grad_data import ws, campusID_SEVISID, \

@@ -29,18 +29,17 @@ def global_choose_menu():
     user_input = input(GLBL_USER_CHOICE)
     while user_input != 'q':
         if user_input == 'n':
-            new_menu()
+            new_menu(GLBL_USER_CHOICE)
         if user_input == 'a':
             active_menu()
         if user_input == 'g':
             grad_menu()
         if user_input == 'gs':  # for google sheets
             pass
-        if user_input == 'e': # to send emails
+        if user_input == 'e':  # to send emails
             pass
         else:
             print('Unknown command.')
-
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')

@@ -1,7 +1,7 @@
 from import_app_modules import *
 
 
-def new_menu():
+def new_menu(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the
     spreadsheet to populate about new students requiring registration
@@ -13,26 +13,31 @@ def new_menu():
             match_major_data(SEVISID_major)
             match_advisor(advisor_major_ug, advisor_major_gr)
             add_advisor_notes()
+            print('Ran all functions')
         elif user_input == 'ad':
             match_advisor(advisor_major_ug, advisor_major_gr)
+            print('Ran match_advisor function')
         elif user_input == 'm':
             match_SEVISID(campusID_SEVISID)
+            print('Ran match_SEVISID function')
         elif user_input == 'w':
             match_major_data(SEVISID_major)
+            print('Ran match_major_data function')
         elif user_input == 'n':
             add_advisor_notes()
+            print('Ran add_advisor_notes function')
         else:
             print('Unknown command.')
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
         if menu_again == 'y':
-            user_input = input(NEWs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
         elif menu_again == 'n':
             break
         else:
             print('Unknown command.')
-            user_input = input(NEWs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
 
 
 
@@ -47,6 +52,7 @@ def active_menu():
             match_SEVISID(campusID_SEVISID)
             match_major_data(SEVISID_major)
             match_advisor(advisor_major_ug, advisor_major_gr)
+            print('Ran all functions')
         elif user_input == 'm':
             match_SEVISID(campusID_SEVISID)
         elif user_input == 'w':
@@ -59,12 +65,12 @@ def active_menu():
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
         if menu_again == 'y':
-            user_input = input(ACTIVEs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
         elif menu_again == 'n':
             break
         else:
             print('Unknown command.')
-            user_input = input(ACTIVEs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
 
 
 def grad_menu():
@@ -81,6 +87,7 @@ def grad_menu():
             add_work_enddate(campusID_workend)
             add_profile_enddate(campusID_end_date)
             add_emails(campusID_emails)
+            print('Ran all functions')
         elif user_input == 'ad':
             add_advisor(master_deg_adv, bachelor_deg_adv)
         elif user_input == 'm':
@@ -99,10 +106,10 @@ def grad_menu():
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
         if menu_again == 'y':
-            user_input = input(GRADUATEs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
         elif menu_again == 'n':
             break
         else:
             print('Unknown command.')
-            user_input = input(GRADUATEs_USER_CHOICE)
+            user_input = input(GLBL_USER_CHOICE)
 

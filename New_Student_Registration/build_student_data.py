@@ -3,8 +3,16 @@ os.getcwd()
 import openpyxl
 
 
-wb1 = openpyxl.load_workbook('SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx')
-wb2 = openpyxl.load_workbook('SEVIS_raw_data.xlsx')
+"""
+This file builds dictionaries containing the following data: 
+campusIDs : SEVISIDs
+SEVISIDs : Majors
+
+"""
+
+
+wb1 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx') # workbook from ISSM
+wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx') # workbook from SEVIS RTI
 
 ws1 = wb1.active
 ws2 = wb2.active

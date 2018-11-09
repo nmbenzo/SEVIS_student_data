@@ -4,8 +4,10 @@ import openpyxl
 from SEVIS_grad_data.build_grad_data import ws, campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
 from major_advisor_data import master_deg_adv, bachelor_deg_adv
 
+
+# Think about adding a try, except function here to check the file directory.
 wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
-wb3Live = openpyxl.load_workbook('/Users/nbenzschawel/Desktop/201820_201830_graduated_students.xlsx')
+wb3Live = openpyxl.load_workbook('/Users/nbenzschawel/Desktop/fsaAtlas - Files/201820_201830_graduated_students.xlsx')
 
 sheet2 = wb2.worksheets[0]
 sheet3 = wb3Live.worksheets[0]
@@ -114,6 +116,7 @@ def add_emails(campusID_emails):
                 ws3.cell(row=rowNum, column=1).value = campusID_emails[campusID]
 
     wb3Live.save('/Users/nbenzschawel/Desktop/201820_201830_graduated_students.xlsx')
+
 
 
 
