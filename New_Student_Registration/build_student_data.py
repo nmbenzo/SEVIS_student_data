@@ -17,6 +17,7 @@ wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx'
 ws1 = wb1.active
 ws2 = wb2.active
 
+
 campusID = []
 SEVISID = []
 

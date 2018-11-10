@@ -104,7 +104,6 @@ def add_profile_enddate(campusID_end_date):
     wb2.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
 
 
-
 def add_emails(campusID_emails):
     sheet3.insert_cols(1)
     title = ws3.cell(row=1, column=1)
@@ -116,8 +115,6 @@ def add_emails(campusID_emails):
                 ws3.cell(row=rowNum, column=1).value = campusID_emails[campusID]
 
     wb3Live.save('/Users/nbenzschawel/Desktop/201820_201830_graduated_students.xlsx')
-
-
 
 
 add_advisor(master_deg_adv, bachelor_deg_adv)

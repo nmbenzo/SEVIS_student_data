@@ -15,7 +15,6 @@ campusIDs : Student Emails
 
 wb1 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/All_SEVIS-Active_Student_Tracking.xlsx')
 
-
 sheet = wb1.worksheets[0]
 
 ws = wb1.active
@@ -66,7 +65,6 @@ for rowNum in range(2, ws.max_row):
     profile_end_date.append(end_date)
 
 campusID_end_date = dict(zip(campusID, profile_end_date))
-
 
 emails = []
 email_campID = []

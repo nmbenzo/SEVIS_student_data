@@ -97,10 +97,10 @@ bachelor_deg_adv = {
 }
 
 
-GR_major_xml = dicttoxml(advisor_major_gr, custom_root='test', attr_type=False)
-UG_major_xml = dicttoxml(advisor_major_ug, custom_root='test', attr_type=False)
-GR_level_xml = dicttoxml(master_deg_adv, custom_root='test', attr_type=False)
+GR_major_xml = dicttoxml(advisor_major_gr, custom_root='root', attr_type=False)
+UG_major_xml = dicttoxml(advisor_major_ug, custom_root='root', attr_type=False)
+GR_level_xml = dicttoxml(master_deg_adv, custom_root='root', attr_type=False)
 UG_level_xml = dicttoxml(bachelor_deg_adv, custom_root='test', attr_type=False)
 
-dom = parseString(GR_level_xml)
+dom = parseString(UG_major_xml)
 print(dom.toprettyxml())
