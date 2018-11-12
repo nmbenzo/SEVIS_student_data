@@ -3,42 +3,43 @@ from xml.dom.minidom import parseString
 
 
 advisor_major_ug = {
-    'BACT-Accounting': 'Nina',
-    'BADM-Business Administration': 'Nina',
-    'BENI-Entrepreneurship & Innovation': 'Nina',
-    'BMGT-Management': 'Nina',
-    'BNTL-International Business': 'Nina',
-    'BMKT-Marketing': 'Nina',
-    'BFIN-Finance': 'Nina',
-    'HM-Hospitality Management': 'Nina',
-    'CS-Computer Science': 'Nathan',
-    'COMS-Communication Studies': 'Nathan',
-    'CHEM-Chemistry': 'Nathan',
-    'POLS-Politics': 'Nathan',
-    'HIST-History': 'Nathan',
-    'BIO-Biology': 'Nathan',
-    'BAIS-International Studies': 'Nathan',
-    'UNLA-Undeclared Arts': 'Nathan',
-    'UNSC-Undeclared Sciences': 'Nathan',
-    'ADVT-Advertising': 'Nathan',
-    'LAW-Law': 'Nathan',
-    'PSYC-Psychology': 'Nathan',
-    'ECON-Economics': 'Nathan',
-    'ARCD-Architecture & Community Desig': 'Nathan',
-    'BSDS-Data Science':'Nathan',
-    'ENVS-Environmental Science':'Nathan',
-    'CMPL-Comparative Lit. & Culture': 'Nathan',
-    'ICL-Intl Transaction & Comp. Law':'Nathan',
-    'IPTL-Intellectual Property Tech Law': 'Nathan',
-    'MATH-Mathematics': 'Nathan',
-    'MS-Media Studies': 'Nathan',
-    'PASJ-Perf. Arts & Soc. Justice': 'Nathan',
-    'SOC-Sociology': 'Nathan',
-    'DSGN-Design': 'Nathan',
-    'KIN-Kinesiology': 'Nathan',
-    'JNST-Japanese Studies': 'Nathan',
-    'ANST-Asian Studies': 'Nathan',
-    'BIOL-Biology':'Nathan'
+    'Nina': {'BACT-Accounting',
+    'BADM-Business Administration',
+    'BENI-Entrepreneurship & Innovation',
+    'BMGT-Management',
+    'BNTL-International Business',
+    'BMKT-Marketing',
+    'BFIN-Finance',
+    'HM-Hospitality Management'},
+    'Nathan': {'CS-Computer Science',
+    'COMS-Communication Studies',
+    'CHEM-Chemistry',
+    'POLS-Politics',
+    'HIST-History',
+    'BIO-Biology',
+    'BAIS-International Studies',
+    'UNLA-Undeclared Arts',
+    'UNSC-Undeclared Sciences',
+    'ADVT-Advertising',
+    'LAW-Law',
+    'PSYC-Psychology',
+    'ECON-Economics',
+    'ARCD-Architecture & Community Desig',
+    'BSDS-Data Science',
+    'ENVS-Environmental Science',
+    'CMPL-Comparative Lit. & Culture',
+    'ICL-Intl Transaction & Comp. Law',
+    'IPTL-Intellectual Property Tech Law',
+    'MATH-Mathematics',
+    'MS-Media Studies',
+    'PASJ-Perf. Arts & Soc. Justice',
+    'SOC-Sociology',
+    'DSGN-Design',
+    'KIN-Kinesiology',
+    'JNST-Japanese Studies',
+    'ANST-Asian Studies',
+    'BIOL-Biology'}
+
      }
 
 advisor_major_gr = {
@@ -97,7 +98,7 @@ bachelor_deg_adv = {
 }
 
 
-GR_major_xml = dicttoxml(advisor_major_gr, custom_root='root', attr_type=False)
+GR_major_xml = dicttoxml(advisor_major_gr, custom_root='root', ids=False)
 UG_major_xml = dicttoxml(advisor_major_ug, custom_root='root', attr_type=False)
 GR_level_xml = dicttoxml(master_deg_adv, custom_root='root', attr_type=False)
 UG_level_xml = dicttoxml(bachelor_deg_adv, custom_root='test', attr_type=False)
