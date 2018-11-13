@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<root>
+	<Nina>
+		<item>BADM-Business Administration</item>
+		<item>HM-Hospitality Management</item>
+		<item>BFIN-Finance</item>
+		<item>BMKT-Marketing</item>
+		<item>BACT-Accounting</item>
+		<item>BNTL-International Business</item>
+		<item>BENI-Entrepreneurship &amp; Innovation</item>
+		<item>BMGT-Management</item>
+	</Nina>
+
+	<Nathan>
+		<item>ARCD-Architecture &amp; Community Desig</item>
+		<item>UNSC-Undeclared Sciences</item>
+		<item>BAIS-International Studies</item>
+		<item>CMPL-Comparative Lit. &amp; Culture</item>
+		<item>JNST-Japanese Studies</item>
+		<item>CHEM-Chemistry</item>
+		<item>BSDS-Data Science</item>
+		<item>KIN-Kinesiology</item>
+		<item>CS-Computer Science</item>
+		<item>BIOL-Biology</item>
+		<item>SOC-Sociology</item>
+		<item>UNLA-Undeclared Arts</item>
+		<item>PASJ-Perf. Arts &amp; Soc. Justice</item>
+		<item>HIST-History</item>
+		<item>ICL-Intl Transaction &amp; Comp. Law</item>
+		<item>MS-Media Studies</item>
+		<item>LAW-Law</item>
+		<item>ADVT-Advertising</item>
+		<item>COMS-Communication Studies</item>
+		<item>PSYC-Psychology</item>
+		<item>IPTL-Intellectual Property Tech Law</item>
+		<item>ANST-Asian Studies</item>
+		<item>BIO-Biology</item>
+		<item>MATH-Mathematics</item>
+		<item>DSGN-Design</item>
+		<item>ECON-Economics</item>
+		<item>POLS-Politics</item>
+		<item>ENVS-Environmental Science</item>
+	</Nathan>
+
+	<Marcella>
+		<item>IDEC-Intl &amp; Development Economics</item>
+		<item>BTEC-Biotechnology</item>
+		<item>APS-Asia Pacific Studies</item>
+		<item>PSYD-Psychology</item>
+		<item>UPA-Urban and Public Affairs</item>
+		<item>CSBR-Computer Science</item>
+		<item>SM-Sport Management</item>
+		<item>CSBR-Computer Science BridgeENVS-Environmental ScienceECON-EconomicsCHEM-ChemistryENGY-Energy Systems Management</item>
+		<item>MAPC-Professional Communication</item>
+		<item>MAIS-International Studies</item>
+		<item>CPSY-Counseling Psychology</item>
+		<item>CAPS-Asia Pacific Graduate Studies</item>
+		<item>PA-Public Affairs</item>
+	</Marcella>
+	<Cynthia>
+		<item>MSHI-Health Informatics:</item>
+		<item>O&amp;L-Organization and Leadership</item>
+		<item>MPH-Public Health</item>
+		<item>TSOL-Teach Engl/Speakers Other Lang</item>
+		<item>MSFN-Financial Analysis</item>
+		<item>L&amp;I-Learning and Instruction</item>
+		<item>EDUC-Education</item>
+		<item>MBA-Business Administration</item>
+		<item>MNAF-Nonprofit Administration</item>
+		<item>IME-Intl and Multicultural Educ.</item>
+		<item>MSEI-Entrepreneurship Innovation</item>
+		<item>MSBH-Behavorial Health</item>
+	</Cynthia>
+
+
+	<Nina>
+		<item>BS in Business Administration</item>
+	</Nina>
+	<Nathan>
+		<item>Bachelor of Arts</item>
+		<item>Bachelor of Science</item>
+		<item>Juris Doctor</item>
+		<item>Bachelor of Science in Nursing</item>
+		<item>Master of Laws</item>
+	</Nathan>
+
+
+	<Marcella>
+		<item>'Professional Science Master's</item>
+		<item>Master of Arts</item>
+		<item>Master of Science</item>
+	</Marcella>
+	<Cynthia>
+		<item>Master of Business Admin</item>
+		<item>Doctor of Education</item>
+		<item>Master of Public Affairs</item>
+		<item>Master in Global Entrprnr/Mgt</item>
+		<item>Master of Science in Nursing</item>
+		<item>Master of Public Health</item>
+	</Cynthia>
+</root>
