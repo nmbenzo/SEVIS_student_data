@@ -1,7 +1,8 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date, datetime
-import openpyxl
+from New_Student_Registration.build_new_student_advisor_notes import ws2
+
 
 
 def authenticate_google_docs():
@@ -12,19 +13,13 @@ def authenticate_google_docs():
     gc = gspread.authorize(creds)
     return gc
 
-wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx') # workbook from SEVIS RTI
-ws2 = wb2.active
-
-
 gc = authenticate_google_docs()
 
 sh = gc.open('201920 SEVIS Registration')
 worksheet_list = sh.worksheets()
 
 
-# Find a workbook by name and open a particular sheet
-# Make sure you use the right name here.
-
+# Naming convention for this gs.workbook
 COL = sh.worksheet('COL')
 transferUG = sh.worksheet('Transfer UG')
 transferGR = sh.worksheet('Transfer GR')
