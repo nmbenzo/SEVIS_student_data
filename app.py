@@ -21,7 +21,6 @@ The app should have a menu asks the user what they'd like to do:
 """
 
 
-
 def global_choose_menu():
     """
     Master menu that allows user to select which spreadsheet they'd like to run
@@ -31,15 +30,13 @@ def global_choose_menu():
         if user_input == 'n':
             new_menu(GLBL_USER_CHOICE)
         if user_input == 'a':
-            active_menu()
+            active_menu(GLBL_USER_CHOICE)
         if user_input == 'g':
-            grad_menu()
+            grad_menu(GLBL_USER_CHOICE)
         if user_input == 'gs':  # for google sheets
             pass
         if user_input == 'e':  # to send emails
             pass
-        else:
-            print('Unknown command.')
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')

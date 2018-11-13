@@ -28,4 +28,3 @@ def match_SEVISID(SEVISID):
     wb2.save('/Users/nbenzschawel/Downloads/Completed_Students_Cleanup_Report_201840.xlsx')
 
 
-match_SEVISID(SEVISID)

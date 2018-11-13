@@ -22,10 +22,10 @@ match_major_data, match_advisor, add_advisor_notes, advisor_major_gr, advisor_ma
 
 GLBL_USER_CHOICE = """
 Please select one of the following:
+- 'n' - Access NEW Student Module
 - 'a' - Access ACTIVE Student Module
 - 'c' - Access COMPLETED Student Module
 - 'g' - Access GRADUATED Module
-- 'n' - Access NEW Student Module
 - 's' - Sync XLSX with Google Sheets
 - 'e' - Send Email
 - 'q' - Quit

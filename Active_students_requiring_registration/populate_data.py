@@ -62,7 +62,3 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
     wb2.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
 
 
-match_SEVISID(campusID_SEVISID)
-match_major_data(SEVISID_major)
-match_advisor(advisor_major_ug, advisor_major_gr)
-

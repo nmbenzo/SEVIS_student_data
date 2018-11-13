@@ -4,7 +4,6 @@ from major_advisor_data import advisor_major_ug, advisor_major_gr
 from New_Student_Registration.build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
 
 
-
 def match_SEVISID(campusID_SEVISID):
     """
     match_SEVISID compares SEVISIDs from two separate workbooks(ws, ws2)
@@ -19,9 +18,7 @@ def match_SEVISID(campusID_SEVISID):
             if x == sevis_ID:
                 ws2.cell(row=rowNum, column=1).value = campusID_SEVISID[sevis_ID]
 
-    wb2.save('SEVIS_raw_data.xlsx')
-
-match_SEVISID(campusID_SEVISID)
+    wb2.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
 def match_major_data(SEVISID_major):
@@ -37,7 +34,7 @@ def match_major_data(SEVISID_major):
             if x == sevis_ID:
                 ws2.cell(row=rowNum, column=1).value = SEVISID_major[sevis_ID]
 
-    wb2.save('SEVIS_raw_data.xlsx')
+    wb2.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
 def match_advisor(advisor_major_ug, advisor_major_gr):
@@ -55,7 +52,7 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
         if major in advisor_major_gr:
             ws2.cell(row=rowNum, column=1).value = advisor_major_gr[major]
 
-    wb2.save('SEVIS_raw_data.xlsx')
+    wb2.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
 def add_advisor_notes():
@@ -76,13 +73,8 @@ def add_advisor_notes():
          ws2.cell(row=rowNum, column=1).value = 'No SV '\
          + 'Registered, ' + str(cr_hours) + 'credits'
 
-     wb2.save('SEVIS_raw_data.xlsx')
+     wb2.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
-
-match_SEVISID(campusID_SEVISID)
-match_major_data(SEVISID_major)
-match_advisor(advisor_major_ug, advisor_major_gr)
-add_advisor_notes()
 
 
 

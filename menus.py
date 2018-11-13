@@ -16,32 +16,23 @@ def new_menu(GLBL_USER_CHOICE):
             print('Ran all functions')
         elif user_input == 'ad':
             match_advisor(advisor_major_ug, advisor_major_gr)
-            print('Ran match_advisor function')
+            print("Added student's advisor")
         elif user_input == 'm':
             match_SEVISID(campusID_SEVISID)
-            print('Ran match_SEVISID function')
+            print('Added campusIDs')
         elif user_input == 'w':
             match_major_data(SEVISID_major)
-            print('Ran match_major_data function')
+            print('Added student majors')
         elif user_input == 'n':
             add_advisor_notes()
-            print('Ran add_advisor_notes function')
-        else:
-            print('Unknown command.')
+            print('Added advisor notes based on available data')
 
-        print('\n')
-        menu_again = input('Would you like to see the menu again? (y/n): ')
-        if menu_again == 'y':
-            user_input = input(GLBL_USER_CHOICE)
-        elif menu_again == 'n':
-            break
-        else:
-            print('Unknown command.')
-            user_input = input(GLBL_USER_CHOICE)
+        return GLBL_USER_CHOICE
 
 
 
-def active_menu():
+
+def active_menu(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the
     spreadsheet to populate about new students requiring registration
@@ -55,25 +46,18 @@ def active_menu():
             print('Ran all functions')
         elif user_input == 'm':
             match_SEVISID(campusID_SEVISID)
+            print('Added campusIDs')
         elif user_input == 'w':
             match_major_data(SEVISID_major)
+            print('Added student majors')
         elif user_input == 'e':
             match_advisor(advisor_major_ug, advisor_major_gr)
-        else:
-            print('Unknown command.')
+            print("Added student's advisor")
 
-        print('\n')
-        menu_again = input('Would you like to see the menu again? (y/n): ')
-        if menu_again == 'y':
-            user_input = input(GLBL_USER_CHOICE)
-        elif menu_again == 'n':
-            break
-        else:
-            print('Unknown command.')
-            user_input = input(GLBL_USER_CHOICE)
+        return GLBL_USER_CHOICE
 
 
-def grad_menu():
+def grad_menu(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the
     spreadsheet to populate about graduated students
@@ -90,26 +74,22 @@ def grad_menu():
             print('Ran all functions')
         elif user_input == 'ad':
             add_advisor(master_deg_adv, bachelor_deg_adv)
+            print("Added student's advisor")
         elif user_input == 'm':
             match_SEVISID(campusID_SEVISID)
+            print('Added campusIDs')
         elif user_input == 'w':
             add_work_type(campusID_work_auth)
+            print('Added work authorization types')
         elif user_input == 'e':
             add_work_enddate(campusID_workend)
+            print('Added work end dates')
         elif user_input == 'p':
             add_profile_enddate(campusID_end_date)
+            print('Added profile end dates')
         elif user_input == 's':
             add_emails(campusID_emails)
-        else:
-            print('Unknown command. Please select a valid option')
+            print('Added student emails')
 
-        print('\n')
-        menu_again = input('Would you like to see the menu again? (y/n): ')
-        if menu_again == 'y':
-            user_input = input(GLBL_USER_CHOICE)
-        elif menu_again == 'n':
-            break
-        else:
-            print('Unknown command.')
-            user_input = input(GLBL_USER_CHOICE)
+        return GLBL_USER_CHOICE
 
