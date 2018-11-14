@@ -33,8 +33,8 @@ def global_choose_menu():
             active_menu(GLBL_USER_CHOICE)
         if user_input == 'g':
             grad_menu(GLBL_USER_CHOICE)
-        if user_input == 'gs':  # for google sheets
-            pass
+        if user_input == 's':  # for google sheets
+            sync_googlesheets(GLBL_USER_CHOICE)
         if user_input == 'e':  # to send emails
             pass
 

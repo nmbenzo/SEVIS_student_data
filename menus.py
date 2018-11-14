@@ -1,4 +1,5 @@
 from import_app_modules import *
+from GoogleSheets.spreadsheet import *
 
 
 def new_menu(GLBL_USER_CHOICE):
@@ -28,8 +29,6 @@ def new_menu(GLBL_USER_CHOICE):
             print('Added advisor notes based on available data')
 
         return GLBL_USER_CHOICE
-
-
 
 
 def active_menu(GLBL_USER_CHOICE):
@@ -93,3 +92,25 @@ def grad_menu(GLBL_USER_CHOICE):
 
         return GLBL_USER_CHOICE
 
+
+
+def sync_googlesheets(GLBL_USER_CHOICE):
+    """
+    menu where users can select a spreadsheet to sync with GoogleSheets
+    """
+    user_input = input(SYNC_GOOGLESHEETS)
+    while user_input != 'q':
+        if user_input == 'n':
+            update_new_students(sh)
+            print('Syncing with GoogleSheets')
+        elif user_input == 'a':
+            pass
+            print('Syncing with GoogleSheets')
+        elif user_input == 'g':
+            pass
+            print('Syncing with GoogleSheets')
+        elif user_input == 'c':
+            pass
+            print('Syncing with GoogleSheets')
+
+        return GLBL_USER_CHOICE
