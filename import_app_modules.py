@@ -9,6 +9,7 @@ Please select one of the following:
 - 'a' - Access ACTIVE Student Module
 - 'c' - Access COMPLETED Student Module
 - 'g' - Access GRADUATED Module
+- 'x' - Convert XLSX to CSV
 - 's' - Sync Data with Google Sheets
 - 'e' - Send Email
 - 'q' - Quit

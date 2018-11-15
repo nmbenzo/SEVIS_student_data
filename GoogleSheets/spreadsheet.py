@@ -4,7 +4,6 @@ from XLSX_to_CSV.converter import newstudent_excel_to_csv
 from New_Student_Registration.build_new_student_advisor_notes import ws2
 
 
-
 def authenticate_google_docs():
     # use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds',
@@ -17,6 +16,7 @@ gc = authenticate_google_docs()
 
 sh = gc.open('201920 SEVIS Registration')
 # print(sh.id)
+
 
 worksheet_list = sh.worksheets()
 # print(worksheet_list)
@@ -34,6 +34,3 @@ def update_new_students(sh):
     newstudent_excel_to_csv()
     content = open('new_student.csv', 'r').read()
     gc.import_csv(sh.id, content)
-
-update_new_students(sh)
-

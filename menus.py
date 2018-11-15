@@ -93,7 +93,6 @@ def grad_menu(GLBL_USER_CHOICE):
         return GLBL_USER_CHOICE
 
 
-
 def sync_googlesheets(GLBL_USER_CHOICE):
     """
     menu where users can select a spreadsheet to sync with GoogleSheets
@@ -112,5 +111,28 @@ def sync_googlesheets(GLBL_USER_CHOICE):
         elif user_input == 'c':
             pass
             print('Syncing with GoogleSheets')
+
+        return GLBL_USER_CHOICE
+
+
+def run_converter(GLBL_USER_CHOICE):
+    """
+    menu to convert choose which xlsx files to convert to csv
+
+    """
+    user_input = input(CONVERT_TO_CSV)
+    while user_input != 'q':
+        if user_input == 'n':
+            newstudent_excel_to_csv()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'a':
+            activestud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'g':
+            gradstud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'c':
+            completedstud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
 
         return GLBL_USER_CHOICE

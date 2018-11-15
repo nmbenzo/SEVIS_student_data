@@ -15,3 +15,5 @@ from New_Student_Registration import build_student_data, build_new_student_advis
 from New_Student_Registration.build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
 from New_Student_Registration.build_new_student_advisor_notes import match_SEVISID, \
 match_major_data, match_advisor, add_advisor_notes, advisor_major_gr, advisor_major_ug
+
+from XLSX_to_CSV.converter import newstudent_excel_to_csv, activestud_excel_to_cvs, completedstud_excel_to_cvs, gradstud_excel_to_cvs
