@@ -19,6 +19,7 @@ def copy_new_Range(startCol, startRow, endCol, endRow, old_sheet):
 
 
 def paste_new_Range(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
+    """Pastes the selected data from copy_new_Range to your desired output worksheet"""
     countRow = 0
     for i in range(startRow, endRow+1, 1):
         countCol = 0
@@ -58,14 +59,33 @@ def paste_to_final():
 
 
 def grab_final_data():
+    """Copies old "Final" data into new_sheet to allow updated data comparison."""
     print(f'Current Row Range = {final_sheet.max_row}')
     print('Grabbing most recent data...')
     selectedRange = copy_new_Range(1, 1, col_max_final, row_max_final, final_sheet)
     paste_new_Range(1, 1, col_max_final, row_max_final, new_sheet, selectedRange)
-    new_sheet.delete_rows(1)
     wb2.save(file2)
     print('Range copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
 
 
-paste_to_final()
+def check_in_fsa():
+    """Marks new data that needs to be input into ISSM"""
+    for rowNum in range(1, row_max_current):
+        status = new_sheet.cell(row=rowNum, column=9).value
+        if status == 'INITIAL':
+            new_sheet.cell(row=rowNum, column=10).value = 'Add to ISSM'
+
+    wb2.save(file2)
+
+
+def find_in_fsa():
+    """Checks the status of final data to see if it is already in ISSM"""
+    for rowNum in range(1, row_max_final):
+        status = final_sheet.cell(row=rowNum, column=10).value
+        if status == 'Add to ISSM':
+            final_sheet.cell(row=rowNum, column=10).value = 'Old Date: in ISSM'
+
+    wb2.save(file2)
+
+
