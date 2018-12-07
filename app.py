@@ -1,7 +1,7 @@
 import os
 os.getcwd()
 
-from menus import *
+from Handlers.menus import *
 
 
 def global_choose_menu():
@@ -20,6 +20,8 @@ def global_choose_menu():
             run_converter(GLBL_USER_CHOICE)
         if user_input == 's':  # for google sheets
             sync_googlesheets(GLBL_USER_CHOICE)
+        if user_input == 't':
+            transfer_menu(GLBL_USER_CHOICE)
         if user_input == 'e':  # to send emails
             pass
 
@@ -32,6 +34,5 @@ def global_choose_menu():
         else:
             print('Unknown command.')
             user_input = input(GLBL_USER_CHOICE)
-
 
 global_choose_menu()
