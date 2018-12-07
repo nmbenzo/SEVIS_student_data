@@ -1,8 +1,8 @@
 import openpyxl
 
 
-file1 = '/Users/nbenzschawel/Desktop/New_sevis_data_test.xlsx'
-file2 = '/Users/nbenzschawel/Desktop/stupid_test.xlsx'
+file1 = '/Users/nbenzschawel/Desktop/New_sevis_data.xlsx'
+file2 = '/Users/nbenzschawel/Desktop/SEVIS_transfer_data.xlsx'
 
 wb = openpyxl.load_workbook(file1)
 wb2 = openpyxl.load_workbook(file2)

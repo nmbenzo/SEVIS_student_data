@@ -1,6 +1,10 @@
+import openpyxl
 from SEVIS_Transfers.build_new_student_data import file2, \
     wb2, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
     row_max_current, col_max_current, row_max_final, col_max_final
+
+from SEVIS_Transfers.sort_data import sort_data
+ws2 = wb2.active
 
 
 def copy_new_Range(startCol, startRow, endCol, endRow, old_sheet):
@@ -71,10 +75,13 @@ def grab_final_data():
 
 def check_in_fsa():
     """Marks new data that needs to be input into ISSM"""
+    title = new_sheet.cell(row=1, column=10)
+    title.value = 'ISSM Status'
     for rowNum in range(1, row_max_current):
         status = new_sheet.cell(row=rowNum, column=9).value
         if status == 'INITIAL':
             new_sheet.cell(row=rowNum, column=10).value = 'Add to ISSM'
+    print('Added notes for ISSM')
 
     wb2.save(file2)
 
@@ -84,8 +91,8 @@ def find_in_fsa():
     for rowNum in range(1, row_max_final):
         status = final_sheet.cell(row=rowNum, column=10).value
         if status == 'Add to ISSM':
-            final_sheet.cell(row=rowNum, column=10).value = 'Old Date: in ISSM'
+            final_sheet.cell(row=rowNum, column=10).value = 'Old Data: in ISSM'
+    print('Updated ISSM notes for new data')
 
     wb2.save(file2)
-
 
