@@ -1,16 +1,15 @@
 import os
 os.getcwd()
-from import_modules import *
-
 
 GLBL_USER_CHOICE = """
 Please select one of the following:
-- 'n' - Access NEW Student Module
-- 'a' - Access ACTIVE Student Module
-- 'c' - Access COMPLETED Student Module
-- 'g' - Access GRADUATED Module
+- 'n' - Access NEW Student Menu
+- 'a' - Access ACTIVE Student Menu
+- 'c' - Access COMPLETED Student Menu
+- 'g' - Access GRADUATED Menu
 - 'x' - Convert XLSX to CSV
 - 's' - Sync Data with Google Sheets
+- 't' - Transfer Student Menu
 - 'e' - Send Email
 - 'q' - Quit
 
@@ -86,6 +85,16 @@ Which population would you like to send this email to:
 
 """
 
+MANAGE_TRANSFER_DATA = """
+- 'n' - Create New Workbook
+- 'a' - Add New Data to Sheet1
+- 's' - Sort Data by SEVIS ID
+- 'p' - Add notes for ISSM
+- 'f' - Copy data to Final for Atlas Sheet
+- 'u' - Update ISSM notes in Final for Atlas Sheet
+- 'c' - Copy & Paste final data in Sheet1
+
+"""
 
 # Need to add Completed_student_cleaning
 

@@ -1,4 +1,5 @@
-from import_app_modules import *
+from Handlers.import_app_modules import *
+from Handlers.import_modules import *
 from GoogleSheets.spreadsheet import *
 
 
@@ -134,5 +135,30 @@ def run_converter(GLBL_USER_CHOICE):
         elif user_input == 'c':
             completedstud_excel_to_cvs()
             print('Converted file from XLSX to CSV')
+
+        return GLBL_USER_CHOICE
+
+
+def transfer_menu(GLBL_USER_CHOICE):
+    """
+    Menu to access and modify transfer student data
+
+    """
+    user_input = input(MANAGE_TRANSFER_DATA)
+    while user_input != 'q':
+        if user_input == 'n':
+            create_workbook()
+        elif user_input == 'a':
+            create_new_Data()
+        elif user_input == 's':
+            sort_data()
+        elif user_input == 'p':
+            check_in_fsa()
+        elif user_input == 'f':
+            paste_to_final()
+        elif user_input == 'u':
+            find_in_fsa()
+        elif user_input == 'c':
+            grab_final_data()
 
         return GLBL_USER_CHOICE
