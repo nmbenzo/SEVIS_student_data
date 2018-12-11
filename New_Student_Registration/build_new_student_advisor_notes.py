@@ -1,7 +1,6 @@
 import os
 os.getcwd()
-from major_advisor_data import advisor_major_ug, advisor_major_gr
-from New_Student_Registration.build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
+from New_Student_Registration.build_student_data import wb2, ws1, ws2
 
 
 def match_SEVISID(campusID_SEVISID):
@@ -68,7 +67,7 @@ def add_advisor_notes():
      cr_hours = ws1.cell(row=rowNum, column=33).value
      if checked_in == 'Yes':
          ws2.cell(row=rowNum, column=1).value = 'SV Completed, '\
-         + 'Registered: ' + str(cr_hours) + 'credits'
+         + 'Registered for: ' + str(cr_hours) + 'credits'
      else:
          ws2.cell(row=rowNum, column=1).value = 'No SV '\
          + 'Registered, ' + str(cr_hours) + 'credits'

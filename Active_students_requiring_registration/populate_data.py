@@ -1,8 +1,6 @@
 import os
 os.getcwd()
 import openpyxl
-from Active_students_requiring_registration.build_data import campusID_SEVISID, SEVISID_major
-from major_advisor_data import advisor_major_gr, advisor_major_ug
 
 wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
 

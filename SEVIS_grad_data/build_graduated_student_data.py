@@ -1,8 +1,8 @@
 import os
 os.getcwd()
 import openpyxl
-from SEVIS_grad_data.build_grad_data import ws, campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
-from major_advisor_data import master_deg_adv, bachelor_deg_adv
+from SEVIS_grad_data.build_grad_data import campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
+from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
 
 
 # Think about adding a try, except function here to check the file directory.
