@@ -1,0 +1,222 @@
+
+"""
+---Notes---
+An app that allows the user to choose which spreadsheet they
+want to update and what on that spreadsheet they'd like to update.
+The app should have a menu asks the user what they'd like to do:
+***See All Spreadsheets
+***Choose a Spreadsheet
+***What would you like to do with this spreadsheet
+***Update A,B,C, or All
+***See Menu Again
+***Upload to Google Spreadsheets
+***Send an email to a specific student population
+***Quit
+
+"""
+
+
+----Notes--- Other possible function layouts for build_new_student_data.py (SEVIS_Transfers)
+
+import xlrd
+import os
+os.getcwd()
+
+
+wbnew = xlrd.open_workbook('/Users/nbenzschawel/Desktop/New_sevis_data_test.xlsx')
+
+# Get sheet by index
+wsnew = wbnew.sheet_by_index(0) # Sheet1
+
+#Getting number of rows and columns
+new_row = wsnew.nrows
+new_col = wsnew.ncols
+
+new_data = []
+
+
+def append_newdata(new_data):
+    """Builds a list of data from each column in a row
+    """
+
+    for row in range(1 , new_row):
+        # list of row values
+        row_values = []
+        # Iterating over number of cols
+        for col in range(new_col):
+            row_values.append(wsnew.cell_value(row , col))
+
+        # Making list with row values
+        row_list = list(row_values)
+        # Adding list to list
+        new_data.append(row_list)
+
+    return new_data
+
+append_newdata(new_data)
+
+
+def populate_new_data(new_data):
+    rowNum = ws.max_row + 1
+    for row in range(1, num_row1):
+        for col in range(num_col1):
+            current_data = wsDuplicate.cell(row, col).value
+            for d in current_data:
+                for data in new_data:
+                    if d not in data:
+                        wsDuplicate.cell(row=rowNum, col=num_col1).value = data
+
+"""
+ws1 = wb.active
+print(wb.sheetnames)
+
+wsfinal = wb['Final_for_Atlas']
+wsduplicate = wb['Duplicate']
+
+SEVISID = []
+Status = []
+
+   for rowNum in range(2, wsduplicate.max_row):
+        for row in wsduplicate.iter_rows(min_row=2 , max_col=10,
+                                         max_row=rowNum):
+            for cell in row:
+                row_data.append(cell.value)
+    return row_data
+
+
+column_list = [cell.column for cell in ws1[1]]
+print(column_list)
+
+
+def find_duplicates(data, data_types=(list)):
+    if isinstance(data, data_types):
+        for value in data:
+            for subvalue in find_duplicates(value, data_types):
+                yield subvalue
+    else:
+        yield data
+
+data = get_row_list(data)
+
+print(list(find_duplicates(data)))
+"""
+
+
+"""
+# Test
+for rowNum in range(1, old_sheet.max_row):
+    for colNum in range(1, old_sheet.max_column):
+        new_sheet.cell(row=(rowNum + 1), column=colNum).value =
+
+
+def get_cell_values():
+    """builds a list of data from each cell value in the old spreadsheet"""
+    for row in old_sheet.iter_rows(range_string=None, min_row=None, max_row=None,
+                                   min_col=None, max_col=None, row_offset=0,
+                                   column_offset=0):
+        for cell in row:
+            cell_values.append(cell.internal_value)
+    return cell_values
+
+get_cell_values()
+"""
+
+
+"""
+# Now do the rest of it. Note the row offset.
+endRow = new_sheet.max_row
+for row_num in range(1, max_row):
+    for col_num in range (1, max_col):
+        new_sheet.cell(row = (row_num + 1), column = col_num).value = old_sheet.cell(row = row_num, column = col_num).value
+
+new_sheet.delete_rows(1)
+
+wb2.save(file2)
+"""
+
+----Old build_transfer_data.py code----
+
+import openpyxl
+import xlrd
+import os
+os.getcwd()
+from SEVIS_Transfers.build_new_student_data import wb_old, old_sheet, row_max, col_max
+
+file = '/Users/nbenzschawel/Desktop/SEVIS_Trans_python_test.xlsx'
+
+wb = xlrd.open_workbook(file)
+wb1 = openpyxl.load_workbook(file)
+
+
+# Get sheet by index
+wsFinal = wb.sheet_by_index(0) # Final for Atlas
+wsDuplicate = wb.sheet_by_index(1) # duplicate
+
+ws = wb1.worksheets[1]
+
+#Getting number of rows and columns
+num_row0 = wsFinal.nrows
+num_col0 = wsFinal.ncols
+
+num_row1 = wsDuplicate.nrows
+num_col1 = wsDuplicate.ncols
+
+#Initializing list
+data = []
+
+
+def get_row_list():
+    """Builds a list of data from each column in a row
+    """
+    for row in range(1 , num_row0):
+        # list of row values
+        row_values = []
+        # Iterating over number of cols
+        for col in range(num_col0):
+            row_values.append(wsDuplicate.cell_value(row , col))
+
+        # Making list with row values
+        row_list = list(row_values)
+        # Adding list to list
+        data.append(row_list)
+
+    return data
+
+get_row_list()
+
+
+def build_sevsID_status(data):
+    """Builds a new list of SEVISIDs and Statuses: Draft or Initial from
+       the data list put together in the get_row_list function
+    """
+    looking_for = []
+    for list in data:
+        d1 = list[0]
+        d2 = list[-3]
+        looking_for.append([d1, d2])
+
+    return looking_for
+
+
+def populate_new_data(row_max, col_max):
+    rowNum = ws.max_row + 1
+    for row_num in range(rowNum, row_max):
+        for col_num in range(1, col_max):
+            ws.cell(row=(row_num + 1), column=col_num).value = old_sheet.cell(row=row_num, column=col_num).value
+
+    wb1.save(file)
+
+
+populate_new_data(row_max, col_max)
+
+
+"""
+def createData():
+    print('Processing data...')
+    if new_sheet.cell(row=1,column=1, value='SEVIS ID').value == 'SEVIS ID':
+        selectedRange = copyRange(1, 1, col_max, row_max, old_sheet)
+        pasteRange(1, 5, col_max, 14, new_sheet, selectedRange)
+    else:
+        selectedRange = copyRange(1, 2, col_max, row_max, old_sheet)
+        pasteRange(1, 5, col_max, 14, new_sheet, selectedRange)
+"""
