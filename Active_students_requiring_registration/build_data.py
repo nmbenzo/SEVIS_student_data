@@ -1,10 +1,7 @@
 import os
 os.getcwd()
 import openpyxl
-
-wb1 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/All_SEVIS-Active_Student_Tracking.xlsx')
-
-ws = wb1.active
+from Handlers.file_imports import wb1, ws
 
 campusID = []
 

@@ -1,10 +1,7 @@
 import openpyxl
-from SEVIS_Transfers.build_new_student_data import file2, \
-    wb2, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
+from Handlers.file_imports import file2, \
+    wb2_trans, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
     row_max_current, col_max_current, row_max_final, col_max_final
-
-from SEVIS_Transfers.sort_data import sort_data
-ws2 = wb2.active
 
 
 def copy_new_Range(startCol, startRow, endCol, endRow, old_sheet):
@@ -46,7 +43,7 @@ def create_new_Data():
         selectedRange = copy_new_Range(1, 2, col_max_old, row_max_old, old_sheet)
         paste_new_Range(1, (row_max_current+1), col_max_old, (row_max_current + row_max_old-1), new_sheet, selectedRange)
 
-    wb2.save(file2)
+    wb2_trans.save(file2)
     print("Range copied and pasted")
     print(f'New Row Range = {new_sheet.max_row}')
 
@@ -57,7 +54,7 @@ def paste_to_final():
     print('Processing data...')
     selectedRange = copy_new_Range(1, 1, col_max_current, row_max_current, new_sheet)
     paste_new_Range(1, 1, col_max_current, row_max_current, final_sheet, selectedRange)
-    wb2.save(file2)
+    wb2_trans.save(file2)
     print("Range copied and pasted")
     print(f'New Row Range = {row_max_final}')
 
@@ -68,7 +65,7 @@ def grab_final_data():
     print('Grabbing most recent data...')
     selectedRange = copy_new_Range(1, 1, col_max_final, row_max_final, final_sheet)
     paste_new_Range(1, 1, col_max_final, row_max_final, new_sheet, selectedRange)
-    wb2.save(file2)
+    wb2_trans.save(file2)
     print('Range copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
 
@@ -83,7 +80,7 @@ def check_in_fsa():
             new_sheet.cell(row=rowNum, column=10).value = 'Add to ISSM'
     print('Added notes for ISSM')
 
-    wb2.save(file2)
+    wb2_trans.save(file2)
 
 
 def find_in_fsa():
@@ -94,5 +91,5 @@ def find_in_fsa():
             final_sheet.cell(row=rowNum, column=10).value = 'Old Data: in ISSM'
     print('Updated ISSM notes for new data')
 
-    wb2.save(file2)
+    wb2_trans.save(file2)
 

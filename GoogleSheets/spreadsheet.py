@@ -1,7 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from XLSX_to_CSV.converter import newstudent_excel_to_csv
-from New_Student_Registration.build_new_student_advisor_notes import ws2
+from New_Student_Registration.build_new_student_advisor_notes import ws2_new
 
 
 def authenticate_google_docs():

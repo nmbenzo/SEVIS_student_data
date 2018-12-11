@@ -1,4 +1,4 @@
-from SEVIS_grad_data.build_grad_data import ws, campusID_SEVISID, \
+from SEVIS_grad_data.build_grad_data import ws_grad, campusID_SEVISID, \
     campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
 from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
 from SEVIS_grad_data.build_graduated_student_data import add_advisor, \
@@ -13,7 +13,7 @@ match_major_data, match_advisor
 from Handlers.major_advisor_data import advisor_major_ug, advisor_major_gr
 
 from New_Student_Registration import build_student_data, build_new_student_advisor_notes
-from New_Student_Registration.build_student_data import campusID_SEVISID, wb2, ws1, ws2, SEVISID_major
+from New_Student_Registration.build_student_data import campusID_SEVISID, wb2_new, ws1_new, ws2_new, SEVISID_major
 from New_Student_Registration.build_new_student_advisor_notes import match_SEVISID, \
 match_major_data, match_advisor, add_advisor_notes
 from Handlers.major_advisor_data import advisor_major_gr, advisor_major_ug

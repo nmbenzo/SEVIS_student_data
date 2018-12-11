@@ -1,5 +1,5 @@
 import pandas as pd
-from SEVIS_Transfers.build_new_student_data import file2, wb2
+from Handlers.file_imports import file2, wb2_trans
 
 
 def sort_data():
@@ -7,8 +7,8 @@ def sort_data():
     sorted_by_sevisid = current_data.sort_values(['SEVIS ID', 'Student Status'], ascending=True)
 
     writer = pd.ExcelWriter(file2, engine='openpyxl')
-    writer.book = wb2
-    writer.sheets = dict((ws.title, ws) for ws in wb2.worksheets)
+    writer.book = wb2_trans
+    writer.sheets = dict((ws.title, ws) for ws in wb2_trans.worksheets)
 
     sorted_by_sevisid.to_excel(writer, 'Sheet2')
     writer.save()
@@ -21,8 +21,8 @@ def remove_duplicates():
     dropped_data = df.drop_duplicates(subset=['SEVIS ID', 'Student Status'], keep='last')
 
     writer = pd.ExcelWriter(file2, engine='openpyxl')
-    writer.book = wb2
-    writer.sheets = dict((ws.title, ws) for ws in wb2.worksheets)
+    writer.book = wb2_trans
+    writer.sheets = dict((ws.title, ws) for ws in wb2_trans.worksheets)
 
     dropped_data.to_excel(writer, 'Sheet3')
     writer.save()

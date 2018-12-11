@@ -1,12 +1,7 @@
 import os
 os.getcwd()
 import openpyxl
-
-wb2 = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
-
-sheet = wb2.worksheets[4]
-
-ws2 = wb2.active
+from Handlers.file_imports import wb2_active, sheet, ws2
 
 
 def match_SEVISID(campusID_SEVISID):
@@ -23,7 +18,7 @@ def match_SEVISID(campusID_SEVISID):
             if x == sevis_ID:
                 sheet.cell(row=rowNum, column=1).value = campusID_SEVISID[sevis_ID]
 
-    wb2.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
+    wb2_active.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
 
 
 def match_major_data(SEVISID_major):
@@ -39,7 +34,7 @@ def match_major_data(SEVISID_major):
             if x == sevis_ID:
                 sheet.cell(row=rowNum, column=1).value = SEVISID_major[sevis_ID]
 
-    wb2.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
+    wb2_active.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
 
 
 def match_advisor(advisor_major_ug, advisor_major_gr):
@@ -57,6 +52,6 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
         if major in advisor_major_gr:
             sheet.cell(row=rowNum, column=1).value = advisor_major_gr[major]
 
-    wb2.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
+    wb2_active.save('/Users/nbenzschawel/Downloads/Fall 201840 - Registration.xlsx')
 
 
