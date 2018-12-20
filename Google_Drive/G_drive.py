@@ -52,8 +52,8 @@ FOLDER_MIME = 'application/vnd.google-apps.folder'
 SOURCE_FILE = '/Users/nbenzschawel/Desktop/SEVIS_transfer_data.xlsx' # Example
 MIMETYPE = 'application/vnd.google-apps.spreadsheet' # Example
 
-td_id = '0ALZnP19K4Ev2Uk9PVA' # unique ID from the Team Drive URL
-folder_id = '13Dff23QqYZ_EAwNUhA60MGAm-2wypeo_' # unique ID from the folder URL
+td_id = 'XXXX' # unique ID from the Team Drive URL
+folder_id = 'XXXX' # unique ID from the folder URL
 file_id = import_td_folder(folder_id, SOURCE_FILE, MIMETYPE)
 print(f'** {SOURCE_FILE} file imported as {MIMETYPE} in Team Drives folder **')
 
