@@ -42,6 +42,9 @@ wb2_new = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/SEVIS_raw_data.x
 ws1_new = wb1_new.active
 ws2_new = wb2_new.active
 
+new_stud_issm_data = '/Users/nbenzschawel/Downloads/SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx'
+sevis_initalstat_data = '/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx'
+
 
 # Graduated Student Data
 wb1_grad = openpyxl.load_workbook('/Users/nbenzschawel/Downloads/All_SEVIS-Active_Student_Tracking.xlsx')
