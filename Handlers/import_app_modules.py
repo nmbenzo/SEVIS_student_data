@@ -7,8 +7,9 @@ Please select one of the following:
 - 'a' - Access ACTIVE Student Menu
 - 'c' - Access COMPLETED Student Menu
 - 'g' - Access GRADUATED Menu
-- 'x' - Convert XLSX to CSV
+- 'm' - Access Merge Workbook Menu
 - 's' - Sync Data with Google Sheets
+- 'x' - Convert XLSX to CSV
 - 't' - Transfer Student Menu
 - 'e' - Send Email
 - 'q' - Quit
@@ -50,11 +51,20 @@ Please select one of the following:
 """
 
 SYNC_GOOGLESHEETS = """
-Which xlsx file would you like to upload to GoogleSheets: 
+Which file would you like to upload to Google_Drive: 
+- 'a' - Upload Master File xlsx
 - 'n' - NEW Student Reg xlsx
 - 'a' - ACTIVE Student Reg xlsx
+- 't' - TRANSFER Students xlsx
 - 'g' - GRADUATED Student xlsx
 - 'c' - COMPLETED Student xlsx
+- 'r' - Registration Timeline
+
+"""
+
+
+MERGE_WORKBOOKS = """
+Would you like to merge all Registration Workbooks (y/n)?: 
 
 """
 

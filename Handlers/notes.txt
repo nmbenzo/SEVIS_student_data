@@ -220,3 +220,188 @@ def createData():
         selectedRange = copyRange(1, 2, col_max, row_max, old_sheet)
         pasteRange(1, 5, col_max, 14, new_sheet, selectedRange)
 """
+
+
+"""
+---Query a specific folder on google drive---
+
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+g_login = GoogleAuth()
+g_login.LocalWebserverAuth()
+
+drive = GoogleDrive(g_login)
+
+def ListFolder(parent):
+  filelist=[]
+  file_list = drive.ListFile({'q': "'%s' in parents and trashed=false" % parent}).GetList()
+  for f in file_list:
+    if f['mimeType']=='application/vnd.google-apps.folder': # if folder
+        filelist.append({"id":f['id'],"title":f['title'],"list":ListFolder(f['id'])})
+    else:
+        filelist.append({"title":f['title'],"title1":f['alternateLink']})
+  print(filelist)
+
+ListFolder('root')
+"""
+
+
+"""
+Old way of making dicts for comparison
+
+campusID = []
+
+for rowNum in range(2, ws_grad.max_row):
+    id = ws_grad.cell(row=rowNum, column=1).value
+    campusID.append(id)
+
+
+SEVISID = []
+
+for rowNum in range(2, ws_grad.max_row):
+    id = ws_grad.cell(row=rowNum, column=5).value
+    SEVISID.append(id)
+
+ campusID_SEVISID = {}
+
+for i in range(len(campusID)): # verbose dict building
+    campusID_SEVISID[campusID[i]] = SEVISID[i]
+
+
+***build_grad_data***
+
+campusID = []
+
+for rowNum in range(2, ws_grad.max_row):
+    id = ws_grad.cell(row=rowNum, column=1).value
+    campusID.append(id)
+
+
+SEVISID = []
+
+for rowNum in range(2, ws_grad.max_row):
+    id = ws_grad.cell(row=rowNum, column=5).value
+    SEVISID.append(id)
+
+work_auth_type = []
+
+for rowNum in range(2, ws_grad.max_row):
+    type = ws_grad.cell(row=rowNum, column=31).value # need to check column in spreadsheet
+    work_auth_type.append(type)
+
+work_auth_enddate = []
+
+for x in range(2, ws_grad.max_row):
+    work_end = ws_grad.cell(row=x, column=33).value # need to check column in spreadsheet
+    work_auth_enddate.append(work_end)
+
+
+profile_end_date = []
+
+for rowNum in range(2, ws_grad.max_row):
+    end_date = ws_grad.cell(row=rowNum, column=10).value # need to check column in spreadsheet
+    profile_end_date.append(end_date)
+
+for x in range(2, ws_grad.max_row):
+    email = ws_grad.cell(row=x, column=30).value # need to check column in spreadsheet
+    emails.append(email)
+
+for x in range(2, ws_grad.max_row):
+    campusID = ws_grad.cell(row=x, column=1).value
+    email_campID.append(campusID)
+
+"""
+
+"""
+
+***build_student_data.py
+
+
+# Old OPENPYXL methods
+# campusID = []
+# SEVISID = []
+# for rowNum in range(2, ws1_new.max_row):  # skip the first row and go to the last row
+    # id = ws1_new.cell(row=rowNum, column=5).value
+    # SEVISID.append(id)
+
+# for rowNum in range(2, ws1_new.max_row):
+    # id = ws1_new.cell(row=rowNum, column=1).value
+    # campusID.append(id)
+
+# build a list of majors
+# major_data = []
+
+# for rowNum in range(2, ws1_new.max_row):
+   # major = ws1_new.cell(row=rowNum, column=13).value
+   # major_data.append(major)
+
+"""
+
+
+"""
+
+***spreadsheet.py
+
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from XLSX_to_CSV.converter import newstudent_excel_to_csv
+from New_Student_Registration.build_new_student_advisor_notes import ws2_new
+
+
+def authenticate_google_docs():
+    # use creds to create a client to interact with the Google Drive API
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+    gc = gspread.authorize(creds)
+    return gc
+
+gc = authenticate_google_docs()
+
+sh = gc.open('201920 SEVIS Registration')
+# print(sh.id)
+
+
+worksheet_list = sh.worksheets()
+# print(worksheet_list)
+
+# Naming convention for this gs.workbook
+
+# COL = sh.worksheet('COL')
+# transferUG = sh.worksheet('Transfer UG')
+# transferGR = sh.worksheet('Transfer GR')
+# new_students = sh.worksheet('New Students')
+# continuing_students = sh.worksheet('Continuing Students')
+
+
+def update_new_students(sh):
+    newstudent_excel_to_csv()
+    content = open('new_student.csv', 'r').read()
+    gc.import_csv(sh.id, content)
+
+
+"""
+
+
+"""
+Old add_SV_status function for New_Student_Registration.build_new_student_advisor_notes.py
+
+
+def add_SV_status(SEVISID_checked_in):
+    """
+    add_advisor notes references the checked_in columns of workbook(ws)
+    and then builds advisor notes based on which columns are populated
+    """
+    ws2_new.insert_cols(1)
+    title = ws2_new.cell(row=1, column=1)
+    title.value = 'SV Status'
+    for rowNum in range(2, ws2_new.max_row):
+        sevis_ID = ws2_new.cell(row=rowNum, column=6).value
+        for x in SEVISID_checked_in:
+            if x == sevis_ID:
+                ws2_new.cell(row=rowNum, column=1).value = 'SV Status: ' + str(SEVISID_checked_in[sevis_ID])
+
+    wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
+
+"""
