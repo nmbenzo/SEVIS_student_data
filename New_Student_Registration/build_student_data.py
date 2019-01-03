@@ -1,7 +1,7 @@
 import os
 os.getcwd()
 import pandas as pd
-from Handlers.file_imports import new_stud_issm_data, sevis_initalstat_data
+from Handlers.file_imports import new_stud_issm_data, sevis_inital_student_data
 
 """
 This file builds dictionaries containing the following data: 
@@ -19,7 +19,13 @@ campusID = df['Campus Id'].tolist()
 df = pd.ExcelFile(new_stud_issm_data).parse('SEVIS_Registration_Tracking-New')
 major_data = df['Major Field (display)'].tolist()
 
-df = pd.ExcelFile(sevis_initalstat_data).parse('Sheet1')
+df = pd.ExcelFile(new_stud_issm_data).parse('SEVIS_Registration_Tracking-New')
+checked_in = df['14 CHECK IN I94 or Entry Stamp'].tolist()
+
+df = pd.ExcelFile(new_stud_issm_data).parse('SEVIS_Registration_Tracking-New')
+cr_hours = df['07 Total Credit Hours'].tolist()
+
+df = pd.ExcelFile(sevis_inital_student_data).parse('Sheet1')
 sevisid = df['SEVIS ID'].tolist()
 
 
@@ -29,25 +35,10 @@ campusID_SEVISID = {}
 for i in range(len(SEVISID)):
     campusID_SEVISID[SEVISID[i]] = campusID[i]
 
-
 # build a dict where k = SEVISID, v = list of majors
 SEVISID_major = dict(zip(SEVISID, major_data))
 
+SEVISID_checked_in = dict(zip(SEVISID, checked_in))
 
-# Old OPENPYXL methods
-# campusID = []
-# SEVISID = []
-# for rowNum in range(2, ws1_new.max_row):  # skip the first row and go to the last row
-    # id = ws1_new.cell(row=rowNum, column=5).value
-    # SEVISID.append(id)
+SEVISID_cr_hours = dict(zip(SEVISID, cr_hours))
 
-# for rowNum in range(2, ws1_new.max_row):
-    # id = ws1_new.cell(row=rowNum, column=1).value
-    # campusID.append(id)
-
-# build a list of majors
-# major_data = []
-
-# for rowNum in range(2, ws1_new.max_row):
-   # major = ws1_new.cell(row=rowNum, column=13).value
-   # major_data.append(major)
