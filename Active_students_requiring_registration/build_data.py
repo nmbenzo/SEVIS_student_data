@@ -1,32 +1,32 @@
 import os
 os.getcwd()
 import openpyxl
-from Handlers.file_imports import wb1, ws
-
-campusID = []
-
-for rowNum in range(2, ws.max_row):
-    id = ws.cell(row=rowNum, column=1).value
-    campusID.append(id)
-
-SEVISID = []
-
-for rowNum in range(2, ws.max_row):
-    id = ws.cell(row=rowNum, column=5).value
-    SEVISID.append(id)
+import pandas as pd
+from Handlers.file_imports import active_stud_issm_data
 
 
-campusID_SEVISID = dict(zip(SEVISID, campusID))
+df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
+SEVISID = df['SEVIS ID'].tolist()
+
+df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
+campusID = df['Campus Id'].tolist()
+
+df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
+major_data = df['Major Field (display)'].tolist()
+
+df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
+units = df['07 Total Credit Hours'].tolist()
 
 
-major_data = []
-
-for rowNum in range(2, ws.max_row):
-    major = ws.cell(row=rowNum, column=13).value
-    major_data.append(major)
-
+# build dict where k = SEVISID, v = campusID
+active_campusID_SEVISID = dict(zip(SEVISID, campusID))
 
 # build a dict where k = SEVISID, v = list of majors
-SEVISID_major = dict(zip(SEVISID, major_data))
+active_SEVISID_major = dict(zip(SEVISID, major_data))
+
+active_SEVISID_units = dict(zip(SEVISID, units))
+
+
+
 
 
