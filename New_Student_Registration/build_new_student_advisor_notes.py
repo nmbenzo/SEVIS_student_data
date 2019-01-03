@@ -1,9 +1,9 @@
 import os
 os.getcwd()
-from Handlers.file_imports import ws2_new, wb2_new, ws1_new
+from Handlers.file_imports import ws2_new, wb2_new
 
 
-def match_SEVISID(campusID_SEVISID):
+def new_match_SEVISID(campusID_SEVISID):
     """
     match_SEVISID compares SEVISIDs from two separate workbooks(ws, ws2)
     and then populates a blank column with the appropriate BannerID(campusID)
@@ -20,7 +20,7 @@ def match_SEVISID(campusID_SEVISID):
     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
-def match_major_data(SEVISID_major):
+def new_match_major_data(SEVISID_major):
     """match_major_data compares SEVISIDs against major data and then populates
     a blank column with the appropriate major data when a SEVISID match is found.
     """
@@ -36,7 +36,7 @@ def match_major_data(SEVISID_major):
     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
-def match_advisor(advisor_major_ug, advisor_major_gr):
+def new_match_advisor(advisor_major_ug, advisor_major_gr):
     """
     match_advisor checks the majors in a column of workbook(ws) and
     then matches them with the advisor in a dictionary from the module: data
@@ -54,7 +54,7 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 
-def add_advisor_notes():
+def add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours):
     """
     add_advisor notes references the checked_in columns of workbook(ws)
     and then builds advisor notes based on which columns are populated
@@ -62,21 +62,13 @@ def add_advisor_notes():
     ws2_new.insert_cols(1)
     title = ws2_new.cell(row=1, column=1)
     title.value = 'Advisor Notes'
-    for rowNum in range(2, ws1_new.max_row): # skip the first row and go to the last row
-     checked_in = ws1_new.cell(row=rowNum, column=19).value
-     cr_hours = ws1_new.cell(row=rowNum, column=33).value
-     if checked_in == 'Yes':
-         ws2_new.cell(row=rowNum, column=1).value = 'SV Completed, '\
-         + 'Registered for: ' + str(cr_hours) + 'credits'
-     else:
-         ws2_new.cell(row=rowNum, column=1).value = 'No SV '\
-         + 'Registered, ' + str(cr_hours) + 'credits'
+    for rowNum in range(2, ws2_new.max_row):
+        sevis_ID = ws2_new.cell(row=rowNum, column=5).value
+        for x in SEVISID_checked_in:
+            for j in SEVISID_cr_hours:
+                if x and j == sevis_ID:
+                    ws2_new.cell(row=rowNum, column=1).value = 'SV Status: ' + str(SEVISID_checked_in[sevis_ID]) \
+                    + ', Registered Units: ' + str(SEVISID_cr_hours[sevis_ID]) + ' credits'
 
-     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
-
-
-
-
-
-
+    wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
