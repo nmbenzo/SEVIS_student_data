@@ -67,8 +67,11 @@ def add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours):
         for x in SEVISID_checked_in:
             for j in SEVISID_cr_hours:
                 if x and j == sevis_ID:
-                    ws2_new.cell(row=rowNum, column=1).value = 'SV Status: ' + str(SEVISID_checked_in[sevis_ID]) \
+                    if SEVISID_checked_in[sevis_ID] != 'Yes':
+                        ws2_new.cell(row=rowNum, column=1).value = 'SV Status: Not checked in' + \
+                        ', Registered Units: ' + str(SEVISID_cr_hours[sevis_ID]) + ' credits'
+                    else:
+                        ws2_new.cell(row=rowNum, column=1).value = 'SV Status: ' + str(SEVISID_checked_in[sevis_ID]) \
                     + ', Registered Units: ' + str(SEVISID_cr_hours[sevis_ID]) + ' credits'
 
     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
-
