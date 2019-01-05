@@ -28,7 +28,7 @@ def paste_new_Range(startCol, startRow, endCol, endRow, sheetReceiving, copiedDa
         countRow += 1
 
 
-def create_new_Data():
+def create_new_Cancel_Data():
     """Pastes copied range to new sheet which needs to be updated"""
     print('Processing data...')
     print(f'Data copied: current range = {ug_row_max}')
