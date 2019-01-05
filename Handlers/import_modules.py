@@ -31,7 +31,7 @@ from SEVIS_Transfers.build_transfer_data import copy_new_Range, paste_new_Range,
 from SEVIS_Transfers.create_workbook import create_workbook
 
 from Student_Cancellations.build_initial_cancel_list import copy_new_Range, paste_new_Range, \
-create_new_Data
+create_new_Cancel_Data, ug_row_max, ug_sheet
 
 from File_Management.merge_files import merge_all_workbooks
 

@@ -62,6 +62,43 @@ def active_menu(GLBL_USER_CHOICE):
         return GLBL_USER_CHOICE
 
 
+def cancellation_menu(GLBL_USER_CHOICE):
+    """
+    menu where users can merge UG and GR cancellation lists from ISSM and then
+    poplate data relevant to students that haven't checked in or are not registered
+    """
+    user_input = input(BUILD_CANCEL_CHOICE)
+    while user_input != 'q':
+        if user_input == 'a':
+            pass
+        elif user_input == 'm':
+            create_new_Cancel_Data()
+            print('Processing data...')
+            time.sleep(1)
+            print(f'Data copied: current range = {ug_row_max}')
+            print('Graduate Cancel range copied and pasted')
+            time.sleep(0.5)
+            print(f'New Row Range = {ug_sheet.max_row}')
+        elif user_input == 'p':
+            pass
+
+        return GLBL_USER_CHOICE
+
+
+def completed_menu(GLBL_USER_CHOICE):
+    """
+    menu where users can elect to match SEVIS COMPLETED students with their ISSM
+    Profile Status
+    """
+    user_input = input(COMPLETED_STUDENTS)
+    while user_input != 'n':
+        if user_input == 'y':
+            match_SEVISID_completed(SEVISID_completed)
+            print('Matching SEVIS IDs and building notes for discrepancies')
+
+        return GLBL_USER_CHOICE
+
+
 def grad_menu(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the

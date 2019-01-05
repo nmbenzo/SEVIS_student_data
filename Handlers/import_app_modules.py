@@ -5,7 +5,8 @@ GLBL_USER_CHOICE = """
 Please select one of the following:
 - 'n' - Access NEW Student Menu
 - 'a' - Access ACTIVE Student Menu
-- 'c' - Access COMPLETED Student Menu
+- 'c' - Access CANCELLED Student Menu
+- 'd' - Access COMPLETED Student Menu
 - 'g' - Access GRADUATED Menu
 - 'm' - Access Merge Workbook Menu
 - 's' - Sync Data with Google Sheets
@@ -38,6 +39,15 @@ Please select one of the following:
 """
 
 
+BUILD_CANCEL_CHOICE = """
+Please select one of the following:
+- 'a' - Run all functions
+- 'm' - Merge UG and GR Cancel Lists
+- 'p' - Populate Merged Cancel List
+
+"""
+
+
 GRADUATEs_USER_CHOICE = """
 Please select one of the following:
 - 'a' - Run all functions
@@ -50,9 +60,16 @@ Please select one of the following:
 
 """
 
+
+COMPLETED_STUDENTS = """
+Would you like to generate a list of COMPLETED students in SEVIS vs ISSM Profile Status (y/n)?: 
+
+"""
+
+
 SYNC_GOOGLESHEETS = """
 Which file would you like to upload to Google_Drive: 
-- 'a' - Upload Master File xlsx
+- 'a' - Upload MASTER File xlsx
 - 'n' - NEW Student Reg xlsx
 - 'a' - ACTIVE Student Reg xlsx
 - 't' - TRANSFER Students xlsx
