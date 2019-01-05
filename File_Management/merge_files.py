@@ -15,6 +15,9 @@ def merge_all_workbooks():
     active_student_data = pd.read_excel(active_student_req_reg, sheet_name=4, index_col=0)
     df4 = pd.DataFrame(active_student_data)
 
+    cancel_students = pd.read_excel(No_show_UG, sheet_name=0, index_col=0)
+    df5 = pd.DataFrame(cancel_students)
+
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(Registration_file, engine='xlsxwriter', date_format='mmm d yyyy')
 
@@ -22,6 +25,7 @@ def merge_all_workbooks():
     df2.to_excel(writer, sheet_name='Transfer Students')
     df3.to_excel(writer, sheet_name='New Students')
     df4.to_excel(writer, sheet_name='Active Students')
+    df5.to_excel(writer, sheet_name='Cancellations')
 
     workbook = writer.book
 
@@ -29,6 +33,7 @@ def merge_all_workbooks():
     worksheet2 = writer.sheets['Transfer Students']
     worksheet3 = writer.sheets['New Students']
     worksheet4 = writer.sheets['Active Students']
+    worksheet5 = writer.sheets['Cancellations']
 
     header_format = workbook.add_format({
         'bold': True,
@@ -55,6 +60,9 @@ def merge_all_workbooks():
 
     for col_num, value in enumerate(df4.columns.values):
         worksheet4.write(0, col_num + 1, value, header_format)
+
+    for col_num, value in enumerate(df5.columns.values):
+        worksheet5.write(0, col_num + 1, value, header_format)
 
     #Format columns of COL Students
     worksheet1.set_column('A:X', 16, column_format)
@@ -84,5 +92,7 @@ def merge_all_workbooks():
     worksheet4.set_column('E:E', 13, column_format)
     worksheet4.set_column('F:F', 16, column_format)
     worksheet4.set_column('G:J', 21, column_format)
+
+    worksheet5.set_column('A:X', 16, column_format)
 
     writer.save()
