@@ -15,6 +15,8 @@ def global_choose_menu():
         if user_input == 'a':
             active_menu(GLBL_USER_CHOICE)
         if user_input == 'c':
+            cancellation_menu(GLBL_USER_CHOICE)
+        if user_input == 'd':
             completed_menu(GLBL_USER_CHOICE)
         if user_input == 'g':
             grad_menu(GLBL_USER_CHOICE)
