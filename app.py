@@ -14,6 +14,8 @@ def global_choose_menu():
             new_menu(GLBL_USER_CHOICE)
         if user_input == 'a':
             active_menu(GLBL_USER_CHOICE)
+        if user_input == 'c':
+            completed_menu(GLBL_USER_CHOICE)
         if user_input == 'g':
             grad_menu(GLBL_USER_CHOICE)
         if user_input == 'm':
