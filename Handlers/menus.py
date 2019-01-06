@@ -70,7 +70,19 @@ def cancellation_menu(GLBL_USER_CHOICE):
     user_input = input(BUILD_CANCEL_CHOICE)
     while user_input != 'q':
         if user_input == 'a':
-            pass
+            create_new_Cancel_Data()
+            print('Processing data...')
+            time.sleep(1)
+            print(f'Data copied: current range = {ug_row_max}')
+            print('Graduate Cancel range copied and pasted')
+            time.sleep(1.5)
+            print(f'New Row Range = {ug_row_max}')
+            time.sleep(1)
+            build_cancel_campusID(Cancel_SEVISID_CampusID)
+            time.sleep(0.2)
+            build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
+                               Cancel_SEVISID_SV)
+            print('Added Campus IDs and student notes')
         elif user_input == 'm':
             create_new_Cancel_Data()
             print('Processing data...')
@@ -78,9 +90,7 @@ def cancellation_menu(GLBL_USER_CHOICE):
             print(f'Data copied: current range = {ug_row_max}')
             print('Graduate Cancel range copied and pasted')
             time.sleep(0.5)
-            print(f'New Row Range = {ug_sheet.max_row}')
-        elif user_input == 'p':
-            pass
+            print(f'New Row Range = {ug_row_max}')
 
         return GLBL_USER_CHOICE
 
