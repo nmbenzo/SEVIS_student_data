@@ -61,14 +61,17 @@ SEV_initial_data = openpyxl.load_workbook(SEVIS_initial_status_stud)
 wb_cancel_ug = openpyxl.load_workbook(No_show_UG)
 wb_cancel_gr = openpyxl.load_workbook(No_show_GR)
 
+sevis_initial = SEV_initial_data.worksheets[0]
 ug_sheet = wb_cancel_ug.worksheets[0]
 gr_sheet = wb_cancel_gr.worksheets[0]
 
+initial_max_row = sevis_initial.max_row
 ug_row_max = ug_sheet.max_row
 ug_col_max = ug_sheet.max_column
 gr_row_max = gr_sheet.max_row
 gr_col_max = gr_sheet.max_column
 
+sevis_initial_ws = SEV_initial_data.active
 ws_cancel_ug = wb_cancel_ug.active
 ws_cancel_gr = wb_cancel_gr.active
 
