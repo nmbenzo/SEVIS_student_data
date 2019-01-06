@@ -74,4 +74,3 @@ def build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits, Cancel_SEV
                                 + 'Banner Status: ' + str(Cancel_SEVISID_banner[sevisid])
 
     SEV_initial_data.save(SEVIS_initial_status_stud)
-
