@@ -10,6 +10,8 @@ def global_choose_menu():
     """
     user_input = input(GLBL_USER_CHOICE)
     while user_input != 'q':
+        if user_input == 'b':
+            build_it_all(GLBL_USER_CHOICE)
         if user_input == 'n':
             new_menu(GLBL_USER_CHOICE)
         if user_input == 'a':
@@ -24,8 +26,6 @@ def global_choose_menu():
             merge_workbooks(GLBL_USER_CHOICE)
         if user_input == 's':  # for google sheets
             sync_googlesheets(GLBL_USER_CHOICE)
-        if user_input == 'x':  # convert xlsx to csv
-            run_converter(GLBL_USER_CHOICE)
         if user_input == 't':
             transfer_menu(GLBL_USER_CHOICE)
         if user_input == 'e':  # to send emails
