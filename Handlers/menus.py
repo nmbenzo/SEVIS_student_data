@@ -3,6 +3,64 @@ from Handlers.import_app_modules import *
 from Handlers.import_modules import *
 
 
+
+def build_it_all(GLBL_USER_CHOICE):
+    """
+    menu where users can select a section of the
+    spreadsheet to populate about new students requiring registration
+     """
+    user_input = input(BUILD_REG_DATA)
+    while user_input != 'q':
+        if user_input == 'y':
+            time.sleep(0.5)
+            new_match_SEVISID(campusID_SEVISID)
+            new_match_major_data(SEVISID_major)
+            new_match_advisor(advisor_major_ug, advisor_major_gr)
+            add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours)
+            print('Ran all functions for building new student registration notes:\n')
+            time.sleep(0.5)
+            print("Added student's advisor" + '\nAdded campusIDs' + '\nAdded student majors' \
+            + '\nAdded SV & unit registration notes')
+            time.sleep(1)
+            active_match_SEVISID(active_campusID_SEVISID)
+            time.sleep(0.3)
+            match_units(active_SEVISID_units)
+            time.sleep(0.3)
+            match_major_data(active_SEVISID_major)
+            time.sleep(0.3)
+            match_advisor(advisor_major_ug, advisor_major_gr)
+            print('\nRan all functions for building notes for SEVIS Active students:')
+
+            time.sleep(1)
+            create_new_Cancel_Data()
+            print('\nProcessing data...')
+            time.sleep(1)
+            print(f'Data copied: current range = {ug_row_max}')
+            print('Graduate Cancel range copied and pasted')
+            time.sleep(1.2)
+            print(f'New Row Range = {ug_sheet.max_row}')
+            time.sleep(0.5)
+            build_cancel_campusID(Cancel_SEVISID_CampusID)
+            time.sleep(0.2)
+            build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
+                               Cancel_SEVISID_SV)
+            print('\nAdded Campus IDs and student notes')
+
+            time.sleep(0.5)
+            merge_all_workbooks()
+            print('\nMerging all SEVIS Registration Workbooks')
+
+            time.sleep(1.5)
+            import_td_folder(folder_id, Registration_file, SHEET_MIMETYPE)
+            print('\nSyncing with Google_Drive...')
+            time.sleep(1)
+            print(f'\n** {Registration_file} file imported in Team Drives folder **')
+            time.sleep(0.8)
+            print('Data building and processing complete')
+
+        return GLBL_USER_CHOICE
+
+
 def new_menu(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the
@@ -15,7 +73,7 @@ def new_menu(GLBL_USER_CHOICE):
             new_match_major_data(SEVISID_major)
             new_match_advisor(advisor_major_ug, advisor_major_gr)
             add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours)
-            print('Ran all functions' + "\nAdded student's advisor" + \
+            print('Ran all functions for building new student registration notes:' + "\nAdded student's advisor" + \
                   '\nAdded campusIDs' + '\nAdded student majors' + '\nAdded SV & unit registration notes')
         elif user_input == 'ad':
             new_match_advisor(advisor_major_ug, advisor_major_gr)
@@ -42,13 +100,13 @@ def active_menu(GLBL_USER_CHOICE):
     while user_input != 'q':
         if user_input == 'a':
             active_match_SEVISID(active_campusID_SEVISID)
-            time.sleep(3)
+            time.sleep(0.5)
             match_units(active_SEVISID_units)
-            time.sleep(3)
+            time.sleep(0.5)
             match_major_data(active_SEVISID_major)
-            time.sleep(3)
+            time.sleep(0.5)
             match_advisor(advisor_major_ug, advisor_major_gr)
-            print('Ran all functions')
+            print('Ran all functions for building notes for SEVIS Active students:')
         elif user_input == 'm':
             active_match_SEVISID(active_campusID_SEVISID)
             print('Added campusIDs')
@@ -76,12 +134,13 @@ def cancellation_menu(GLBL_USER_CHOICE):
             print(f'Data copied: current range = {ug_row_max}')
             print('Graduate Cancel range copied and pasted')
             time.sleep(1.5)
-            print(f'New Row Range = {ug_row_max}')
-            time.sleep(1)
+            print(f'New Row Range = {ug_sheet.max_row}')
+            time.sleep(0.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
+            finish_notes()
             print('Added Campus IDs and student notes')
         elif user_input == 'm':
             create_new_Cancel_Data()
@@ -192,29 +251,6 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             print('Syncing with Google_Drive')
             time.sleep(1)
             print(f'** {REGISTRATION_TIMELINE} file imported in Team Drives folder **')
-
-        return GLBL_USER_CHOICE
-
-
-def run_converter(GLBL_USER_CHOICE):
-    """
-    menu to convert choose which xlsx files to convert to csv
-
-    """
-    user_input = input(CONVERT_TO_CSV)
-    while user_input != 'q':
-        if user_input == 'n':
-            newstudent_excel_to_csv()
-            print('Converted file from XLSX to CSV')
-        elif user_input == 'a':
-            activestud_excel_to_cvs()
-            print('Converted file from XLSX to CSV')
-        elif user_input == 'g':
-            gradstud_excel_to_cvs()
-            print('Converted file from XLSX to CSV')
-        elif user_input == 'c':
-            completedstud_excel_to_cvs()
-            print('Converted file from XLSX to CSV')
 
         return GLBL_USER_CHOICE
 
