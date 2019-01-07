@@ -19,7 +19,7 @@ def create_new_Data():
                         new_sheet, selectedRange)
 
     wb2_trans.save(current_transfer_data)
-    print("Range copied and pasted")
+    print('\nRange copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
 
 
@@ -27,24 +27,35 @@ def check_in_fsa():
     """Marks new data that needs to be input into ISSM"""
     title = new_sheet.cell(row=1, column=10)
     title.value = 'ISSM Status'
-    for rowNum in range(1, row_max_current):
+    for rowNum in range(1, new_sheet.max_row):
         status = new_sheet.cell(row=rowNum, column=9).value
         if status == 'INITIAL':
             new_sheet.cell(row=rowNum, column=10).value = 'Add to ISSM'
-    print('Added notes for ISSM')
+    print('\nAdded notes for ISSM')
 
     wb2_trans.save(current_transfer_data)
 
 
 def paste_to_final():
     """Pastes copied range from new sheet to final sheet - do this after sorting data"""
-    print(f'Current Row Range = {row_max_current}')
+    print(f'Final Sheet Initial Row Range = {row_max_current}')
     print('Processing data...')
     selectedRange = copy_new_Range(1, 1, col_max_current, row_max_current, new_sheet)
-    paste_new_Range(1, 1, col_max_current, row_max_current, final_sheet, selectedRange)
+    paste_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, final_sheet, selectedRange)
     wb2_trans.save(current_transfer_data)
-    print("Range copied and pasted")
-    print(f'New Row Range = {row_max_final}')
+    print('\nRange copied and pasted')
+    print(f'Final Sheet New Row Range = {final_sheet.max_row}')
+
+
+def find_in_fsa():
+    """Checks the status of final data to see if it is already in ISSM"""
+    for rowNum in range(1, final_sheet.max_row):
+        status = final_sheet.cell(row=rowNum, column=10).value
+        if status == 'Add to ISSM':
+            final_sheet.cell(row=rowNum, column=10).value = 'Old Data: in ISSM'
+    print('\nUpdated ISSM notes for new data')
+
+    wb2_trans.save(current_transfer_data)
 
 
 def grab_final_data():
@@ -56,15 +67,4 @@ def grab_final_data():
     wb2_trans.save(current_transfer_data)
     print('Range copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
-
-
-def find_in_fsa():
-    """Checks the status of final data to see if it is already in ISSM"""
-    for rowNum in range(1, row_max_final):
-        status = final_sheet.cell(row=rowNum, column=10).value
-        if status == 'Add to ISSM':
-            final_sheet.cell(row=rowNum, column=10).value = 'Old Data: in ISSM'
-    print('Updated ISSM notes for new data')
-
-    wb2_trans.save(current_transfer_data)
 
