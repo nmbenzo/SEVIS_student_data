@@ -19,7 +19,9 @@ def build_it_all(GLBL_USER_CHOICE):
             new_match_major_data(SEVISID_major)
             new_match_advisor(advisor_major_ug, advisor_major_gr)
             add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours)
-            print('Ran all functions for building new student registration notes:')
+            time.sleep(0.3)
+            sort_new_data()
+            print('\nRan all functions for building new student registration notes:')
             time.sleep(0.5)
             print("Added student's advisor" + '\nAdded campusIDs' + '\nAdded student majors' \
             + '\nAdded SV & unit registration notes')
@@ -34,13 +36,14 @@ def build_it_all(GLBL_USER_CHOICE):
             match_major_data(active_SEVISID_major)
             time.sleep(0.3)
             match_advisor(advisor_major_ug, advisor_major_gr)
+            time.sleep(0.3)
+            sort_active_data()
             print('\nRan all functions for building notes for SEVIS Active students:')
 
             time.sleep(1)
             create_new_Cancel_Data()
             time.sleep(1)
             create_NoShow_Student_Data()
-            print('\nProcessing data...')
             time.sleep(1)
             print('\nGraduate Cancel range copied and pasted')
             time.sleep(1)
@@ -279,8 +282,10 @@ def transfer_menu(GLBL_USER_CHOICE):
             sort_data()
             time.sleep(3)
             check_in_fsa()
-            time.sleep(3)
+            time.sleep(5)
             paste_to_final()
+            time.sleep(3)
+            find_in_fsa()
         elif user_input == 's':
             sort_data()
         elif user_input == 'p':
