@@ -1,12 +1,12 @@
 import pandas as pd
-from Handlers.file_imports import file2, wb2_trans
+from Handlers.file_imports import current_transfer_data, wb2_trans
 
 
 def sort_data():
-    current_data = pd.read_excel(file2, sheet_name=1, index_col=0)
+    current_data = pd.read_excel(current_transfer_data, sheet_name=1, index_col=0)
     sorted_by_sevisid = current_data.sort_values(['SEVIS ID', 'Student Status'], ascending=True)
 
-    writer = pd.ExcelWriter(file2, engine='openpyxl')
+    writer = pd.ExcelWriter(current_transfer_data, engine='openpyxl')
     writer.book = wb2_trans
     writer.sheets = dict((ws.title, ws) for ws in wb2_trans.worksheets)
 
@@ -16,11 +16,11 @@ def sort_data():
 
 
 def remove_duplicates():
-    current_data = pd.read_excel(file2, sheet_name=2)
+    current_data = pd.read_excel(current_transfer_data, sheet_name=2)
     df = pd.DataFrame(current_data)
     dropped_data = df.drop_duplicates(subset=['SEVIS ID', 'Student Status'], keep='last')
 
-    writer = pd.ExcelWriter(file2, engine='openpyxl')
+    writer = pd.ExcelWriter(current_transfer_data, engine='openpyxl')
     writer.book = wb2_trans
     writer.sheets = dict((ws.title, ws) for ws in wb2_trans.worksheets)
 
