@@ -405,3 +405,49 @@ def add_SV_status(SEVISID_checked_in):
     wb2_new.save('/Users/nbenzschawel/Downloads/SEVIS_raw_data.xlsx')
 
 """
+
+
+"""
+*** XLXS_to_CSV retiring ***
+
+app.py
+if user_input == 'x':  # convert xlsx to csv
+    run_converter(GLBL_USER_CHOICE)
+
+
+menus.py
+def run_converter(GLBL_USER_CHOICE):
+    """
+    menu to convert choose which xlsx files to convert to csv
+
+    """
+    user_input = input(CONVERT_TO_CSV)
+    while user_input != 'q':
+        if user_input == 'n':
+            newstudent_excel_to_csv()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'a':
+            activestud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'g':
+            gradstud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
+        elif user_input == 'c':
+            completedstud_excel_to_cvs()
+            print('Converted file from XLSX to CSV')
+
+        return GLBL_USER_CHOICE
+
+
+import_app_modules.py
+CONVERT_TO_CSV = """
+Which xlsx file would you like to convert to CSV:
+- 'n' - NEW Student Reg xlsx
+- 'a' - ACTIVE Student Reg xlsx
+- 'g' - GRADUATED Student xlsx
+- 'c' - COMPLETED Student xlsx
+
+"""
+
+
+

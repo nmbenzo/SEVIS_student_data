@@ -3,6 +3,7 @@ os.getcwd()
 
 GLBL_USER_CHOICE = """
 Please select one of the following:
+- 'b' - Build Complete SEVIS Registration Worksheet
 - 'n' - Access NEW Student Menu
 - 'a' - Access ACTIVE Student Menu
 - 'c' - Access CANCELLED Student Menu
@@ -10,10 +11,15 @@ Please select one of the following:
 - 'g' - Access GRADUATED Menu
 - 'm' - Access Merge Workbook Menu
 - 's' - Sync Data with Google Sheets
-- 'x' - Convert XLSX to CSV
 - 't' - Transfer Student Menu
 - 'e' - Send Email
 - 'q' - Quit
+
+"""
+
+
+BUILD_REG_DATA = """
+Would you like to build a COMPLETE list of SEVIS Registration data (y/n)?: 
 
 """
 
@@ -82,16 +88,6 @@ Which file would you like to upload to Google_Drive:
 
 MERGE_WORKBOOKS = """
 Would you like to merge all Registration Workbooks (y/n)?: 
-
-"""
-
-
-CONVERT_TO_CSV = """
-Which xlsx file would you like to convert to CSV: 
-- 'n' - NEW Student Reg xlsx
-- 'a' - ACTIVE Student Reg xlsx
-- 'g' - GRADUATED Student xlsx
-- 'c' - COMPLETED Student xlsx
 
 """
 

@@ -13,15 +13,20 @@ def build_it_all(GLBL_USER_CHOICE):
     while user_input != 'q':
         if user_input == 'y':
             time.sleep(0.5)
+            create_new_Student_Data()
+            time.sleep(1.5)
             new_match_SEVISID(campusID_SEVISID)
             new_match_major_data(SEVISID_major)
             new_match_advisor(advisor_major_ug, advisor_major_gr)
             add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours)
-            print('Ran all functions for building new student registration notes:\n')
+            print('Ran all functions for building new student registration notes:')
             time.sleep(0.5)
             print("Added student's advisor" + '\nAdded campusIDs' + '\nAdded student majors' \
             + '\nAdded SV & unit registration notes')
             time.sleep(1)
+
+            create_active_Student_Data()
+            time.sleep(1.3)
             active_match_SEVISID(active_campusID_SEVISID)
             time.sleep(0.3)
             match_units(active_SEVISID_units)
@@ -33,24 +38,24 @@ def build_it_all(GLBL_USER_CHOICE):
 
             time.sleep(1)
             create_new_Cancel_Data()
+            time.sleep(1)
+            create_NoShow_Student_Data()
             print('\nProcessing data...')
             time.sleep(1)
-            print(f'Data copied: current range = {ug_row_max}')
-            print('Graduate Cancel range copied and pasted')
-            time.sleep(1.2)
-            print(f'New Row Range = {ug_sheet.max_row}')
-            time.sleep(0.5)
+            print('\nGraduate Cancel range copied and pasted')
+            time.sleep(1)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            print('\nAdded Campus IDs and student notes')
+            print('\nAdded Campus IDs and student notes:' + '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
 
             time.sleep(0.5)
             merge_all_workbooks()
-            print('\nMerging all SEVIS Registration Workbooks')
+            print('\nMerging all SEVIS Registration Workbooks...')
+            print('\nFinal Workbook created with SEVIS Registration sheets')
 
-            time.sleep(1.5)
+            time.sleep(1.2)
             import_td_folder(folder_id, Registration_file, SHEET_MIMETYPE)
             print('\nSyncing with Google_Drive...')
             time.sleep(1)
@@ -69,6 +74,8 @@ def new_menu(GLBL_USER_CHOICE):
     user_input = input(NEWs_USER_CHOICE)
     while user_input != 'q':
         if user_input == 'a':
+            create_new_Student_Data()
+            time.sleep(2)
             new_match_SEVISID(campusID_SEVISID)
             new_match_major_data(SEVISID_major)
             new_match_advisor(advisor_major_ug, advisor_major_gr)
@@ -99,6 +106,8 @@ def active_menu(GLBL_USER_CHOICE):
     user_input = input(ACTIVEs_USER_CHOICE)
     while user_input != 'q':
         if user_input == 'a':
+            create_active_Student_Data()
+            time.sleep(1)
             active_match_SEVISID(active_campusID_SEVISID)
             time.sleep(0.5)
             match_units(active_SEVISID_units)
@@ -131,16 +140,16 @@ def cancellation_menu(GLBL_USER_CHOICE):
             create_new_Cancel_Data()
             print('Processing data...')
             time.sleep(1)
-            print(f'Data copied: current range = {ug_row_max}')
-            print('Graduate Cancel range copied and pasted')
+            create_NoShow_Student_Data()
+            print(f'Data copied: current range = {NOSHOW_students_sheet.max_row}')
+            print('Range copied and pasted')
             time.sleep(1.5)
-            print(f'New Row Range = {ug_sheet.max_row}')
+            print(f'New Row Range = {NOSHOW_students_sheet.max_row}')
             time.sleep(0.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            finish_notes()
             print('Added Campus IDs and student notes')
         elif user_input == 'm':
             create_new_Cancel_Data()
