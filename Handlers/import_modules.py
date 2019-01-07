@@ -13,6 +13,7 @@ from Active_Students_Requiring_Registration import build_data, maj_adv_data, pop
 from Active_Students_Requiring_Registration.populate_data import create_active_Student_Data, active_match_SEVISID, \
 match_major_data, match_advisor, match_units
 from Active_Students_Requiring_Registration.build_data import active_campusID_SEVISID, active_SEVISID_major, active_SEVISID_units
+from Active_Students_Requiring_Registration.sort_active_data import sort_active_data
 from Handlers.major_advisor_data import advisor_major_ug, advisor_major_gr
 
 from New_Student_Registration import build_student_data, build_new_student_advisor_notes
@@ -20,6 +21,7 @@ from New_Student_Registration.build_student_data import campusID_SEVISID, SEVISI
 SEVISID_checked_in, SEVISID_cr_hours, sevisid
 from New_Student_Registration.build_new_student_advisor_notes import create_new_Student_Data, new_match_SEVISID, \
 new_match_major_data, new_match_advisor, add_advisor_notes
+from New_Student_Registration.sort_new_data import sort_new_data
 from Handlers.major_advisor_data import advisor_major_gr, advisor_major_ug
 
 from XLSX_to_CSV.converter import newstudent_excel_to_csv, activestud_excel_to_cvs, \
