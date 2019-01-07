@@ -1,3 +1,4 @@
+import time
 from Handlers.file_imports import current_transfer_data, \
     wb2_trans, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
     row_max_current, col_max_current, row_max_final, col_max_final
@@ -40,7 +41,9 @@ def paste_to_final():
     """Pastes copied range from new sheet to final sheet - do this after sorting data"""
     print(f'Final Sheet Initial Row Range = {row_max_current}')
     print('Processing data...')
-    selectedRange = copy_new_Range(1, 1, col_max_current, row_max_current, new_sheet)
+    wb2_trans.save(current_transfer_data)
+    time.sleep(1.5)
+    selectedRange = copy_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, new_sheet)
     paste_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, final_sheet, selectedRange)
     wb2_trans.save(current_transfer_data)
     print('\nRange copied and pasted')
