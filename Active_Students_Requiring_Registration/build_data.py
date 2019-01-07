@@ -26,7 +26,3 @@ active_SEVISID_major = dict(zip(SEVISID, major_data))
 
 active_SEVISID_units = dict(zip(SEVISID, units))
 
-
-
-
-
