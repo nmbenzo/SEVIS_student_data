@@ -15,6 +15,7 @@ COL_wb.save(COL_students_FINAL)
 COL_students = openpyxl.load_workbook(COL_students_FINAL)
 COL_students_sheet = COL_students.worksheets[0]
 
+
 """ New Student Data """
 new_stud_issm_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx'
 sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_raw_data.xlsx'
