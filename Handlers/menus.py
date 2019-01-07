@@ -280,12 +280,11 @@ def transfer_menu(GLBL_USER_CHOICE):
             create_new_Data()
             time.sleep(3)
             sort_data()
-            time.sleep(3)
+            time.sleep(2)
             check_in_fsa()
-            time.sleep(5)
+            time.sleep(3)
             paste_to_final()
             time.sleep(3)
-            find_in_fsa()
         elif user_input == 's':
             sort_data()
         elif user_input == 'p':
