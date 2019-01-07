@@ -3,19 +3,19 @@ from Handlers.file_imports import *
 
 
 def merge_all_workbooks():
-    COL_student_data = pd.read_excel(COL_students, sheet_name=0, index_col=0)
+    COL_student_data = pd.read_excel(COL_students_raw, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
 
     transfer_student_data = pd.read_excel(current_transfer_data, sheet_name=0, index_col=0)
     df2 = pd.DataFrame(transfer_student_data)
 
-    new_student_data = pd.read_excel(sevis_inital_student_data, sheet_name=0, index_col=0)
+    new_student_data = pd.read_excel(NEW_students_FINAL, sheet_name=0, index_col=0)
     df3 = pd.DataFrame(new_student_data)
 
-    active_student_data = pd.read_excel(active_student_req_reg, sheet_name=4, index_col=0)
+    active_student_data = pd.read_excel(ACTIVE_students_FINAL, sheet_name=0, index_col=0)
     df4 = pd.DataFrame(active_student_data)
 
-    cancel_students = pd.read_excel(SEVIS_initial_status_stud, sheet_name=0, index_col=0)
+    cancel_students = pd.read_excel(No_SHOW_students_FINAL, sheet_name=0, index_col=0)
     df5 = pd.DataFrame(cancel_students)
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -93,7 +93,8 @@ def merge_all_workbooks():
     worksheet4.set_column('F:F', 16, column_format)
     worksheet4.set_column('G:J', 21, column_format)
 
-    worksheet5.set_column('A:A', 45, column_format)
+    worksheet5.set_column('A:A', 50, column_format)
+    worksheet5.set_column('B:B', 11, column_format)
     worksheet5.set_column('C:D', 15, column_format)
     worksheet5.set_column('F:H', 16, column_format)
     worksheet5.set_column('I:I', 35, column_format)
