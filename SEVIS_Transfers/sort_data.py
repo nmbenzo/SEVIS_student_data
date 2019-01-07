@@ -12,7 +12,7 @@ def sort_data():
 
     sorted_by_sevisid.to_excel(writer, 'Sheet2')
     writer.save()
-    print('Data sorted by SEVIS ID')
+    print('\nData sorted by SEVIS ID')
 
 
 def remove_duplicates():
