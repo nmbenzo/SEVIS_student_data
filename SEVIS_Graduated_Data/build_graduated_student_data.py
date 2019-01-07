@@ -1,7 +1,7 @@
 import os
 os.getcwd()
 import openpyxl
-from SEVIS_grad_data.build_grad_data import campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
+from SEVIS_Graduated_Data.build_grad_data import campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
 from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
 from Handlers.file_imports import wb2_grad, wb3Live_grad, sheet2_grad, sheet3_grad, ws2_grad, ws3_grad
 
@@ -107,11 +107,4 @@ def add_emails(campusID_emails):
 
     wb3Live_grad.save('/Users/nbenzschawel/Desktop/201820_201830_graduated_students.xlsx')
 
-
-add_advisor(master_deg_adv, bachelor_deg_adv)
-match_SEVISID(campusID_SEVISID)
-add_work_type(campusID_work_auth)
-add_work_enddate(campusID_workend)
-add_profile_enddate(campusID_end_date)
-add_emails(campusID_emails)
 
