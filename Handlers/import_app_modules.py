@@ -109,8 +109,9 @@ Which population would you like to send this email to:
 """
 
 MANAGE_TRANSFER_DATA = """
+Please select one of the following:
 - 'n' - Create New Workbook
-- 'a' - Add New Data to Sheet1
+- 'a' - Run all functions for copying and sorting Transfer data
 - 's' - Sort Data by SEVIS ID
 - 'p' - Add notes for ISSM
 - 'f' - Copy data to Final for Atlas Sheet
