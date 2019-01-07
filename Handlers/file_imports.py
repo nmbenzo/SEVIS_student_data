@@ -53,7 +53,7 @@ ws = wb1.active
 
 
 """ Transfer Student Data """
-new_transfer_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/New_sevis_data.xlsx'
+new_transfer_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS - Students Transferring In.xlsx'
 current_transfer_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_transfer_data.xlsx'
 
 wb_trans = openpyxl.load_workbook(new_transfer_data)
