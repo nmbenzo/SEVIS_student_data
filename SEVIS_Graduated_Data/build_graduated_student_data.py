@@ -6,7 +6,6 @@ from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
 from Handlers.file_imports import wb2_grad, wb3Live_grad, sheet2_grad, sheet3_grad, ws2_grad, ws3_grad
 
 
-
 def add_advisor(master_deg_adv, bachelor_deg_adv):
     """match_advisor checks the majors in a column of workbook(ws) and
     then matches them with the advisor in a dictionary from the module:
