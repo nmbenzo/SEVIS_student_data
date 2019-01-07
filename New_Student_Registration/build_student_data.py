@@ -7,6 +7,8 @@ from Handlers.file_imports import new_stud_issm_data, sevis_inital_student_data
 This file builds dictionaries containing the following data: 
 campusIDs : SEVISIDs
 SEVISIDs : Majors
+SEVISIDs : I-94 Check-In Status
+SEVISIDs : Registered Units
 
 """
 
