@@ -51,7 +51,8 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            print('\nAdded Campus IDs and student notes:' + '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
+            print('\nAdded Campus IDs and student notes:' + \
+                  '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
 
             time.sleep(0.5)
             merge_all_workbooks()
