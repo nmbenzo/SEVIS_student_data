@@ -10,10 +10,13 @@ COL_students_raw = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_File
 COL_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/COL_Final.xlsx'
 COL_wb = openpyxl.Workbook()
 
-COL_wb.save(COL_students_FINAL)
-
-COL_students = openpyxl.load_workbook(COL_students_FINAL)
-COL_students_sheet = COL_students.worksheets[0]
+try:
+    COL_students = openpyxl.load_workbook(COL_students_FINAL)
+    COL_students_sheet = COL_students.worksheets[0]
+except FileNotFoundError:
+    COL_wb.save(COL_students_FINAL)
+    COL_students = openpyxl.load_workbook(COL_students_FINAL)
+    COL_students_sheet = COL_students.worksheets[0]
 
 
 """ New Student Data """
@@ -22,10 +25,13 @@ sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring
 NEW_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/NEW_Final.xlsx'
 NEW_wb = openpyxl.Workbook()
 
-NEW_wb.save(NEW_students_FINAL)
-
-NEW_students = openpyxl.load_workbook(NEW_students_FINAL)
-NEW_students_sheet = NEW_students.worksheets[0]
+try:
+    NEW_students = openpyxl.load_workbook(NEW_students_FINAL)
+    NEW_students_sheet = NEW_students.worksheets[0]
+except FileNotFoundError:
+    NEW_wb.save(NEW_students_FINAL)
+    NEW_students = openpyxl.load_workbook(NEW_students_FINAL)
+    NEW_students_sheet = NEW_students.worksheets[0]
 
 wb1_new = openpyxl.load_workbook(new_stud_issm_data) # workbook from ISSM
 wb2_new = openpyxl.load_workbook(sevis_inital_student_data) # workbook from SEVIS RTI
@@ -40,10 +46,14 @@ active_student_req_reg = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Ra
 ACTIVE_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/ACTIVE_Final.xlsx'
 ACTIVE_wb = openpyxl.Workbook()
 
-ACTIVE_wb.save(ACTIVE_students_FINAL)
+try:
+    ACTIVE_students = openpyxl.load_workbook(ACTIVE_students_FINAL)
+    ACTIVE_students_sheet = ACTIVE_students.worksheets[0]
+except FileNotFoundError:
+    ACTIVE_wb.save(ACTIVE_students_FINAL)
+    ACTIVE_students = openpyxl.load_workbook(ACTIVE_students_FINAL)
+    ACTIVE_students_sheet = ACTIVE_students.worksheets[0]
 
-ACTIVE_students = openpyxl.load_workbook(ACTIVE_students_FINAL)
-ACTIVE_students_sheet = ACTIVE_students.worksheets[0]
 
 wb2_active = openpyxl.load_workbook(active_student_req_reg)
 sheet = wb2_active.worksheets[4]
@@ -80,10 +90,14 @@ No_show_GR = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/No-S
 No_SHOW_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/NO_SHOW_Final.xlsx'
 No_SHOW_wb = openpyxl.Workbook()
 
-No_SHOW_wb.save(No_SHOW_students_FINAL)
+try:
+    NO_SHOW_students = openpyxl.load_workbook(No_SHOW_students_FINAL)
+    NOSHOW_students_sheet = NO_SHOW_students.worksheets[0]
+except FileNotFoundError:
+    No_SHOW_wb.save(No_SHOW_students_FINAL)
+    NO_SHOW_students = openpyxl.load_workbook(No_SHOW_students_FINAL)
+    NOSHOW_students_sheet = NO_SHOW_students.worksheets[0]
 
-NO_SHOW_students = openpyxl.load_workbook(No_SHOW_students_FINAL)
-NOSHOW_students_sheet = NO_SHOW_students.worksheets[0]
 
 SEV_initial_data = openpyxl.load_workbook(SEVIS_initial_status_stud)
 wb_cancel_ug = openpyxl.load_workbook(No_show_UG)
