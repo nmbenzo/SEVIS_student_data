@@ -3,7 +3,6 @@ from Handlers.import_app_modules import *
 from Handlers.import_modules import *
 
 
-
 def build_it_all(GLBL_USER_CHOICE):
     """
     menu where users can select a section of the
