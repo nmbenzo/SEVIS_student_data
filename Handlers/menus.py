@@ -26,6 +26,7 @@ def build_it_all(GLBL_USER_CHOICE):
             + '\nAdded SV & unit registration notes')
             time.sleep(1)
 
+            print('\nBeginning data aggregation for ACTIVE Status students')
             create_active_Student_Data()
             time.sleep(1.3)
             active_match_SEVISID(active_campusID_SEVISID)
@@ -40,14 +41,16 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nRan all functions for building notes for SEVIS Active students:')
 
             time.sleep(1)
+            print('\nBeginning data aggregation for No Show Students')
+            time.sleep(0.5)
             create_new_Cancel_Data()
-            time.sleep(1)
+            time.sleep(0.5)
             create_NoShow_Student_Data()
-            time.sleep(1)
+            time.sleep(0.5)
             print('\nGraduate Cancel range copied and pasted')
-            time.sleep(1)
+            time.sleep(1.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
-            time.sleep(0.2)
+            time.sleep(1)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
             print('\nAdded Campus IDs and student notes for Cancel List:' + \

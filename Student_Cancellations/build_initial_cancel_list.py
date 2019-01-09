@@ -15,7 +15,7 @@ def create_new_Cancel_Data():
 
 def create_NoShow_Student_Data():
     """Pastes copied range to new sheet which needs to be updated"""
-    print(f'\nOld Row Range = {NOSHOW_students_sheet.max_row}')
+    print(f'\nInitial No Show Student Data Range = {NOSHOW_students_sheet.max_row}')
     print('Processing data...')
     time.sleep(1)
     if NOSHOW_students_sheet.cell(row=1, column=1).value is None:
@@ -23,7 +23,7 @@ def create_NoShow_Student_Data():
         paste_new_Range(1, 1, sevis_initial.max_column, sevis_initial.max_row, NOSHOW_students_sheet, selectedRange)
 
     NO_SHOW_students.save(No_SHOW_students_FINAL)
-    print(f'Data copied: current range = {NOSHOW_students_sheet.max_row}')
+    print(f'Data copied: Current No Show Student Range = {NOSHOW_students_sheet.max_row}')
 
 
 def build_cancel_campusID(Cancel_SEVISID_CampusID):
@@ -52,14 +52,9 @@ def build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits, Cancel_SEV
                 for j in Cancel_SEVISID_SV:
                     if x and i and j == sevisid:
                         if Cancel_SEVISID_SV[sevisid] != 'Yes':
-                            if Cancel_SEVISID_credits[sevisid] != type(float):
-                                NOSHOW_students_sheet.cell(row=rowNum, column=1).value = \
-                                    'SV Status: Not checked in' + ', Registered Units: 0' + ' credits, ' \
-                                    + 'Banner Status: ' + str(Cancel_SEVISID_banner[sevisid])
-                            else:
-                                NOSHOW_students_sheet.cell(row=rowNum,column=1).value = 'SV Status: Not checked in' \
-                                + ', Registered Units: ' + str(Cancel_SEVISID_credits[sevisid]) \
-                                + ' credits, ' + 'Banner Status: ' + str(Cancel_SEVISID_banner[sevisid])
+                            NOSHOW_students_sheet.cell(row=rowNum,column=1).value = 'SV Status: Not checked in' \
+                            + ', Registered Units: ' + str(Cancel_SEVISID_credits[sevisid]) \
+                            + ' credits, ' + 'Banner Status: ' + str(Cancel_SEVISID_banner[sevisid])
                         else:
                             NOSHOW_students_sheet.cell(row=rowNum, column=1).value = \
                                 'SV Status: ' + str(Cancel_SEVISID_SV[sevisid]) + ', Registered Units: ' \
