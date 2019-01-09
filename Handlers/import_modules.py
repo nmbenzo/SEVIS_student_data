@@ -1,3 +1,5 @@
+
+
 from SEVIS_Graduated_Data.build_grad_data import campusID_SEVISID, \
     campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
 from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
@@ -24,9 +26,6 @@ new_match_major_data, new_match_advisor, add_advisor_notes
 from New_Student_Registration.sort_new_data import sort_new_data
 from Handlers.major_advisor_data import advisor_major_gr, advisor_major_ug
 
-from XLSX_to_CSV.converter import newstudent_excel_to_csv, activestud_excel_to_cvs, \
-    completedstud_excel_to_cvs, gradstud_excel_to_cvs
-
 from SEVIS_Transfers.sort_data import sort_data, remove_duplicates
 from SEVIS_Transfers.build_transfer_data import create_new_Data, paste_to_final, \
 grab_final_data, check_in_fsa, find_in_fsa
@@ -39,5 +38,6 @@ create_NoShow_Student_Data, build_cancel_campusID, build_cancel_notes, NOSHOW_st
 
 from File_Management.merge_files import merge_all_workbooks
 
+from DQed_Automation.build_dq_data import campusID_major
 
 from Google_Drive.G_drive import *
