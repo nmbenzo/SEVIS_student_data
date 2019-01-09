@@ -50,7 +50,7 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            print('\nAdded Campus IDs and student notes:' + \
+            print('\nAdded Campus IDs and student notes for Cancel List:' + \
                   '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
 
             time.sleep(0.5)
@@ -58,7 +58,7 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nMerging all SEVIS Registration Workbooks...')
             print('\nFinal Workbook created with SEVIS Registration sheets')
 
-            time.sleep(1.2)
+            time.sleep(0.75)
             import_td_folder(folder_id, Registration_file, SHEET_MIMETYPE)
             print('\nSyncing with Google_Drive...')
             time.sleep(1)
@@ -241,6 +241,8 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             print('Syncing with Google_Drive')
             time.sleep(1)
             print(f'** {Registration_file} file imported in Team Drives folder **')
+        elif user_input == 'd':
+            pass
         elif user_input == 'n':
             import_td_folder(folder_id, NEW_SOURCE_FILE, SHEET_MIMETYPE)
             print('Syncing with Google_Drive')
@@ -256,8 +258,6 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             print('Syncing with Google_Drive')
             time.sleep(1)
             print(f'** {TRANSFER_SOURCE_FILE} file imported in Team Drives folder **')
-        elif user_input == 'c':
-            pass
         elif user_input == 'r':
             import_td_folder(folder_id, REGISTRATION_TIMELINE, DOC_MIMETYPE)
             print('Syncing with Google_Drive')

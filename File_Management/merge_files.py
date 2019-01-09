@@ -76,7 +76,7 @@ def merge_all_workbooks():
     worksheet2.set_column('H:J', 13, column_format)
 
     # Format columns of New Students
-    worksheet3.set_column('A:A', 40, column_format)
+    worksheet3.set_column('A:A', 45, column_format)
     worksheet3.set_column('C:C', 25, column_format)
     worksheet3.set_column('D:D', 10, column_format)
     worksheet3.set_column('E:G', 16, column_format)
@@ -93,9 +93,10 @@ def merge_all_workbooks():
     worksheet4.set_column('F:F', 16, column_format)
     worksheet4.set_column('G:J', 21, column_format)
 
-    worksheet5.set_column('A:A', 50, column_format)
+    worksheet5.set_column('A:A', 55, column_format)
     worksheet5.set_column('B:B', 11, column_format)
     worksheet5.set_column('C:D', 15, column_format)
+    worksheet5.set_column('E:E', 20, column_format)
     worksheet5.set_column('F:H', 16, column_format)
     worksheet5.set_column('I:I', 35, column_format)
 

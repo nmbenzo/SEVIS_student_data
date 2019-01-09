@@ -66,7 +66,6 @@ VID_MIMETYPE = 'application/vnd.google-apps.video'
 td_id = '0ADUIPThXplYvUk9PVA' # unique ID from the Team Drive URL
 folder_id = '1NNvjFLCjGl9oMwWuTKlzyt0N4aBT0QEf' # unique ID from the folder URL (2019)
 
-
 # Sheet_file_id = import_td_folder(folder_id, SOURCE_FILE, SHEET_MIMETYPE)
 # Doc_file_id = import_td_folder(folder_id, SOURCE_FILE, DOC_MIMETYPE)
 

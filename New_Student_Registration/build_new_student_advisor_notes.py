@@ -1,5 +1,6 @@
 import os
 os.getcwd()
+import time
 from Handlers.file_imports import ws2_new, NEW_students_FINAL, NEW_students, NEW_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
 
@@ -13,6 +14,7 @@ def create_new_Student_Data():
         paste_new_Range(1, 1, ws2_new.max_column, ws2_new.max_row, NEW_students_sheet, selectedRange)
 
     NEW_students.save(NEW_students_FINAL)
+    time.sleep(0.5)
     print(f'Raw data copied: current range = {NEW_students_sheet.max_row}')
 
 

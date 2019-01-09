@@ -153,3 +153,11 @@ ws3_grad = wb3Live_grad.active
 
 """SEVIS Registration Timelines"""
 current_registration_timeline = '/Volumes/ISS/Staff Only/Student Lists/SEVIS Registration/SEVIS Registration Timelines/SEVIS REGISTRATION 19S.docx'
+
+
+"""DQ'ed Student List"""
+DQ_student_list = "/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/International Students DQ'd.xlsx"
+
+DQ_wb = openpyxl.load_workbook(DQ_student_list)
+
+most_recent_term = DQ_wb.worksheets[0]

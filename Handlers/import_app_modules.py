@@ -76,11 +76,11 @@ Would you like to generate a list of COMPLETED students in SEVIS vs ISSM Profile
 SYNC_GOOGLESHEETS = """
 Which file would you like to upload to Google_Drive: 
 - 'a' - Upload MASTER File xlsx
+- 'd' - Download Updated G-Drive File
 - 'n' - NEW Student Reg xlsx
 - 'a' - ACTIVE Student Reg xlsx
 - 't' - TRANSFER Students xlsx
 - 'g' - GRADUATED Student xlsx
-- 'c' - COMPLETED Student xlsx
 - 'r' - Registration Timeline
 
 """

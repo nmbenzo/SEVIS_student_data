@@ -1,6 +1,5 @@
 import os
 os.getcwd()
-import openpyxl
 import pandas as pd
 from Handlers.file_imports import active_stud_issm_data
 

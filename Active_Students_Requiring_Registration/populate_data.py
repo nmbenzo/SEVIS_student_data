@@ -1,5 +1,6 @@
 import os
 os.getcwd()
+import time
 from Handlers.file_imports import ws2, sheet, ACTIVE_students_FINAL, ACTIVE_students, \
 ACTIVE_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
@@ -8,6 +9,7 @@ from File_Management.copier import copy_new_Range, paste_new_Range
 def create_active_Student_Data():
     """Pastes copied range to new sheet which needs to be updated"""
     print(f'\nCurrent Row Range = {ACTIVE_students_sheet.max_row}')
+    time.sleep(0.5)
     print('Processing data...')
 
     if ACTIVE_students_sheet.cell(row=1, column=1).value is None:
@@ -15,7 +17,8 @@ def create_active_Student_Data():
         paste_new_Range(1, 1, sheet.max_column, sheet.max_row, ACTIVE_students_sheet, selectedRange)
 
     ACTIVE_students.save(ACTIVE_students_FINAL)
-    print(f'Data copied: current range = {ACTIVE_students_sheet.max_row}')
+    time.sleep(0.5)
+    print(f'Data copied: Current Range = {ACTIVE_students_sheet.max_row}')
 
 
 def active_match_SEVISID(active_campusID_SEVISID):

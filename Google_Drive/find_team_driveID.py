@@ -10,11 +10,10 @@ store = file.Storage('credentials.json')
 creds = store.get()
 
 if not creds or creds.invalid:
-    flow = client.flow_from_clientsecrets('client_secrets1.json', scope)
+    flow = client.flow_from_clientsecrets('client_secrets_service_acc.json', scope)
     creds = tools.run_flow(flow, store)
 
 DRIVE = discovery.build('drive', 'v3', http=creds.authorize(Http()))
-files = DRIVE.files().list().execute().get('files', [])
 
 
 team_drive_metadata = {'name': 'ISSS SEVIS and Immigration'}
