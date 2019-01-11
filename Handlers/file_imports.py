@@ -197,3 +197,10 @@ VID_MIMETYPE = 'application/vnd.google-apps.video'
 
 td_id = '0ADUIPThXplYvUk9PVA' # unique ID from the Team Drive URL
 folder_id = '1NNvjFLCjGl9oMwWuTKlzyt0N4aBT0QEf' # unique ID from the folder URL (2019)
+
+#Spring Registration - will need to update if deleted
+SCOPES = 'https://www.googleapis.com/auth/drive'
+
+Registration_file_id = '1OkKFlKqRH-LGWX13S_zjfFVz7_jJ4utegvt4RVLqgX0'
+Excel = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+file_name = 'SEVIS Registration.xlsx'

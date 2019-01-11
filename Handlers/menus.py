@@ -245,7 +245,8 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             time.sleep(1)
             print(f'** {Registration_file} file imported in Team Drives folder **')
         elif user_input == 'd':
-            pass
+            main()
+            download_file(Registration_file_id, Excel, file_name)
         elif user_input == 'n':
             import_td_folder(folder_id, NEW_SOURCE_FILE, SHEET_MIMETYPE)
             print('Syncing with Google_Drive')
