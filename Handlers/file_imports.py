@@ -1,10 +1,6 @@
 import openpyxl
 
 
-td_id = '0ADUIPThXplYvUk9PVA' # unique ID from the Team Drive URL
-folder_id = '1NNvjFLCjGl9oMwWuTKlzyt0N4aBT0QEf' # unique ID from the folder URL (2019)
-
-
 """Master Upload File"""
 Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registrion Spring 2019.xlsx'
 
@@ -180,27 +176,3 @@ except FileNotFoundError:
     J_students_sheet = J_students.worksheets[0]
 
 
-"""Google Drive API Handlers"""
-# Specifies the desired upload location and mimeType
-FOLDER_MIME = 'application/vnd.google-apps.folder'
-
-MASTER_FILE = Registration_file
-NEW_SOURCE_FILE = sevis_inital_student_data
-ACTIVE_SOURCE_FILE = active_student_req_reg
-TRANSFER_SOURCE_FILE = current_transfer_data
-REGISTRATION_TIMELINE = current_registration_timeline
-
-
-SHEET_MIMETYPE = 'application/vnd.google-apps.spreadsheet'
-DOC_MIMETYPE = 'application/vnd.google-apps.document'
-VID_MIMETYPE = 'application/vnd.google-apps.video'
-
-td_id = '0ADUIPThXplYvUk9PVA' # unique ID from the Team Drive URL
-folder_id = '1NNvjFLCjGl9oMwWuTKlzyt0N4aBT0QEf' # unique ID from the folder URL (2019)
-
-#Spring Registration - will need to update if deleted
-SCOPES = 'https://www.googleapis.com/auth/drive'
-
-Registration_file_id = '1OkKFlKqRH-LGWX13S_zjfFVz7_jJ4utegvt4RVLqgX0'
-Excel = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-file_name = 'SEVIS Registration.xlsx'
