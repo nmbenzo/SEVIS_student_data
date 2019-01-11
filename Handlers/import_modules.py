@@ -40,7 +40,7 @@ from File_Management.merge_files import merge_all_workbooks
 from DQed_Automation.build_dq_data import campusID_major
 
 from Google_Drive.G_drive import *
-from Handlers.file_imports import folder_id, Registration_file, SHEET_MIMETYPE, \
+from Handlers.Google_Drive_IDs import folder_id, Registration_file, SHEET_MIMETYPE, \
 FOLDER_MIME, MASTER_FILE, NEW_SOURCE_FILE, ACTIVE_SOURCE_FILE, TRANSFER_SOURCE_FILE, \
 REGISTRATION_TIMELINE, DOC_MIMETYPE, Registration_file_id, Excel, file_name
 
