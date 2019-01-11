@@ -3,7 +3,6 @@ import uuid
 from apiclient import discovery
 from httplib2 import Http
 from oauth2client import file, client, tools
-from Handlers.file_imports import Registration_file, active_student_req_reg, current_transfer_data, sevis_inital_student_data, current_registration_timeline
 
 
 """This file provides oAuth credential access to Google Drive and Team Drives"""
@@ -48,25 +47,11 @@ def import_td_folder(folder_id, fn, mimeType):
             supportsTeamDrives=True, fields='id').execute().get('id')
 
 
-# Specifies the desired upload location and mimeType
-FOLDER_MIME = 'application/vnd.google-apps.folder'
+"""
+Example function call:
 
-MASTER_FILE = Registration_file
-NEW_SOURCE_FILE = sevis_inital_student_data
-ACTIVE_SOURCE_FILE = active_student_req_reg
-TRANSFER_SOURCE_FILE = current_transfer_data
-REGISTRATION_TIMELINE = current_registration_timeline
-
-
-SHEET_MIMETYPE = 'application/vnd.google-apps.spreadsheet'
-DOC_MIMETYPE = 'application/vnd.google-apps.document'
-VID_MIMETYPE = 'application/vnd.google-apps.video'
-
-
-td_id = '0ADUIPThXplYvUk9PVA' # unique ID from the Team Drive URL
-folder_id = '1NNvjFLCjGl9oMwWuTKlzyt0N4aBT0QEf' # unique ID from the folder URL (2019)
-
-# Sheet_file_id = import_td_folder(folder_id, SOURCE_FILE, SHEET_MIMETYPE)
-# Doc_file_id = import_td_folder(folder_id, SOURCE_FILE, DOC_MIMETYPE)
+Sheet_file_id = import_td_folder(folder_id, SOURCE_FILE, SHEET_MIMETYPE)
+Doc_file_id = import_td_folder(folder_id, SOURCE_FILE, DOC_MIMETYPE)
+"""
 
 

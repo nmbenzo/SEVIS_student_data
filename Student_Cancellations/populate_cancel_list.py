@@ -24,6 +24,7 @@ def create_NoShow_Student_Data():
 
     NO_SHOW_students.save(No_SHOW_students_FINAL)
     print(f'Data copied: Current No Show Student Range = {NOSHOW_students_sheet.max_row}')
+    time.sleep(2.5)
 
 
 def build_cancel_campusID(Cancel_SEVISID_CampusID):

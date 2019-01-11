@@ -21,7 +21,7 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.3)
             sort_new_data()
             print('\nRan all functions for building new student registration notes:')
-            time.sleep(0.5)
+            time.sleep(1)
             print("Added student's advisor" + '\nAdded campusIDs' + '\nAdded student majors' \
             + '\nAdded SV & unit registration notes')
             time.sleep(1)
@@ -47,7 +47,7 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.5)
             create_NoShow_Student_Data()
             time.sleep(0.5)
-            print('\nGraduate Cancel range copied and pasted')
+            print('\nGraduate No Show range copied and pasted')
             time.sleep(1.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
             time.sleep(1)
