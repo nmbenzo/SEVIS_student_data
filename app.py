@@ -4,7 +4,7 @@ os.getcwd()
 from Handlers.menus import *
 
 
-def global_choose_menu():
+def main():
     """
     Master menu that allows user to select which spreadsheet they'd like to run
     """
@@ -41,4 +41,6 @@ def global_choose_menu():
             print('Unknown command.')
             user_input = input(GLBL_USER_CHOICE)
 
-global_choose_menu()
+
+if __name__ == '__main__':
+    main()
