@@ -44,12 +44,18 @@ def main():
             print(u'{0} ({1})'.format(item['name'], item['id']))
 
 
-    data = service.files().export(fileId=file_id, mimeType=Excel).execute()
     meta = service.files().get(fileId=file_id, fields="*",
                                     supportsTeamDrives=True).execute()
 
-    print(meta)
+    data = service.files().export(fileId=file_id, mimeType=Excel)
+    fh = io.BytesIO()
+    downloader = MediaIoBaseDownload(fh, data)
+    done = False
+    while done is False:
+        status, done = downloader.next_chunk()
+        print("Download: {}".format(int(status.progress() * 100)))
 
+    print(meta)
 
 
 main()
