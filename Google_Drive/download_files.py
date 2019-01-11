@@ -5,16 +5,10 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from googleapiclient.http import MediaIoBaseDownload
-from Handlers.file_imports import file_id, td_id, SCOPES, Excel, file_name
+from Handlers.Google_Drive_IDs import Registration_file_id, td_id, SCOPES, Excel, file_name
 
 
 def main():
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
-    # The file token.json stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
     store = file.Storage('credentials.json')
     creds = store.get()
     if not creds or creds.invalid:
@@ -22,10 +16,9 @@ def main():
         creds = tools.run_flow(flow, store)
     service = build('drive', 'v3', http=creds.authorize(Http()))
 
-    meta = service.files().get(fileId=file_id, fields="*",
+    meta = service.files().get(fileId=Registration_file_id, fields="*",
                                supportsTeamDrives=True).execute()
-
-    print(meta)
+    return meta
 
 
 def download_file(file_id, mimeType, file_name):
@@ -73,6 +66,6 @@ if __name__ == '__main__':
         corpora='teamDrive', teamDriveId=td_id,
         fields="nextPageToken, files(id, name)").execute()
     for f in files['files']:
-        if f['id'] == file_id:
+        if f['id'] == Registration_file_id:
             print(f['name'], f['id'])
-            download_file(file_id, Excel, file_name)
+            download_file(Registration_file_id, Excel, file_name)
