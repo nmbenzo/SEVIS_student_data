@@ -44,4 +44,4 @@ def download_file(file_id, mimeType, file_name):
         fields="nextPageToken, files(id, name)").execute()
     for f in files['files']:
         if f['id'] == Registration_file_id:
-            print(f['name'], f['id'])
+            print('Downloaded: ' + f['name'], f['id'])
