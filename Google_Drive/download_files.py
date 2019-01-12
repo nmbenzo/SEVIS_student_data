@@ -8,19 +8,6 @@ from googleapiclient.http import MediaIoBaseDownload
 from Handlers.Google_Drive_IDs import Registration_file_id, td_id, SCOPES, Excel, file_name
 
 
-def main():
-    store = file.Storage('credentials.json')
-    creds = store.get()
-    if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('client_secrets.json', SCOPES)
-        creds = tools.run_flow(flow, store)
-    service = build('drive', 'v3', http=creds.authorize(Http()))
-
-    meta = service.files().get(fileId=Registration_file_id, fields="*",
-                               supportsTeamDrives=True).execute()
-    return meta
-
-
 def download_file(file_id, mimeType, file_name):
     store = file.Storage('credentials.json')
     creds = store.get()
@@ -52,20 +39,9 @@ def download_file(file_id, mimeType, file_name):
         status, done = downloader.next_chunk()
         print("Download: {}".format(int(status.progress() * 100)))
 
-
-if __name__ == '__main__':
-    main()
-    store = file.Storage('credentials.json')
-    creds = store.get()
-    if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('client_secrets.json', SCOPES)
-        creds = tools.run_flow(flow, store)
-
-    drive_service = discovery.build('drive', 'v3', http=creds.authorize(Http()))
-    files = drive_service.files().list(pageSize=50, supportsTeamDrives=True, includeTeamDriveItems=True,
+    files = service.files().list(pageSize=50, supportsTeamDrives=True, includeTeamDriveItems=True,
         corpora='teamDrive', teamDriveId=td_id,
         fields="nextPageToken, files(id, name)").execute()
     for f in files['files']:
         if f['id'] == Registration_file_id:
             print(f['name'], f['id'])
-            download_file(Registration_file_id, Excel, file_name)
