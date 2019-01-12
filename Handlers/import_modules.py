@@ -44,4 +44,4 @@ from Handlers.Google_Drive_IDs import folder_id, Registration_file, SHEET_MIMETY
 FOLDER_MIME, MASTER_FILE, NEW_SOURCE_FILE, ACTIVE_SOURCE_FILE, TRANSFER_SOURCE_FILE, \
 REGISTRATION_TIMELINE, DOC_MIMETYPE, Registration_file_id, Excel, file_name
 
-from Google_Drive.download_files import main, download_file
+from Google_Drive.download_files import download_file
