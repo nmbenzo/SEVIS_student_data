@@ -39,10 +39,10 @@ def create_td_folder(td_id, folder):
     return DRIVE.files().create(body=body,
             supportsTeamDrives=True, fields='id').execute().get('id')
 
-def import_td_folder(folder_id, fn, mimeType):
+def import_td_folder(name, folder_id, fn, mimeType):
     """Adds a specified file to the Team Drive
     and then converts it to a G-Suite format"""
-    body = {'name': fn, 'mimeType': mimeType, 'parents': [folder_id]}
+    body = {'name': name, 'originalFilename': fn, 'mimeType': mimeType, 'parents': [folder_id]}
     return DRIVE.files().create(body=body, media_body=fn,
             supportsTeamDrives=True, fields='id').execute().get('id')
 

@@ -2,7 +2,7 @@ import openpyxl
 
 
 """Master Upload File"""
-Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registrion Spring 2019.xlsx'
+Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Spring 2019.xlsx'
 
 
 """ COL Student Data """
