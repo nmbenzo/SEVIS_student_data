@@ -62,7 +62,7 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nFinal Workbook created with SEVIS Registration sheets')
 
             time.sleep(0.75)
-            import_td_folder(folder_id, Registration_file, SHEET_MIMETYPE)
+            import_td_folder(new_upload_name, folder_id, Registration_file, SHEET_MIMETYPE)
             print('\nSyncing with Google_Drive...')
             time.sleep(1)
             print(f'\n** {Registration_file} file imported in Team Drives folder **')
@@ -245,7 +245,7 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             time.sleep(1)
             print(f'** {Registration_file} file imported in Team Drives folder **')
         elif user_input == 'd':
-            download_file(Registration_file_id, Excel, file_name)
+            download_file(Excel, file_name, file_id=get_fileID(uploaded_file_name))
         elif user_input == 'n':
             import_td_folder(folder_id, NEW_SOURCE_FILE, SHEET_MIMETYPE)
             print('Syncing with Google_Drive')
