@@ -1,6 +1,6 @@
 """File to extract the copier functions for workbooks"""
 
-def copy_new_Range(startCol, startRow, endCol, endRow, gr_sheet):
+def copy_new_Range(startCol, startRow, endCol, endRow, sheet):
     """
     Copies a range of cells as a nested list
     Takes: start cell, end cell, and the sheet we want to copy from
@@ -9,7 +9,7 @@ def copy_new_Range(startCol, startRow, endCol, endRow, gr_sheet):
     for i in range(startRow, endRow + 1, 1):
         rowSelected = []
         for j in range(startCol, endCol + 1, 1):
-            rowSelected.append(gr_sheet.cell(row=i, column=j).value)
+            rowSelected.append(sheet.cell(row=i, column=j).value)
         rangeSelected.append(rowSelected)
 
     return rangeSelected
