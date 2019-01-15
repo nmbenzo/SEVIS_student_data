@@ -7,6 +7,7 @@ advisor_major_ug = {
     'BMKT-Marketing': 'Nina',
     'BFIN-Finance': 'Nina',
     'HM-Hospitality Management': 'Nina',
+    'UNBN-Undeclared Business': 'Nina',
     'CS-Computer Science': 'Nathan',
     'COMS-Communication Studies': 'Nathan',
     'CHEM-Chemistry': 'Nathan',
@@ -28,13 +29,15 @@ advisor_major_ug = {
     'IPTL-Intellectual Property Tech Law': 'Nathan',
     'MATH-Mathematics': 'Nathan',
     'MS-Media Studies': 'Nathan',
+    'FNAR-Fine Arts': 'Nathan',
     'PASJ-Perf. Arts & Soc. Justice': 'Nathan',
     'SOC-Sociology': 'Nathan',
     'DSGN-Design': 'Nathan',
     'KIN-Kinesiology': 'Nathan',
     'JNST-Japanese Studies': 'Nathan',
     'ANST-Asian Studies': 'Nathan',
-    'BIOL-Biology':'Nathan'
+    'BIOL-Biology':'Nathan',
+    'URBS-Urban Studies': 'Nathan'
      }
 
 advisor_major_gr = {
@@ -63,6 +66,7 @@ advisor_major_gr = {
     'MSBH-Behavorial Health': 'Cynthia',
     'MSEI-Entrepreneurship Innovation': 'Cynthia',
     'MSFN-Financial Analysis': 'Cynthia',
+    'MSAN-Analytics': 'Cynthia',
     'EDUC-Education': 'Cynthia',
     'L&I-Learning and Instruction': 'Cynthia',
     'MPH-Public Health': 'Cynthia',
