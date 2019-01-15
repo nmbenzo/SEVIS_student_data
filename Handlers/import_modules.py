@@ -43,6 +43,6 @@ from Google_Drive.G_drive import *
 
 from Handlers.Google_Drive_IDs import folder_id, Registration_file, SHEET_MIMETYPE, \
 FOLDER_MIME, MASTER_FILE, NEW_SOURCE_FILE, ACTIVE_SOURCE_FILE, TRANSFER_SOURCE_FILE, \
-REGISTRATION_TIMELINE, DOC_MIMETYPE, Excel, file_name, new_upload_name
+REGISTRATION_TIMELINE, DOC_MIMETYPE, Excel, file_name, uploaded_file_name
 
 from Google_Drive.download_files import *

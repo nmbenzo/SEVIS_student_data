@@ -62,7 +62,7 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nFinal Workbook created with SEVIS Registration sheets')
 
             time.sleep(0.75)
-            import_td_folder(new_upload_name, folder_id, Registration_file, SHEET_MIMETYPE)
+            import_td_folder(uploaded_file_name, folder_id, Registration_file, SHEET_MIMETYPE)
             print('\nSyncing with Google_Drive...')
             time.sleep(1)
             print(f'\n** {Registration_file} file imported in Team Drives folder **')

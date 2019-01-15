@@ -67,5 +67,5 @@ def download_file(mimeType, file_name, file_id = get_fileID(uploaded_file_name))
 
     for f in drive_files['files']:
         if f['id'] == get_fileID(uploaded_file_name):
-            print('Downloaded: ' + f['name'], file_name)
+            print('Downloaded: ' + f['name'])
 
