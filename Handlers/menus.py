@@ -20,13 +20,13 @@ def build_it_all(GLBL_USER_CHOICE):
             add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours)
             time.sleep(0.3)
             sort_new_data()
-            print('\nRan all functions for building new student registration notes:')
+            print('\n*** Ran all functions for building NEW student registration notes: ***')
             time.sleep(1)
             print("Added student's advisor" + '\nAdded campusIDs' + '\nAdded student majors' \
             + '\nAdded SV & unit registration notes')
             time.sleep(1)
 
-            print('\nBeginning data aggregation for ACTIVE Status students')
+            print('\nBeginning data aggregation for ACTIVE Status students...')
             create_active_Student_Data()
             time.sleep(1.3)
             active_match_SEVISID(active_campusID_SEVISID)
@@ -38,10 +38,13 @@ def build_it_all(GLBL_USER_CHOICE):
             match_advisor(advisor_major_ug, advisor_major_gr)
             time.sleep(0.3)
             sort_active_data()
-            print('\nRan all functions for building notes for SEVIS Active students:')
+            print('\n*** Ran all functions for building notes for SEVIS Active students: ***')
+            time.sleep(0.5)
+            print("Added student's advisor" + '\nAdded campusIDs' + "\nAdded student's majors" \
+                + '\nAdded Unit registration notes')
 
             time.sleep(1)
-            print('\nBeginning data aggregation for No Show Students')
+            print('\nBeginning data aggregation for NO SHOW Students...')
             time.sleep(0.5)
             create_new_Cancel_Data()
             time.sleep(0.5)
@@ -50,24 +53,27 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nGraduate No Show range copied and pasted')
             time.sleep(1.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
+          
             time.sleep(1)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            print('\nAdded Campus IDs and student notes for Cancel List:' + \
+            print('\n*** Ran all functions for building Cancel List notes: ***')
+            time.sleep(1)
+            print('\nAdded Campus IDs and student notes:' + \
                   '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
 
             time.sleep(0.5)
-            merge_all_workbooks()
             print('\nMerging all SEVIS Registration Workbooks...')
-            print('\nFinal Workbook created with SEVIS Registration sheets')
+            merge_all_workbooks()
+            print('\n*** Final Workbook created with SEVIS Registration specified sheet s***')
 
             time.sleep(0.75)
             import_td_folder(uploaded_file_name, folder_id, Registration_file, SHEET_MIMETYPE)
-            print('\nSyncing with Google_Drive...')
+            print('\nSyncing file with Google_Drive...')
+            time.sleep(1.3)
+            print(f'\n** {uploaded_file_name} MASTER file imported into Team Drives folder **')
             time.sleep(1)
-            print(f'\n** {Registration_file} file imported in Team Drives folder **')
-            time.sleep(0.8)
-            print('Data building and processing complete')
+            print('\n*** Data building and processing COMPLETE ***')
 
         return GLBL_USER_CHOICE
 
