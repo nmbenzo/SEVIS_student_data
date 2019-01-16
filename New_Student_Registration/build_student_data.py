@@ -32,10 +32,7 @@ sevisid = df['SEVIS ID'].tolist()
 
 
 # build dict where k = SEVISID, v = campusID
-campusID_SEVISID = {}
-
-for i in range(len(SEVISID)):
-    campusID_SEVISID[SEVISID[i]] = campusID[i]
+campusID_SEVISID = dict(zip(SEVISID, campusID))
 
 # build a dict where k = SEVISID, v = list of majors
 SEVISID_major = dict(zip(SEVISID, major_data))
@@ -43,4 +40,3 @@ SEVISID_major = dict(zip(SEVISID, major_data))
 SEVISID_checked_in = dict(zip(SEVISID, checked_in))
 
 SEVISID_cr_hours = dict(zip(SEVISID, cr_hours))
-
