@@ -29,7 +29,6 @@ class SendEmail:
         message['to'] = to
         message['from'] = sender
         message['subject'] = subject
-
         return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
 
     def create_message_with_attachment(self, sender, to, subject, message_text,
