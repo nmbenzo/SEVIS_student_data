@@ -37,5 +37,5 @@ def get_labels():
 
 
 sendInstance = send_mail.SendEmail(service)
-message = sendInstance.create_message('nbenzschawel@usfca.edu','mercedesc22@gmail.com', 'Babes!!!', test_file)
+message = sendInstance.create_message('your@gmail.com','receiver@gmail.com', 'Subject', 'Content')
 sendInstance.send_message('me',message)
