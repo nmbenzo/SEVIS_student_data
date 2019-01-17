@@ -34,8 +34,8 @@ class SendEmail:
         raw = message_as_base64.decode()  # need to JSON serializable
         return {'raw': raw}
 
-    def create_message_with_attachment(self,
-                                       sender, to, subject, message_text, file):
+    def create_message_with_attachment(self, sender, to, subject, message_text,
+                                       file):
         message = MIMEMultipart()
         message['to'] = to
         message['from'] = sender
