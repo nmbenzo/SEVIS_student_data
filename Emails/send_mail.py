@@ -20,6 +20,7 @@ except ImportError:
 
 
 class SendEmail:
+
     def __init__(self, service):
         self.service = service
 
