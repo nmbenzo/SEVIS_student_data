@@ -38,8 +38,8 @@ class Manage_Team_Drives:
 """
 Example function call:
 
-Sheet_file_id = import_td_folder(folder_id, SOURCE_FILE, SHEET_MIMETYPE)
-Doc_file_id = import_td_folder(folder_id, SOURCE_FILE, DOC_MIMETYPE)
+driveInstance = manage_team_drives.Manage_Team_Drives(DRIVE)
+upload_sheet_td = driveInstance.import_td_folder(name=uploaded_file_name, folder_id=folder_id, fn=Registration_file, mimeType=SHEET_MIMETYPE)
 """
 
 
