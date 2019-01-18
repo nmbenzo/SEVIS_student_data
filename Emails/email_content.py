@@ -13,8 +13,9 @@ file_901_fee = '\nDear Student, \n\nI hope this email finds you well. ' \
                '\n2130 Fulton Street, UC 5th Floor \nSan Francisco, CA 94117-1080 ' \
                '\nUnited States \nPhone: 415.422.2654 \nFax: 415.422.2412'
 
-test_file = 'Dear Babes' \
-    '\n\nI hope this message finds you well. This is really just a test email to check whether or not my code works on both my work email and my personal email.'\
-    " If you get this message please say, 'I love Nathan!!!'" '\n\nLooooooove,'\
-    '\nNathan'
+test_file = 'Dear Nathan' \
+    '\n\nI hope this message finds you well. You did it! You made a Python app that automates report building and shares via Google APIs.'\
+    "\n\nIt's only gonna get better going forward!'" '\nYou are now about to start the MSIS program and take your skills even further,'\
+    '\n\nGodspeed and Goodluck!'\
+    '\n\nNathan'
 
