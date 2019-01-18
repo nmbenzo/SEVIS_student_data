@@ -77,10 +77,6 @@ SYNC_GOOGLESHEETS = """
 Select what you would like to do with the Google_Drive: 
 - 'a' - Upload MASTER File xlsx
 - 'd' - Download Updated G-Drive File
-- 'n' - NEW Student Reg xlsx
-- 'a' - ACTIVE Student Reg xlsx
-- 't' - TRANSFER Students xlsx
-- 'g' - GRADUATED Student xlsx
 - 'r' - Registration Timeline
 
 """
@@ -94,10 +90,7 @@ Would you like to merge all Registration Workbooks (y/n)?:
 
 EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
-- 'c' - MANDATORY CHECK-IN INCOMPLETE
-- 'o' - ISSS ORIENTATION INCOMPLETE
-- 'a' - INSUFFICIENT / INACCURATE STUDENT DATA
-- 'i' - I-901 FEE DUE
+- 'e' - Email to student
 
 """
 

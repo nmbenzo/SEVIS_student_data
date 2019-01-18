@@ -68,7 +68,7 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\n*** Final Workbook created with SEVIS Registration specified sheet s***')
 
             time.sleep(0.75)
-            import_td_folder(uploaded_file_name, folder_id, Registration_file, SHEET_MIMETYPE)
+            drive_sheet_upload()
             print('\nSyncing file with Google_Drive...')
             time.sleep(1.3)
             print(f'\n** {uploaded_file_name} MASTER file imported into Team Drives folder **')
@@ -246,32 +246,29 @@ def sync_googlesheets(GLBL_USER_CHOICE):
     user_input = input(SYNC_GOOGLESHEETS)
     while user_input != 'q':
         if user_input == 'a':
-            import_td_folder(folder_id, Registration_file, SHEET_MIMETYPE)
+            drive_sheet_upload()
             print('Syncing with Google_Drive')
             time.sleep(1)
             print(f'** {Registration_file} file imported in Team Drives folder **')
         elif user_input == 'd':
             download_file(Excel, file_name, file_id=get_fileID(uploaded_file_name))
-        elif user_input == 'n':
-            import_td_folder(folder_id, NEW_SOURCE_FILE, SHEET_MIMETYPE)
-            print('Syncing with Google_Drive')
-            time.sleep(1)
-            print(f'** {NEW_SOURCE_FILE} file imported in Team Drives folder **')
-        elif user_input == 'a':
-            import_td_folder(folder_id, ACTIVE_SOURCE_FILE, SHEET_MIMETYPE)
-            print('Syncing with Google_Drive')
-            time.sleep(1)
-            print(f'** {ACTIVE_SOURCE_FILE} file imported in Team Drives folder **')
-        elif user_input == 't':
-            import_td_folder(folder_id, TRANSFER_SOURCE_FILE, SHEET_MIMETYPE)
-            print('Syncing with Google_Drive')
-            time.sleep(1)
-            print(f'** {TRANSFER_SOURCE_FILE} file imported in Team Drives folder **')
         elif user_input == 'r':
-            import_td_folder(folder_id, REGISTRATION_TIMELINE, DOC_MIMETYPE)
+            drive_doc_upload()
             print('Syncing with Google_Drive')
             time.sleep(1)
             print(f'** {REGISTRATION_TIMELINE} file imported in Team Drives folder **')
+
+        return GLBL_USER_CHOICE
+
+
+def emails(GLBL_USER_CHOICE):
+    """Menu where users can elect to send emails to students"""
+    user_input = input(EMAIL_TO_STUDENT_template)
+    while user_input != 'q':
+        if user_input == 'e':
+            print('Sending email to requested recipient...')
+            mainEmail()
+            print('\nEmail sent!')
 
         return GLBL_USER_CHOICE
 
@@ -288,12 +285,15 @@ def transfer_menu(GLBL_USER_CHOICE):
         elif user_input == 'a':
             create_new_Data()
             time.sleep(3)
+            transfer_match_major_data(SEVISID_major)
+            print("\nAdded Student's Major")
+            time.sleep(0.5)
             sort_data()
             time.sleep(2)
             check_in_fsa()
-            time.sleep(3)
+            time.sleep(2)
             paste_to_final()
-            time.sleep(3)
+            time.sleep(2)
         elif user_input == 's':
             sort_data()
         elif user_input == 'p':
@@ -306,3 +306,4 @@ def transfer_menu(GLBL_USER_CHOICE):
             grab_final_data()
 
         return GLBL_USER_CHOICE
+

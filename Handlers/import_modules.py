@@ -27,7 +27,7 @@ from Handlers.major_advisor_data import advisor_major_gr, advisor_major_ug
 
 from SEVIS_Transfers.sort_data import sort_data, remove_duplicates
 from SEVIS_Transfers.populate_transfer_data import create_new_Data, paste_to_final, \
-grab_final_data, check_in_fsa, find_in_fsa
+transfer_match_major_data, grab_final_data, check_in_fsa, find_in_fsa
 from SEVIS_Transfers.create_workbook import create_workbook
 
 from Student_Cancellations.build_cancel_data import Cancel_SEVISID_CampusID, \
@@ -39,10 +39,16 @@ from File_Management.merge_files import merge_all_workbooks
 
 from DQed_Automation.build_dq_data import campusID_major
 
-from Google_Drive.G_drive import *
+from Google_Drive.manage_team_drives import *
+from Google_Drive.drive_authorization import *
+from Google_Drive.drive_main import *
 
 from Handlers.Google_Drive_IDs import folder_id, Registration_file, SHEET_MIMETYPE, \
 FOLDER_MIME, MASTER_FILE, NEW_SOURCE_FILE, ACTIVE_SOURCE_FILE, TRANSFER_SOURCE_FILE, \
 REGISTRATION_TIMELINE, DOC_MIMETYPE, Excel, file_name, uploaded_file_name
 
 from Google_Drive.download_files import *
+
+from Emails.authorization import *
+from Emails.send_mail import *
+from Emails.main import *
