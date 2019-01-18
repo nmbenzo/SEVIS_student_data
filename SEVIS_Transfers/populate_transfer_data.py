@@ -38,8 +38,7 @@ def transfer_match_major_data(SEVISID_major):
         sevis_ID = new_sheet.cell(row=rowNum, column=1).value
         for x in SEVISID_major:
             if x == sevis_ID:
-                new_sheet.cell(row=rowNum, column=2).value = SEVISID_major[
-                    sevis_ID]
+                new_sheet.cell(row=rowNum, column=2).value = SEVISID_major[sevis_ID]
 
     wb2_trans.save(current_transfer_data)
 
