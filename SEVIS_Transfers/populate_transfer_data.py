@@ -11,27 +11,47 @@ def create_new_Data():
     print('Processing data...')
 
     if new_sheet.cell(row=1, column=1).value is None:
-        selectedRange = copy_new_Range(1, 1, col_max_old, row_max_old, old_sheet)
-        paste_new_Range(1, 1, col_max_old, row_max_old, new_sheet, selectedRange)
+        selectedRange = copy_new_Range(1, 1, col_max_old, row_max_old,
+                                       old_sheet)
+        paste_new_Range(1, 1, col_max_old, row_max_old, new_sheet,
+                        selectedRange)
 
     elif new_sheet.cell(row=1, column=1).value == 'SEVIS ID':
-        selectedRange = copy_new_Range(1, 2, col_max_old, row_max_old, old_sheet)
-        paste_new_Range(1, (row_max_current+1), col_max_old, (row_max_current + row_max_old-1),
-                        new_sheet, selectedRange)
+        selectedRange = copy_new_Range(1, 2, col_max_old, row_max_old,
+                                       old_sheet)
+        paste_new_Range(1, (row_max_current + 1), col_max_old, (
+                row_max_current + row_max_old - 1), new_sheet, selectedRange)
 
     wb2_trans.save(current_transfer_data)
     print('\nRange copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
 
 
+def transfer_match_major_data(SEVISID_major):
+    """match_major_data compares SEVISIDs against major data and then populates
+    a blank column with the appropriate major data when a SEVISID match is found.
+    """
+    new_sheet.insert_cols(2)
+    title = new_sheet.cell(row=1, column=2)
+    title.value = 'Major'
+    for rowNum in range(2, new_sheet.max_row):
+        sevis_ID = new_sheet.cell(row=rowNum, column=1).value
+        for x in SEVISID_major:
+            if x == sevis_ID:
+                new_sheet.cell(row=rowNum, column=2).value = SEVISID_major[
+                    sevis_ID]
+
+    wb2_trans.save(current_transfer_data)
+
+
 def check_in_fsa():
     """Marks new data that needs to be input into ISSM"""
-    title = new_sheet.cell(row=1, column=10)
+    title = new_sheet.cell(row=1, column=11)
     title.value = 'ISSM Status'
     for rowNum in range(1, new_sheet.max_row):
-        status = new_sheet.cell(row=rowNum, column=9).value
+        status = new_sheet.cell(row=rowNum, column=10).value
         if status == 'INITIAL':
-            new_sheet.cell(row=rowNum, column=10).value = 'Add to ISSM'
+            new_sheet.cell(row=rowNum, column=11).value = 'Add to ISSM'
     print('\nAdded notes for ISSM')
 
     wb2_trans.save(current_transfer_data)
@@ -45,6 +65,7 @@ def paste_to_final():
     time.sleep(1.5)
     selectedRange = copy_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, new_sheet)
     paste_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, final_sheet, selectedRange)
+
     wb2_trans.save(current_transfer_data)
     print('\nRange copied and pasted')
     print(f'Final Sheet New Row Range = {final_sheet.max_row}')
@@ -53,9 +74,9 @@ def paste_to_final():
 def find_in_fsa():
     """Checks the status of final data to see if it is already in ISSM"""
     for rowNum in range(1, final_sheet.max_row):
-        status = final_sheet.cell(row=rowNum, column=10).value
+        status = final_sheet.cell(row=rowNum, column=12).value
         if status == 'Add to ISSM':
-            final_sheet.cell(row=rowNum, column=10).value = 'Old Data: in ISSM'
+            final_sheet.cell(row=rowNum, column=12).value = 'Old Data: in ISSM'
     print('\nUpdated ISSM notes for new data')
 
     wb2_trans.save(current_transfer_data)
@@ -67,7 +88,7 @@ def grab_final_data():
     print('Grabbing most recent data...')
     selectedRange = copy_new_Range(1, 1, col_max_final, row_max_final, final_sheet)
     paste_new_Range(1, 1, col_max_final, row_max_final, new_sheet, selectedRange)
+
     wb2_trans.save(current_transfer_data)
     print('Range copied and pasted')
     print(f'New Row Range = {new_sheet.max_row}')
-
