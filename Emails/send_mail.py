@@ -1,22 +1,5 @@
-from __future__ import print_function
-import base64
-import os
-from email import encoders
-from oauth2client import tools
-from email.mime.text import MIMEText
-from email.mime.audio import MIMEAudio
-from email.mime.image import MIMEImage
-from email.mime.base import MIMEBase
-from email.mime.multipart import MIMEMultipart
-from apiclient import errors
+from Handlers.Gmail_API_Handlers import *
 import mimetypes
-
-try:
-    import argparse
-
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
 
 
 class SendEmail:

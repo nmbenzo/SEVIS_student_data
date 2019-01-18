@@ -29,7 +29,7 @@ def main():
         if user_input == 't':
             transfer_menu(GLBL_USER_CHOICE)
         if user_input == 'e':  # to send emails
-            pass
+            emails(GLBL_USER_CHOICE)
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
