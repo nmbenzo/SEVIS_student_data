@@ -1,4 +1,4 @@
-from Handlers.Gmail_API_Handlers import *
+from Emails.Gmail_API_Handlers import *
 import mimetypes
 
 

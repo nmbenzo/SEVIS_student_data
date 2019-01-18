@@ -1,4 +1,4 @@
-from Handlers.Google_Drive_API_Handlers import *
+from Google_Drive.Google_Drive_API_Handlers import *
 
 
 """This file provides oAuth credential access to Google Drive and Team Drives"""

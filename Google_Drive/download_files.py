@@ -1,4 +1,4 @@
-from Handlers.Google_Drive_API_Handlers import *
+from Google_Drive.Google_Drive_API_Handlers import *
 from Handlers.Google_Drive_IDs import td_id, SCOPES, \
     Excel, uploaded_file_name
 
