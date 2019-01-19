@@ -7,9 +7,11 @@ class Download:
     def __init__(self, service):
         self.service = service
 
-    def get_fileID(self, uploaded_file_name):
-
-        # Call the Drive v3 API
+    def get_fileID(self, file_name):
+        """
+        Call the Drive v3 API to get the file_id for a particular file name
+         which is passed as an argument
+         """
         results = self.service.files().list(
             pageSize=50,
             supportsTeamDrives=True,
@@ -20,13 +22,14 @@ class Download:
         items = results.get('files', [])
 
         for i in items:
-            if i['name'] == uploaded_file_name:
+            if i['name'] == file_name:
                 return i['id']
 
 
     def download_file(self, mimeType, file_name, file_id):
-
-        # Call the Drive v3 API
+        """
+        Call the Drive v3 API and then download a file if the file
+                """
         drive_files = self.service.files().list(
             pageSize=50,
             supportsTeamDrives=True,

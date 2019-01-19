@@ -15,7 +15,7 @@ file_901_fee = '\nDear Student, \n\nI hope this email finds you well. ' \
 
 test_file = 'Dear Nathan' \
     '\n\nI hope this message finds you well. You did it! You made a Python app that automates report building and shares via Google APIs.'\
-    "\n\nIt's only gonna get better going forward!'" '\nYou are now about to start the MSIS program and take your skills even further,'\
+    "\n\nIt's only gonna get better going forward!" '\nYou are now about to start the MSIS program and take your skills even further,'\
     '\n\nGodspeed and Goodluck!'\
     '\n\nNathan'
 
