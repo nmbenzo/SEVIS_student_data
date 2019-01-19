@@ -251,7 +251,7 @@ def sync_googlesheets(GLBL_USER_CHOICE):
             time.sleep(1)
             print(f'** {Registration_file} file imported in Team Drives folder **')
         elif user_input == 'd':
-            download_file(Excel, file_name, file_id=get_fileID(uploaded_file_name))
+            download_file()
         elif user_input == 'r':
             drive_doc_upload()
             print('Syncing with Google_Drive')
@@ -266,8 +266,11 @@ def emails(GLBL_USER_CHOICE):
     user_input = input(EMAIL_TO_STUDENT_template)
     while user_input != 'q':
         if user_input == 'e':
+            time.sleep(0.5)
             print('Sending email to requested recipient...')
+            time.sleep(0.5)
             mainEmail()
+            time.sleep(0.75)
             print('\nEmail sent!')
 
         return GLBL_USER_CHOICE
