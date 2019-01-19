@@ -15,3 +15,10 @@ def drive_doc_upload():
     return upload_doc_td
 
 
+def download_file():
+    driveInstance = download_files.Download(service)
+    getID = driveInstance.get_fileID(uploaded_file_name)
+    file_download = driveInstance.download_file(Excel, file_name, getID)
+
+    return file_download
+

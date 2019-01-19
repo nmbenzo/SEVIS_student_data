@@ -7,6 +7,7 @@ from httplib2 import Http
 from oauth2client import file, client, tools
 from googleapiclient.http import MediaIoBaseDownload
 from Google_Drive import drive_authorization, manage_team_drives
+from Google_Drive import download_files
 from Handlers.Google_Drive_IDs import *
 
 
@@ -18,5 +19,6 @@ drive_authInstance = drive_authorization.Auth(SCOPES, client_secret, APPLICATION
 creds = drive_authInstance.get_credentials()
 
 DRIVE = discovery.build('drive', 'v3', http=creds.authorize(Http()))
+service = build('drive', 'v3', http=creds.authorize(Http()))
 
 files = DRIVE.files().list().execute().get('files', [])
