@@ -1,10 +1,11 @@
 from Google_Drive.Google_Drive_API_Handlers import *
-from Handlers.Google_Drive_IDs import td_id, SCOPES, \
+from Handlers.Google_Drive_IDs import td_id, \
     Excel, uploaded_file_name
 
 
 class Download:
 
+    """Initializes the service parameter"""
     def __init__(self, service):
         self.service = service
 
@@ -29,8 +30,9 @@ class Download:
 
     def download_file(self, mimeType, file_name, file_id):
         """
-        Call the Drive v3 API and then download a file if the file
-                """
+        Call the Drive v3 API and then download a file if the file ID matches a
+        specified name matches the name passed to the get_file_ID method.
+        """
         drive_files = self.service.files().list(
             pageSize=50,
             supportsTeamDrives=True,

@@ -3,6 +3,10 @@ from Emails.email_content import data_901
 
 
 def singular_email():
+    """
+    Function takes in input from a user to specify the receiver and the email
+    subject and then sends a message with a defined body of content
+    """
     sendInstance = send_mail.SendEmail(service)
     receiver_input = input('Receiver Email: ')
     subject_input = input('Email Subject: ')
@@ -11,6 +15,11 @@ def singular_email():
 
 
 def multiple_emails(emails):
+    """
+    Function takes in input from a user to specify the email
+    subject and then sends a message with a defined body of content to several
+    email addresses by looping through a list of emails [i].
+    """
     sendInstance = send_mail.SendEmail(service)
     subject_input = input('Email Subject: ')
     for i in emails:

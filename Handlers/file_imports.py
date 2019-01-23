@@ -6,6 +6,11 @@ import openpyxl
 Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Spring 2019.xlsx'
 
 
+""" File Location for Google_Drive.drive_main.py"""
+location_a = '/Users/nbenzschawel/Library/Mobile Documents/com~apple~CloudDocs/Udemy_Python/spreadsheets - DEV/SEVIS Registration.xlsx'
+location_b = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Live.xlsx'
+
+
 """ COL Student Data """
 
 COL_students_raw = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/Change_of_Level_(COL)_Students.xlsx'

@@ -1,5 +1,6 @@
 import shutil
 from Google_Drive.Google_Drive_API_Handlers import *
+from Handlers.file_imports import location_a, location_b
 
 
 def drive_sheet_upload():
@@ -27,8 +28,7 @@ def download_file():
     driveInstance = download_files.Download(service)
     getID = driveInstance.get_fileID(uploaded_file_name)
     file_download = driveInstance.download_file(Excel, file_name, getID)
-    shutil.move('/Users/nbenzschawel/Library/Mobile Documents/com~apple~CloudDocs/Udemy_Python/spreadsheets - DEV/SEVIS Registration.xlsx',
-                '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Live.xlsx')
+    shutil.move(location_a, location_b)
 
     return file_download
 
