@@ -16,6 +16,7 @@ The following modules will need to be installed in your Python directory or (vir
 * openpyxl 2.5.6 or newer
 * gspread 3.1.0 or newer
 * pandas 0.23.4 or newer
+* googleapis module 
 
 Due to FERPA regulations, I cannot include the actual .xlsx files as they contain sensitive student data, however, please feel free to reach out to me if you'd like to set up a similar process for automating data population in Excel with Python.
 nmbenzo@gmail.com
@@ -28,10 +29,16 @@ For more information on how to setup and configure the gspread module, please se
 
 ***Created separate module for Handlers
 
+***Added Gmail emailing capabilities
+
+***Added Google TeamDrive syncing: uploading and downloading
+
+***Expanded menu options 
+
 
 ---Short-Term Future Development---
 
-***Add SMTP Email capability (in process)
+***Add SMTP Email capability for MS Outlook
 
 ***Create "Search for" module to search for files. This will improve scalability
 
