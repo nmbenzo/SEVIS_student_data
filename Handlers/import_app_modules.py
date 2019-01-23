@@ -2,17 +2,17 @@ import os
 os.getcwd()
 
 GLBL_USER_CHOICE = """
-Please select one of the following:
+Please select one of the following to begin workflow:
 - 'b' - Build Complete SEVIS Registration Worksheet
+- 's' - Sync Data with Google Sheets
+- 't' - Transfer Student Menu
+- 'e' - Send Emails
 - 'n' - Access NEW Student Menu
 - 'a' - Access ACTIVE Student Menu
 - 'c' - Access CANCELLED Student Menu
 - 'd' - Access COMPLETED Student Menu
 - 'g' - Access GRADUATED Menu
 - 'm' - Access Merge Workbook Menu
-- 's' - Sync Data with Google Sheets
-- 't' - Transfer Student Menu
-- 'e' - Send Email
 - 'q' - Quit
 
 """
@@ -90,14 +90,17 @@ Would you like to merge all Registration Workbooks (y/n)?:
 
 EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
-- 'e' - Email to student
+- 'e' - Email to Singular Student
+- 'm' - Email to Multiple Students
 
 """
 
-EMAIL_TO_STUDENT_population = """
-Which population would you like to send this email to: 
-- 'n' - NEW Student Reg xlsx
-- 'a' - ACTIVE Student Reg xlsx
+EMAIL_TO_STUDENT_type = """
+Which which email would you like to send: 
+- 'f' - Students who have not paid the I-901 fee
+- 'u' - Students who are underenrolled 
+- 'p' - Students who have a bad phone number in ISSM
+- 'a' - Students who have a bad address in ISSM
 
 """
 
@@ -112,7 +115,3 @@ Please select one of the following:
 - 'c' - Copy & Paste final data in Sheet1
 
 """
-
-# Need to add Completed_student_cleaning
-
-

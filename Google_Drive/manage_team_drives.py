@@ -3,7 +3,7 @@ from Google_Drive.Google_Drive_API_Handlers import *
 
 """This file provides oAuth credential access to Google Drive and Team Drives"""
 
-class Manage_Team_Drives:
+class ManageTeamDrives:
 
     def __init__(self, DRIVE):
         self.DRIVE = DRIVE
@@ -38,7 +38,7 @@ class Manage_Team_Drives:
 """
 Example function call:
 
-driveInstance = manage_team_drives.Manage_Team_Drives(DRIVE)
+driveInstance = manage_team_drives.ManageTeamDrives(DRIVE)
 upload_sheet_td = driveInstance.import_td_folder(name=uploaded_file_name, folder_id=folder_id, fn=Registration_file, mimeType=SHEET_MIMETYPE)
 """
 

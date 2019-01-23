@@ -44,6 +44,7 @@ from Google_Drive.drive_authorization import *
 from Google_Drive.drive_main import *
 from Google_Drive.drive_main import *
 
+
 from Handlers.Google_Drive_IDs import folder_id, Registration_file, SHEET_MIMETYPE, \
 FOLDER_MIME, MASTER_FILE, NEW_SOURCE_FILE, ACTIVE_SOURCE_FILE, TRANSFER_SOURCE_FILE, \
 REGISTRATION_TIMELINE, DOC_MIMETYPE, Excel, file_name, uploaded_file_name
@@ -52,4 +53,4 @@ from Google_Drive.download_files import *
 
 from Emails.authorization import *
 from Emails.send_mail import *
-from Emails.main import *
+from Emails.gmail_main import *

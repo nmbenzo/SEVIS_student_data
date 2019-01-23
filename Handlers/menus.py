@@ -65,7 +65,7 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.5)
             print('\nMerging all SEVIS Registration Workbooks...')
             merge_all_workbooks()
-            print('\n*** Final Workbook created with SEVIS Registration specified sheet s***')
+            print('\n*** Final Workbook created with SEVIS Registration specified sheet ***')
 
             time.sleep(0.75)
             drive_sheet_upload()
@@ -269,9 +269,39 @@ def emails(GLBL_USER_CHOICE):
             time.sleep(0.5)
             print('Sending email to requested recipient...')
             time.sleep(0.5)
-            mainEmail()
+            singular_email()
             time.sleep(0.75)
             print('\nEmail sent!')
+        elif user_input == 'm':
+            new_user_input = input(EMAIL_TO_STUDENT_type)
+            if new_user_input == 'f':
+                time.sleep(0.5)
+                print('Sending email to students who need to pay the I-901 fee...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'u':
+                time.sleep(0.5)
+                print('Sending email to students who are underenrolled...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'p':
+                time.sleep(0.5)
+                print('Sending email to students who have a bad phone number for registration...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'a':
+                time.sleep(0.5)
+                print('Sending email to students who have a bad address for registration...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
 
         return GLBL_USER_CHOICE
 
