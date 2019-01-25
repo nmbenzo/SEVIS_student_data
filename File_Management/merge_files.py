@@ -4,6 +4,10 @@ from Handlers.file_imports import *
 
 
 def merge_all_workbooks():
+    """
+    Merges specified Workbooks and then applies minimal formatting using Pandas
+    DataFrames
+    """
     COL_student_data = pd.read_excel(COL_students_raw, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
 
