@@ -73,9 +73,9 @@ def paste_to_final():
 def find_in_fsa():
     """Checks the status of final data to see if it is already in ISSM"""
     for rowNum in range(1, final_sheet.max_row):
-        status = final_sheet.cell(row=rowNum, column=12).value
+        status = final_sheet.cell(row=rowNum, column=11).value
         if status == 'Add to ISSM':
-            final_sheet.cell(row=rowNum, column=12).value = 'Old Data: in ISSM'
+            final_sheet.cell(row=rowNum, column=11).value = 'Old Data: in ISSM'
     print('\nUpdated ISSM notes for new data')
 
     wb2_trans.save(current_transfer_data)

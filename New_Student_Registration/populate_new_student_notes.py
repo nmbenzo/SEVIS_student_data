@@ -7,7 +7,7 @@ from File_Management.copier import copy_new_Range, paste_new_Range
 
 def create_new_Student_Data():
     """Pastes copied range to new sheet which needs to be updated"""
-    print('Processing NEW Student data...')
+    print('\nProcessing NEW Student data...')
 
     if NEW_students_sheet.cell(row=1, column=1).value is None:
         selectedRange = copy_new_Range(1, 1, ws2_new.max_column, ws2_new.max_row, ws2_new)

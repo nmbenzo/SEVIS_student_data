@@ -5,13 +5,15 @@ from Handlers.import_modules import *
 
 def build_it_all(GLBL_USER_CHOICE):
     """
-    menu where users can select a section of the
-    spreadsheet to populate about new students requiring registration
+    This function is a type of a master function that runs all necessary
+    functions to build populate spreadsheets, merge them into one workbook,
+    and then upload them with a specified naming convention to a Google Team
+    Drive
      """
     user_input = input(BUILD_REG_DATA)
     while user_input != 'q':
         if user_input == 'y':
-            time.sleep(0.5)
+            time.sleep(1.0)
             create_new_Student_Data()
             time.sleep(1.5)
             new_match_SEVISID(campusID_SEVISID)
@@ -65,14 +67,16 @@ def build_it_all(GLBL_USER_CHOICE):
             time.sleep(0.5)
             print('\nMerging all SEVIS Registration Workbooks...')
             merge_all_workbooks()
-            print('\n*** Final Workbook created with SEVIS Registration specified sheet ***')
+            print('\n*** Final Workbook created titled: SEVIS Registration ***')
+            time.sleep(0.5)
+            print('\nPreparing upload...')
 
-            time.sleep(0.75)
+            time.sleep(1.5)
             drive_sheet_upload()
-            print('\nSyncing file with Google_Drive...')
-            time.sleep(1.3)
+            print('\nSyncing file with Google_Drive')
+            time.sleep(1.0)
             print(f'\n** {uploaded_file_name} MASTER file imported into Team Drives folder **')
-            time.sleep(1)
+            time.sleep(1.5)
             print('\n*** Data building and processing COMPLETE ***')
 
         return GLBL_USER_CHOICE
@@ -267,7 +271,7 @@ def emails(GLBL_USER_CHOICE):
     while user_input != 'q':
         if user_input == 'e':
             time.sleep(0.5)
-            print('Sending email to requested recipient...')
+            print('Please choose an email recipient...')
             time.sleep(0.5)
             singular_email()
             time.sleep(0.75)

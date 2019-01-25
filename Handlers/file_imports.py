@@ -7,7 +7,7 @@ Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS R
 
 
 """ File Location for Google_Drive.drive_main.py"""
-location_a = '/Users/nbenzschawel/Library/Mobile Documents/com~apple~CloudDocs/Udemy_Python/spreadsheets - DEV/SEVIS Registration.xlsx'
+location_a = '/Users/nbenzschawel/Library/Mobile Documents/com~apple~CloudDocs/Udemy_Python/SEVIS_Application/SEVIS Registration.xlsx'
 location_b = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Live.xlsx'
 
 
@@ -34,7 +34,7 @@ except FileNotFoundError:
 new_stud_issm_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx'
 
 # SEVIS Report: Initial Status Students
-sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_raw_data.xlsx'
+sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_Raw_Data.xlsx'
 
 NEW_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/NEW_Final.xlsx'
 
