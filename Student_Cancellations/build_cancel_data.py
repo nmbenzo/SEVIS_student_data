@@ -38,3 +38,4 @@ Cancel_SEVISID_banner = dict(zip(SEVISID, banner_status))
 Cancel_SEVISID_credits = dict(zip(SEVISID, cr_hours))
 
 Cancel_SEVISID_SV = dict(zip(SEVISID, check_in_status))
+

@@ -60,7 +60,7 @@ ws2_new = wb2_new.active
 
 active_stud_issm_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/All_SEVIS-Active_Student_Tracking.xlsx'
 
-active_student_req_reg = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/Fall 201840 - Registration.xlsx'
+active_student_req_reg = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS - Active Students Requiring Registration.xlsx'
 
 ACTIVE_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/ACTIVE_Final.xlsx'
 
@@ -75,7 +75,7 @@ except FileNotFoundError:
 	ACTIVE_students_sheet = ACTIVE_students.worksheets[0]
 
 wb2_active = openpyxl.load_workbook(active_student_req_reg)
-sheet = wb2_active.worksheets[4]
+sheet = wb2_active.worksheets[0]
 ws2 = wb2_active.active
 
 wb1 = openpyxl.load_workbook(active_stud_issm_data)

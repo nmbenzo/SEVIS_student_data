@@ -13,7 +13,8 @@ def build_it_all(GLBL_USER_CHOICE):
     user_input = input(BUILD_REG_DATA)
     while user_input != 'q':
         if user_input == 'y':
-            time.sleep(1.0)
+            print('Creating data now...')
+            time.sleep(0.5)
             create_new_Student_Data()
             time.sleep(1.5)
             new_match_SEVISID(campusID_SEVISID)
