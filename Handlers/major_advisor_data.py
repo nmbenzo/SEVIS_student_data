@@ -24,6 +24,8 @@ advisor_major_ug = {
     'ARCD-Architecture & Community Desig': 'Nathan',
     'BSDS-Data Science':'Nathan',
     'ENVS-Environmental Science':'Nathan',
+    'ENVA-Environmental Studies': 'Nathan',
+    'ENGL-English': 'Nathan',
     'CMPL-Comparative Lit. & Culture': 'Nathan',
     'ICL-Intl Transaction & Comp. Law':'Nathan',
     'IPTL-Intellectual Property Tech Law': 'Nathan',
@@ -31,13 +33,16 @@ advisor_major_ug = {
     'MS-Media Studies': 'Nathan',
     'FNAR-Fine Arts': 'Nathan',
     'PASJ-Perf. Arts & Soc. Justice': 'Nathan',
+    'PHIL-Philosophy': 'Nathan',
+    'PHYS-Physics': 'Nathan',
     'SOC-Sociology': 'Nathan',
     'DSGN-Design': 'Nathan',
     'KIN-Kinesiology': 'Nathan',
     'JNST-Japanese Studies': 'Nathan',
     'ANST-Asian Studies': 'Nathan',
     'BIOL-Biology':'Nathan',
-    'URBS-Urban Studies': 'Nathan'
+    'URBS-Urban Studies': 'Nathan',
+    'WRIT-Writing': 'Nathan'
      }
 
 advisor_major_gr = {
