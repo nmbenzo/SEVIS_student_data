@@ -64,7 +64,7 @@ def match_major_data(active_SEVISID_major):
     ACTIVE_students_sheet.insert_cols(1)
     title = ACTIVE_students_sheet.cell(row=1, column=1)
     title.value = 'Major'
-    for rowNum in trange(2, ACTIVE_students_sheet.max_row):
+    for rowNum in range(2, ACTIVE_students_sheet.max_row):
         sevis_ID = ACTIVE_students_sheet.cell(row=rowNum, column=4).value
         for x in active_SEVISID_major:
             if x == sevis_ID:
@@ -81,7 +81,7 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
     ACTIVE_students_sheet.insert_cols(1)
     title = ACTIVE_students_sheet.cell(row=1, column=1)
     title.value = 'Advisor'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
+    for rowNum in trange(2, ACTIVE_students_sheet.max_row):
         major = ACTIVE_students_sheet.cell(row=rowNum, column=2).value
         if major in advisor_major_ug:
             ACTIVE_students_sheet.cell(row=rowNum, column=1).value = advisor_major_ug[major]
