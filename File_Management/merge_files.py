@@ -1,5 +1,6 @@
+import time
 import pandas as pd
-
+from tqdm import trange
 from Handlers.file_imports import *
 
 
@@ -8,6 +9,9 @@ def merge_all_workbooks():
     Merges specified Workbooks and then applies minimal formatting using Pandas
     DataFrames
     """
+    for i in trange(100):
+        time.sleep(0.1)
+
     COL_student_data = pd.read_excel(COL_students_raw, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
 
@@ -30,6 +34,9 @@ def merge_all_workbooks():
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(Registration_file, engine='xlsxwriter', date_format='mmm d yyyy')
 
+    # need to write a function that returns a boolean if COL doesn't need to be
+    # uploaded for some reason. Split the merge_all_workbooks() into multiple
+    # functions. Remember each function should only have one purpose.
     df1.to_excel(writer, sheet_name='COL Students')
     df2.to_excel(writer, sheet_name='Transfer Students')
     df3.to_excel(writer, sheet_name='New Students')
@@ -59,6 +66,7 @@ def merge_all_workbooks():
         'align': 'center',
         'valign': 'middle',
         'border': 0})
+
 
     # Write the column headers with the defined format.
     for col_num, value in enumerate(df1.columns.values):

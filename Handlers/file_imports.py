@@ -34,7 +34,7 @@ except FileNotFoundError:
 new_stud_issm_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_Registration_Tracking-New_Students-SEVIS_Pending.xlsx'
 
 # SEVIS Report: Initial Status Students
-sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS_Raw_Data.xlsx'
+sevis_inital_student_data = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/SEVIS - Initial Status Students.xlsx'
 
 NEW_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/NEW_Final.xlsx'
 
@@ -80,6 +80,7 @@ ws2 = wb2_active.active
 
 wb1 = openpyxl.load_workbook(active_stud_issm_data)
 ws = wb1.active
+
 
 """ Transfer Student Data """
 

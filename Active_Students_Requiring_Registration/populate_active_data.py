@@ -4,6 +4,7 @@ import time
 from Handlers.file_imports import ws2, sheet, ACTIVE_students_FINAL, ACTIVE_students, \
 ACTIVE_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
+from tqdm import trange
 
 
 def create_active_Student_Data():
@@ -63,7 +64,7 @@ def match_major_data(active_SEVISID_major):
     ACTIVE_students_sheet.insert_cols(1)
     title = ACTIVE_students_sheet.cell(row=1, column=1)
     title.value = 'Major'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
+    for rowNum in trange(2, ACTIVE_students_sheet.max_row):
         sevis_ID = ACTIVE_students_sheet.cell(row=rowNum, column=4).value
         for x in active_SEVISID_major:
             if x == sevis_ID:

@@ -1,7 +1,8 @@
+import time
 from Google_Drive.Google_Drive_API_Handlers import *
 from Handlers.Google_Drive_IDs import td_id, \
-    Excel, uploaded_file_name
-
+    Excel, drive_file_name
+from tqdm import trange
 
 class Download:
 
@@ -56,9 +57,10 @@ class Download:
         done = False
         while done is False:
             status, done = downloader.next_chunk()
-            print("Download: {}".format(int(status.progress() * 100)))
+        for i in trange(100):
+            time.sleep(0.01)
 
         for f in drive_files['files']:
-            if f['id'] == self.get_fileID(uploaded_file_name):
+            if f['id'] == self.get_fileID(drive_file_name):
                 print('Downloaded: ' + f['name'])
 

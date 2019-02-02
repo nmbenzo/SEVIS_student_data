@@ -1,5 +1,6 @@
 from Google_Drive.Google_Drive_API_Handlers import *
-
+from tqdm import trange
+import time
 
 """This file provides oAuth credential access to Google Drive and Team Drives"""
 
@@ -31,6 +32,8 @@ class ManageTeamDrives:
         """Adds a specified file to the Team Drive
         and then converts it to a G-Suite format"""
         body = {'name': name, 'originalFilename': fn, 'mimeType': mimeType, 'parents': [folder_id]}
+        for i in trange(100):
+            time.sleep(0.01)
         return self.DRIVE.files().create(body=body, media_body=fn,
                 supportsTeamDrives=True, fields='id').execute().get('id')
 

@@ -2,6 +2,7 @@ import time
 from Handlers.file_imports import No_show_UG, wb_cancel_ug,  ug_sheet, gr_sheet, ug_row_max, \
     gr_row_max, gr_col_max, sevis_initial, No_SHOW_students_FINAL, NO_SHOW_students, NOSHOW_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
+from tqdm import trange
 
 
 def create_new_Cancel_Data():
@@ -27,13 +28,39 @@ def create_NoShow_Student_Data():
     time.sleep(2.5)
 
 
+def build_apdc_notes(Cancel_APDC):
+    """Adds APDC codes to the SEVIS Initial Status spreadsheet"""
+    NOSHOW_students_sheet.insert_cols(1)
+    title = NOSHOW_students_sheet.cell(row=1, column=1)
+    title.value = 'APDC Code'
+    for rowNum in range(2, NOSHOW_students_sheet.max_row):
+        sevisID = NOSHOW_students_sheet.cell(row=rowNum, column=2).value
+        for x in Cancel_APDC:
+            if x == sevisID:
+                NOSHOW_students_sheet.cell(row=rowNum, column=1).value = Cancel_APDC[sevisID]
+
+    NO_SHOW_students.save(No_SHOW_students_FINAL)
+
+
+def build_level_data(Cancel_Level):
+    """Adds education level to the SEVIS Initial Status spreadsheet"""
+    NOSHOW_students_sheet.insert_cols(1)
+    title = NOSHOW_students_sheet.cell(row=1, column=1)
+    title.value = 'Level of Education'
+    for rowNum in range(2, NOSHOW_students_sheet.max_row):
+        sevisID = NOSHOW_students_sheet.cell(row=rowNum, column=3).value
+        for x in Cancel_Level:
+            if x == sevisID:
+                NOSHOW_students_sheet.cell(row=rowNum, column=1).value = Cancel_Level[sevisID]
+
+
 def build_cancel_campusID(Cancel_SEVISID_CampusID):
     """Adds campus IDs to the SEVIS Initial Status spreadsheet """
     NOSHOW_students_sheet.insert_cols(1)
     title = NOSHOW_students_sheet.cell(row=1, column=1)
     title.value = 'CampusID'
     for rowNum in range(2, NOSHOW_students_sheet.max_row):
-        sevisid = NOSHOW_students_sheet.cell(row=rowNum, column=2).value
+        sevisid = NOSHOW_students_sheet.cell(row=rowNum, column=4).value
         for x in Cancel_SEVISID_CampusID:
             if x == sevisid:
                 NOSHOW_students_sheet.cell(row=rowNum, column=1).value = Cancel_SEVISID_CampusID[sevisid]
@@ -41,13 +68,14 @@ def build_cancel_campusID(Cancel_SEVISID_CampusID):
     NO_SHOW_students.save(No_SHOW_students_FINAL)
 
 
+
 def build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits, Cancel_SEVISID_SV):
     """ Builds a brief set of note for each record displaying """
     NOSHOW_students_sheet.insert_cols(1)
     title = NOSHOW_students_sheet.cell(row=1, column=1)
     title.value = 'Cancellation Notes'
-    for rowNum in range(2, NOSHOW_students_sheet.max_row):
-        sevisid = NOSHOW_students_sheet.cell(row=rowNum, column=3).value
+    for rowNum in trange(2, NOSHOW_students_sheet.max_row):
+        sevisid = NOSHOW_students_sheet.cell(row=rowNum, column=5).value
         for x in Cancel_SEVISID_banner, Cancel_SEVISID_credits, Cancel_SEVISID_SV:
             for i in Cancel_SEVISID_credits:
                 for j in Cancel_SEVISID_SV:

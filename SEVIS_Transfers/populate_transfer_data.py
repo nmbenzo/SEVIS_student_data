@@ -3,7 +3,7 @@ from Handlers.file_imports import current_transfer_data, \
     wb2_trans, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
     row_max_current, col_max_current, row_max_final, col_max_final
 from File_Management.copier import copy_new_Range, paste_new_Range
-
+from tqdm import trange
 
 def create_new_Data():
     """Pastes copied range to new sheet which needs to be updated"""

@@ -14,13 +14,11 @@ Please select one of the following to begin workflow:
 - 'g' - Access GRADUATED Menu
 - 'm' - Access Merge Workbook Menu
 - 'q' - Quit
-
 """
 
 
 BUILD_REG_DATA = """
 Would you like to build a COMPLETE list of SEVIS Registration data (y/n)?: 
-
 """
 
 
@@ -31,7 +29,6 @@ Please select one of the following:
 - 'm' - Match SEVISID with CampusID
 - 'w' - Match Major Data
 - 'n' - Add Advisor Notes
-
 """
 
 
@@ -41,7 +38,6 @@ Please select one of the following:
 - 'm' - Match SEVISID with CampusID
 - 'w' - Match Major Data
 - 'e' - Match Advisor
-
 """
 
 
@@ -50,7 +46,6 @@ Please select one of the following:
 - 'a' - Run all functions
 - 'm' - Merge UG and GR Cancel Lists
 - 'p' - Populate Merged Cancel List
-
 """
 
 
@@ -63,13 +58,11 @@ Please select one of the following:
 - 'e' - Add Work End Date
 - 'p' - Add Profile End Date
 - 's' - Update Cell Email
-
 """
 
 
 COMPLETED_STUDENTS = """
 Would you like to generate a list of COMPLETED students in SEVIS vs ISSM Profile Status (y/n)?: 
-
 """
 
 
@@ -78,13 +71,11 @@ Select what you would like to do with the Google_Drive:
 - 'a' - Upload MASTER File xlsx
 - 'd' - Download Updated G-Drive File
 - 'r' - Registration Timeline
-
 """
 
 
 MERGE_WORKBOOKS = """
 Would you like to merge all Registration Workbooks (y/n)?: 
-
 """
 
 
@@ -92,7 +83,6 @@ EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
 - 'e' - Email to Singular Student
 - 'm' - Email to Multiple Students
-
 """
 
 EMAIL_TO_STUDENT_type = """
@@ -101,7 +91,6 @@ Which which email would you like to send:
 - 'u' - Students who are underenrolled 
 - 'p' - Students who have a bad phone number in ISSM
 - 'a' - Students who have a bad address in ISSM
-
 """
 
 MANAGE_TRANSFER_DATA = """
@@ -113,5 +102,4 @@ Please select one of the following:
 - 'f' - Copy data to Final for Atlas Sheet
 - 'u' - Update ISSM notes in Final for Atlas Sheet
 - 'c' - Copy & Paste final data in Sheet1
-
 """

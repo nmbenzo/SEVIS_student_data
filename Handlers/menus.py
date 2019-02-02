@@ -13,7 +13,7 @@ def build_it_all(GLBL_USER_CHOICE):
     user_input = input(BUILD_REG_DATA)
     while user_input != 'q':
         if user_input == 'y':
-            print('Creating data now...')
+            print('\nCreating data now...')
             time.sleep(0.5)
             create_new_Student_Data()
             time.sleep(1.5)
@@ -47,25 +47,29 @@ def build_it_all(GLBL_USER_CHOICE):
                 + '\nAdded Unit registration notes')
 
             time.sleep(1)
-            print('\nBeginning data aggregation for NO SHOW Students...')
+            print('\nBeginning data aggregation for Cancellation Lists...')
             time.sleep(0.5)
+            print('Merging UG and GR No Show reports...')
             create_new_Cancel_Data()
             time.sleep(0.5)
             create_NoShow_Student_Data()
             time.sleep(0.5)
-            print('\nGraduate No Show range copied and pasted')
+            print('\nUG and GR No Show reports merged successfully!')
+            time.sleep(0.5)
+            build_apdc_notes(Cancel_APDC)
             time.sleep(1.5)
-            build_cancel_campusID(Cancel_SEVISID_CampusID)
-          
+            build_level_data(Cancel_Level)
             time.sleep(1)
+            build_cancel_campusID(Cancel_SEVISID_CampusID)
+            time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
             print('\n*** Ran all functions for building Cancel List notes: ***')
             time.sleep(1)
-            print('\nAdded Campus IDs and student notes:' + \
+            print('Added Campus IDs, APDC Codes, Level of Education, and student notes:' + \
                   '\nBanner Status' + '\nCredits' + '\nCheck-in Status')
 
-            time.sleep(0.5)
+            time.sleep(1)
             print('\nMerging all SEVIS Registration Workbooks...')
             merge_all_workbooks()
             print('\n*** Final Workbook created titled: SEVIS Registration ***')
@@ -73,12 +77,115 @@ def build_it_all(GLBL_USER_CHOICE):
             print('\nPreparing upload...')
 
             time.sleep(1.5)
-            drive_sheet_upload()
             print('\nSyncing file with Google_Drive')
+            drive_sheet_upload()
             time.sleep(1.0)
-            print(f'\n** {uploaded_file_name} MASTER file imported into Team Drives folder **')
-            time.sleep(1.5)
-            print('\n*** Data building and processing COMPLETE ***')
+            print(f'\n** {uploaded_file_name} MASTER file imported into ISSS Team Drives folder **')
+            time.sleep(1)
+            print('\n*** DATA BUILDING AND PROCESSING COMPLETE ***')
+            time.sleep(1)
+
+        return GLBL_USER_CHOICE
+
+
+def transfer_menu(GLBL_USER_CHOICE):
+    """
+    Menu to access and modify transfer student data
+
+    """
+    user_input = input(MANAGE_TRANSFER_DATA)
+    while user_input != 'q':
+        if user_input == 'n':
+            create_workbook()
+        elif user_input == 'a':
+            create_new_Data()
+            time.sleep(3)
+            transfer_match_major_data(SEVISID_major)
+            print("\nAdded Student's Major")
+            time.sleep(0.5)
+            sort_data()
+            time.sleep(2)
+            check_in_fsa()
+            time.sleep(2)
+            paste_to_final()
+            time.sleep(2)
+        elif user_input == 's':
+            sort_data()
+        elif user_input == 'p':
+            check_in_fsa()
+        elif user_input == 'f':
+            paste_to_final()
+        elif user_input == 'u':
+            find_in_fsa()
+        elif user_input == 'c':
+            grab_final_data()
+
+        return GLBL_USER_CHOICE
+
+
+def sync_googlesheets(GLBL_USER_CHOICE):
+    """
+    menu where users can select a spreadsheet to sync with Google_Drive
+    """
+    user_input = input(SYNC_GOOGLESHEETS)
+    while user_input != 'q':
+        if user_input == 'a':
+            drive_sheet_upload()
+            print('Syncing with Google_Drive')
+            time.sleep(1)
+            print(f'** {Registration_file} file imported in Team Drives folder **')
+        elif user_input == 'd':
+            download_file()
+        elif user_input == 'r':
+            drive_doc_upload()
+            print('Syncing with Google_Drive')
+            time.sleep(1)
+            print(f'** {REGISTRATION_TIMELINE} file imported in Team Drives folder **')
+
+        return GLBL_USER_CHOICE
+
+
+def emails(GLBL_USER_CHOICE):
+    """Menu where users can elect to send emails to students"""
+    user_input = input(EMAIL_TO_STUDENT_template)
+    while user_input != 'q':
+        if user_input == 'e':
+            time.sleep(0.5)
+            print('Please choose an email recipient...')
+            time.sleep(0.5)
+            singular_email()
+            time.sleep(0.75)
+            print('\nEmail sent!')
+        elif user_input == 'm':
+            new_user_input = input(EMAIL_TO_STUDENT_type)
+            if new_user_input == 'f':
+                time.sleep(0.5)
+                print('Sending email to students who need to pay the I-901 fee...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'u':
+                time.sleep(0.5)
+                print('Sending email to students who are underenrolled...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'p':
+                time.sleep(0.5)
+                print('Sending email to students who have a bad phone number for registration...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
+            elif new_user_input == 'a':
+                time.sleep(0.5)
+                print('Sending email to students who have a bad address for registration...')
+                time.sleep(0.5)
+                multiple_emails(emails='')
+                time.sleep(0.75)
+                print('\nEmails sent to users in email list!')
 
         return GLBL_USER_CHOICE
 
@@ -163,11 +270,15 @@ def cancellation_menu(GLBL_USER_CHOICE):
             time.sleep(1.5)
             print(f'New Row Range = {NOSHOW_students_sheet.max_row}')
             time.sleep(0.5)
+            build_apdc_notes(Cancel_APDC)
+            time.sleep(0.5)
+            build_level_data(Cancel_Level)
+            time.sleep(0.5)
             build_cancel_campusID(Cancel_SEVISID_CampusID)
             time.sleep(0.2)
             build_cancel_notes(Cancel_SEVISID_banner, Cancel_SEVISID_credits,
                                Cancel_SEVISID_SV)
-            print('Added Campus IDs and student notes')
+            print('Added Campus IDs, APDC Code, and student notes')
         elif user_input == 'm':
             create_new_Cancel_Data()
             print('Processing data...')
@@ -242,106 +353,3 @@ def merge_workbooks(GLBL_USER_CHOICE):
             print('Merging all SEVIS Registration Workbooks')
 
         return GLBL_USER_CHOICE
-
-
-def sync_googlesheets(GLBL_USER_CHOICE):
-    """
-    menu where users can select a spreadsheet to sync with Google_Drive
-    """
-    user_input = input(SYNC_GOOGLESHEETS)
-    while user_input != 'q':
-        if user_input == 'a':
-            drive_sheet_upload()
-            print('Syncing with Google_Drive')
-            time.sleep(1)
-            print(f'** {Registration_file} file imported in Team Drives folder **')
-        elif user_input == 'd':
-            download_file()
-        elif user_input == 'r':
-            drive_doc_upload()
-            print('Syncing with Google_Drive')
-            time.sleep(1)
-            print(f'** {REGISTRATION_TIMELINE} file imported in Team Drives folder **')
-
-        return GLBL_USER_CHOICE
-
-
-def emails(GLBL_USER_CHOICE):
-    """Menu where users can elect to send emails to students"""
-    user_input = input(EMAIL_TO_STUDENT_template)
-    while user_input != 'q':
-        if user_input == 'e':
-            time.sleep(0.5)
-            print('Please choose an email recipient...')
-            time.sleep(0.5)
-            singular_email()
-            time.sleep(0.75)
-            print('\nEmail sent!')
-        elif user_input == 'm':
-            new_user_input = input(EMAIL_TO_STUDENT_type)
-            if new_user_input == 'f':
-                time.sleep(0.5)
-                print('Sending email to students who need to pay the I-901 fee...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'u':
-                time.sleep(0.5)
-                print('Sending email to students who are underenrolled...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'p':
-                time.sleep(0.5)
-                print('Sending email to students who have a bad phone number for registration...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'a':
-                time.sleep(0.5)
-                print('Sending email to students who have a bad address for registration...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-
-        return GLBL_USER_CHOICE
-
-
-def transfer_menu(GLBL_USER_CHOICE):
-    """
-    Menu to access and modify transfer student data
-
-    """
-    user_input = input(MANAGE_TRANSFER_DATA)
-    while user_input != 'q':
-        if user_input == 'n':
-            create_workbook()
-        elif user_input == 'a':
-            create_new_Data()
-            time.sleep(3)
-            transfer_match_major_data(SEVISID_major)
-            print("\nAdded Student's Major")
-            time.sleep(0.5)
-            sort_data()
-            time.sleep(2)
-            check_in_fsa()
-            time.sleep(2)
-            paste_to_final()
-            time.sleep(2)
-        elif user_input == 's':
-            sort_data()
-        elif user_input == 'p':
-            check_in_fsa()
-        elif user_input == 'f':
-            paste_to_final()
-        elif user_input == 'u':
-            find_in_fsa()
-        elif user_input == 'c':
-            grab_final_data()
-
-        return GLBL_USER_CHOICE
-

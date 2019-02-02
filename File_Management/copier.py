@@ -1,3 +1,5 @@
+import time
+from tqdm import trange
 """File to extract the copier functions for workbooks"""
 
 def copy_new_Range(startCol, startRow, endCol, endRow, sheet):
@@ -18,7 +20,8 @@ def copy_new_Range(startCol, startRow, endCol, endRow, sheet):
 def paste_new_Range(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
     """Pastes the selected data from copy_new_Range to your desired output worksheet"""
     countRow = 0
-    for i in range(startRow, endRow + 1, 1):
+    for i in trange(startRow, endRow + 1, 1):
+        time.sleep(0.01)
         countCol = 0
         for j in range(startCol, endCol + 1, 1):
             sheetReceiving.cell(row=i, column=j).value = copiedData[countRow][countCol]

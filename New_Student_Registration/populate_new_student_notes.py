@@ -3,6 +3,7 @@ os.getcwd()
 import time
 from Handlers.file_imports import ws2_new, NEW_students_FINAL, NEW_students, NEW_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
+from tqdm import trange
 
 
 def create_new_Student_Data():
@@ -76,7 +77,8 @@ def add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours):
     NEW_students_sheet.insert_cols(1)
     title = NEW_students_sheet.cell(row=1, column=1)
     title.value = 'Advisor Notes'
-    for rowNum in range(2, NEW_students_sheet.max_row):
+    for rowNum in trange(2, NEW_students_sheet.max_row):
+        time.sleep(0.01)
         sevis_ID = NEW_students_sheet.cell(row=rowNum, column=5).value
         for x in SEVISID_checked_in:
             for j in SEVISID_cr_hours:

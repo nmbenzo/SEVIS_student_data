@@ -26,9 +26,8 @@ def download_file():
        method to get a file_id. download_file retrieves the file that matches
        the file_id returned from get_fileID"""
     driveInstance = download_files.Download(service)
-    getID = driveInstance.get_fileID(uploaded_file_name)
+    getID = driveInstance.get_fileID(drive_file_name)
     file_download = driveInstance.download_file(Excel, file_name, getID)
     shutil.move(location_a, location_b)
 
     return file_download
-
