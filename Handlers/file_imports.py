@@ -1,12 +1,15 @@
 import openpyxl
 
 
-"""Master Upload File"""
+"""Master Files"""
 
 Registration_file = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Spring 2019.xlsx'
 
+SEVIS_Live_Workbook = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Live.xlsx'
+
 
 """ File Location for Google_Drive.drive_main.py"""
+
 location_a = '/Users/nbenzschawel/Library/Mobile Documents/com~apple~CloudDocs/Udemy_Python/SEVIS_Application/SEVIS Registration.xlsx'
 location_b = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/SEVIS Registration Live.xlsx'
 

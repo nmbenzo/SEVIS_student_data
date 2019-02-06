@@ -4,6 +4,7 @@ os.getcwd()
 GLBL_USER_CHOICE = """
 Please select one of the following to begin workflow:
 - 'b' - Build Complete SEVIS Registration Worksheet
+- 'f' - Build FINAL Complete SEVIS Registration Worksheet
 - 's' - Sync Data with Google Sheets
 - 't' - Transfer Student Menu
 - 'e' - Send Emails
@@ -12,7 +13,6 @@ Please select one of the following to begin workflow:
 - 'c' - Access CANCELLED Student Menu
 - 'd' - Access COMPLETED Student Menu
 - 'g' - Access GRADUATED Menu
-- 'm' - Access Merge Workbook Menu
 - 'q' - Quit
 """
 
@@ -71,11 +71,6 @@ Select what you would like to do with the Google_Drive:
 - 'a' - Upload MASTER File xlsx
 - 'd' - Download Updated G-Drive File
 - 'r' - Registration Timeline
-"""
-
-
-MERGE_WORKBOOKS = """
-Would you like to merge all Registration Workbooks (y/n)?: 
 """
 
 

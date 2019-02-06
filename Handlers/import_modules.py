@@ -37,7 +37,8 @@ from Student_Cancellations.populate_cancel_list import create_new_Cancel_Data, \
 create_NoShow_Student_Data, build_apdc_notes, build_cancel_campusID, \
 build_cancel_notes, build_level_data, NOSHOW_students_sheet, ug_row_max, ug_sheet
 
-from File_Management.merge_files import merge_all_workbooks
+from File_Management.merge_files import merge_all_workbooks, \
+final_merge_all_workbooks
 
 from DQed_Automation.build_dq_data import campusID_major
 

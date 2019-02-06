@@ -1,4 +1,3 @@
-import time
 from Handlers.menu_selection_options import *
 from Handlers.import_modules import *
 
@@ -81,6 +80,59 @@ def build_it_all(GLBL_USER_CHOICE):
             drive_sheet_upload()
             time.sleep(1.0)
             print(f'\n** {uploaded_file_name} MASTER file imported into ISSS Team Drives folder **')
+            time.sleep(1)
+            print('\n*** DATA BUILDING AND PROCESSING COMPLETE ***')
+            time.sleep(1)
+
+        return GLBL_USER_CHOICE
+
+
+def final_build_it(GLBL_USER_CHOICE):
+
+    """
+    This function merges several sheets from the current workflow in the
+    Google TeamDrive with a final active student data build, merges them into
+    one workbook, and then upload them with a specified naming convention
+    to the current ISSS TeamDrive.
+     """
+    user_input = input(BUILD_REG_DATA)
+    while user_input != 'q':
+        if user_input == 'y':
+            print('\nCreating data now...')
+            time.sleep(0.5)
+            print('\nBeginning data aggregation for ACTIVE Status students...')
+            create_active_Student_Data()
+            time.sleep(1.3)
+            active_match_SEVISID(active_campusID_SEVISID)
+            time.sleep(0.3)
+            match_units(active_SEVISID_units)
+            time.sleep(0.3)
+            match_major_data(active_SEVISID_major)
+            time.sleep(0.3)
+            match_advisor(advisor_major_ug, advisor_major_gr)
+            time.sleep(0.3)
+            sort_active_data()
+            print(
+                '\n*** Ran all functions for building notes for SEVIS Active students: ***')
+            time.sleep(0.5)
+            print(
+                "Added student's advisor" + '\nAdded campusIDs' + "\nAdded student's majors" \
+                + '\nAdded Unit registration notes')
+
+            time.sleep(1)
+            print('\nMerging all SEVIS Registration Workbooks...')
+            final_merge_all_workbooks()
+            print(
+                '\n*** Final Workbook created titled: SEVIS Registration ***')
+            time.sleep(0.5)
+            print('\nPreparing upload...')
+
+            time.sleep(1.5)
+            print('\nSyncing file with Google_Drive')
+            drive_sheet_upload()
+            time.sleep(1.0)
+            print(
+                f'\n** {uploaded_file_name} MASTER file imported into ISSS Team Drives folder **')
             time.sleep(1)
             print('\n*** DATA BUILDING AND PROCESSING COMPLETE ***')
             time.sleep(1)
@@ -338,18 +390,5 @@ def grad_menu(GLBL_USER_CHOICE):
         elif user_input == 's':
             add_emails(campusID_emails)
             print('Added student emails')
-
-        return GLBL_USER_CHOICE
-
-
-def merge_workbooks(GLBL_USER_CHOICE):
-    """
-    menu where users can elect to merge all registration workbooks
-    """
-    user_input = input(MERGE_WORKBOOKS)
-    while user_input != 'n':
-        if user_input == 'y':
-            merge_all_workbooks()
-            print('Merging all SEVIS Registration Workbooks')
 
         return GLBL_USER_CHOICE
