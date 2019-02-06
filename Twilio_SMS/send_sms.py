@@ -1,10 +1,10 @@
 from twilio.rest import Client
-from Twilio_SMS.auth_token import account_sid, auth_token
+from Twilio_SMS.auth_token import account_sid, auth_token, myTwilionum
 
 
 client = Client(account_sid, auth_token)
 
-myTwilionum = '+14152125417'
+
 receiver = input('Phone Number: ')
 
 message = client.messages. \
