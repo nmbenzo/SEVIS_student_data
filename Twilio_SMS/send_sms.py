@@ -16,14 +16,15 @@ def get_blast_list():
 
 
 def get_message_content():
-    print('Which message would you like to send: \n - SV Message \n- Test '
-          '\n- General ISSS \nHit Enter to skip' )
+    print('Which message would you like to send: \ns - Status Verification '
+          'Incomplete \nt - Test \ng - General ISSS \nHit Enter to skip '
+          'and create a custom message' )
     content = input('\nYour Choice: ')
-    if content == 'SV Message':
+    if content == 's':
         return SV_body
-    if content == 'Test':
+    if content == 't':
         return Test_response
-    if content == 'General ISSS':
+    if content == 'g':
         return General_ISSS_response
     else:
         return None
@@ -31,21 +32,18 @@ def get_message_content():
 
 def send_sms(client, *get_message_content):
     receiver = input('Phone Number: ')
-    content = input('Please type your message: ')
     try:
-        if content != '':
+        if get_message_content != None:
             message = client.messages. \
-                create(body=content, from_=myTwilionum, to=receiver)
-            print(message.sid)
-            print(f'Message Sent to {receiver}')
-        elif get_message_content != None:
-            message = client.messages. \
-                create(body=get_message_content, from_=myTwilionum, to=receiver)
+            create(body=get_message_content, from_=myTwilionum, to=receiver)
             print(message.sid)
             print(f'Message Sent to {receiver}')
     except:
-        print("'content' cannot be blank if 'body' is not specified in "
-              "send_sms function call.")
+        content = input('Please type your message: ')
+        message = client.messages. \
+            create(body=content, from_=myTwilionum, to=receiver)
+        print(message.sid)
+        print(f'Message Sent to {receiver}')
 
 
 def send_blast_sms(client, get_blast_list, body):
