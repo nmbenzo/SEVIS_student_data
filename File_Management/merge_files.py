@@ -214,17 +214,18 @@ def final_merge_all_workbooks():
     worksheet1.set_column('A:X', 16, column_format)
 
     # Format columns of Transfer Students
-    worksheet2.set_column('A:A', 15, column_format)
+    worksheet2.set_column('A:A', 20, column_format)
     worksheet2.set_column('B:C', 18, column_format)
-    worksheet2.set_column('D:E', 15, column_format)
-    worksheet2.set_column('F:F', 35, column_format)
-    worksheet2.set_column('G:G', 17, column_format)
-    worksheet2.set_column('H:J', 13, column_format)
+    worksheet2.set_column('D:E', 18, column_format)
+    worksheet2.set_column('F:F', 25, column_format)
+    worksheet2.set_column('G:H', 17, column_format)
+    worksheet2.set_column('I:I', 35, column_format)
+    worksheet2.set_column('J:M', 18, column_format)
 
     # Format columns of New Students
-    worksheet3.set_column('A:A', 48, column_format)
-    worksheet3.set_column('C:C', 25, column_format)
-    worksheet3.set_column('D:D', 10, column_format)
+    worksheet3.set_column('A:A', 24, column_format)
+    worksheet3.set_column('B:B', 48, column_format)
+    worksheet3.set_column('C:D', 25, column_format)
     worksheet3.set_column('E:G', 16, column_format)
     worksheet3.set_column('H:H', 22, column_format)
     worksheet3.set_column('I:J', 17, column_format)

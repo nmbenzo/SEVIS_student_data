@@ -14,6 +14,14 @@ def main():
             build_it_all(GLBL_USER_CHOICE)
         if user_input == 'f':
             final_build_it(GLBL_USER_CHOICE)
+        if user_input == 's':  # for google sheets
+            sync_googlesheets(GLBL_USER_CHOICE)
+        if user_input == 'm':
+            sms(GLBL_USER_CHOICE)
+        if user_input == 't':
+            transfer_menu(GLBL_USER_CHOICE)
+        if user_input == 'e':  # to send emails
+            emails(GLBL_USER_CHOICE)
         if user_input == 'n':
             new_menu(GLBL_USER_CHOICE)
         if user_input == 'a':
@@ -24,12 +32,7 @@ def main():
             completed_menu(GLBL_USER_CHOICE)
         if user_input == 'g':
             grad_menu(GLBL_USER_CHOICE)
-        if user_input == 's':  # for google sheets
-            sync_googlesheets(GLBL_USER_CHOICE)
-        if user_input == 't':
-            transfer_menu(GLBL_USER_CHOICE)
-        if user_input == 'e':  # to send emails
-            emails(GLBL_USER_CHOICE)
+
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')

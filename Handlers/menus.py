@@ -197,6 +197,22 @@ def sync_googlesheets(GLBL_USER_CHOICE):
         return GLBL_USER_CHOICE
 
 
+def sms(GLBL_USER_CHOICE):
+    """
+    Menu where users can select to send a text to a student or email blast
+    multiple students
+    """
+    user_input = input(SMS_MESSAGE)
+    while user_input != 'q':
+        if user_input == 's':
+            send_sms(client, get_message_content())
+        elif user_input == 'b':
+            send_blast_sms(client, get_blast_list(), get_message_content())
+
+        return GLBL_USER_CHOICE
+
+
+
 def emails(GLBL_USER_CHOICE):
     """Menu where users can elect to send emails to students"""
     user_input = input(EMAIL_TO_STUDENT_template)
