@@ -110,15 +110,14 @@ def final_build_it(GLBL_USER_CHOICE):
             match_major_data(active_SEVISID_major)
             time.sleep(0.3)
             match_advisor(advisor_major_ug, advisor_major_gr)
-            time.sleep(0.3)
+            time.sleep(0.5)
             sort_active_data()
             print(
                 '\n*** Ran all functions for building notes for SEVIS Active students: ***')
             time.sleep(0.5)
             print(
-                "Added student's advisor" + '\nAdded campusIDs' + "\nAdded student's majors" \
-                + '\nAdded Unit registration notes')
-
+                "Added student's advisor" + '\nAdded campusIDs' +
+                "\nAdded student's majors" + '\nAdded Unit registration notes')
             time.sleep(1)
             print('\nMerging all SEVIS Registration Workbooks...')
             final_merge_all_workbooks()
@@ -205,9 +204,10 @@ def sms(GLBL_USER_CHOICE):
     user_input = input(SMS_MESSAGE)
     while user_input != 'q':
         if user_input == 's':
-            send_sms(client, get_message_content())
+            send_sms(client, get_message_content(content_list))
         elif user_input == 'b':
-            send_blast_sms(client, get_blast_list(), get_message_content())
+            send_blast_sms(client, get_blast_list(group_list),
+                           get_message_content(content_list))
 
         return GLBL_USER_CHOICE
 
@@ -307,6 +307,14 @@ def active_menu(GLBL_USER_CHOICE):
             match_major_data(active_SEVISID_major)
             time.sleep(0.5)
             match_advisor(advisor_major_ug, advisor_major_gr)
+            time.sleep(0.5)
+            sort_active_data()
+            print(
+                '\n*** Ran all functions for building notes for SEVIS Active students: ***')
+            time.sleep(0.5)
+            print(
+                "Added student's advisor" +'\nAdded campusIDs' +
+                "\nAdded student's majors" + '\nAdded Unit registration notes')
             print('Ran all functions for building notes for SEVIS Active students:')
         elif user_input == 'm':
             active_match_SEVISID(active_campusID_SEVISID)

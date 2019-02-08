@@ -67,6 +67,7 @@ active_student_req_reg = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Ra
 
 ACTIVE_students_FINAL = '/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Final Workbooks/ACTIVE_Final.xlsx'
 
+
 ACTIVE_wb = openpyxl.Workbook()
 
 try:

@@ -84,7 +84,8 @@ advisor_major_gr = {
     'L&I-Learning and Instruction': 'Cynthia',
     'MPH-Public Health': 'Cynthia',
     'O&L-Organization and Leadership':'Cynthia',
-    'TSOL-Teach Engl/Speakers Other Lang': 'Cynthia'
+    'TSOL-Teach Engl/Speakers Other Lang': 'Cynthia',
+    'NUDS-Healthcare Sys.Ldrship(MSN/RN)': 'Cynthia'
 }
 
 master_deg_adv = {
