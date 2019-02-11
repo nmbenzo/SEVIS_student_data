@@ -207,7 +207,7 @@ def sms(GLBL_USER_CHOICE):
             send_sms(client, get_message_content(content_list))
         elif user_input == 'b':
             send_blast_sms(client, get_blast_list(group_list),
-                           get_message_content(content_list))
+            get_message_content(content_list))
 
         return GLBL_USER_CHOICE
 
@@ -218,42 +218,13 @@ def emails(GLBL_USER_CHOICE):
     user_input = input(EMAIL_TO_STUDENT_template)
     while user_input != 'q':
         if user_input == 'e':
+            singular_email(get_emessage_content(e_content_list))
             time.sleep(0.5)
-            print('Please choose an email recipient...')
-            time.sleep(0.5)
-            singular_email()
-            time.sleep(0.75)
-            print('\nEmail sent!')
         elif user_input == 'm':
-            new_user_input = input(EMAIL_TO_STUDENT_type)
-            if new_user_input == 'f':
-                time.sleep(0.5)
-                print('Sending email to students who need to pay the I-901 fee...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'u':
-                time.sleep(0.5)
-                print('Sending email to students who are underenrolled...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'p':
-                time.sleep(0.5)
-                print('Sending email to students who have a bad phone number for registration...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
-            elif new_user_input == 'a':
-                time.sleep(0.5)
-                print('Sending email to students who have a bad address for registration...')
-                time.sleep(0.5)
-                multiple_emails(emails='')
-                time.sleep(0.75)
-                print('\nEmails sent to users in email list!')
+            multiple_emails(get_eblast_list(e_group_list),
+            get_emessage_content(e_content_list))
+            time.sleep(0.5)
+
 
         return GLBL_USER_CHOICE
 

@@ -1,13 +1,13 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
-from Twilio_SMS.sms_templates import General_ISSS_response, General_response
+from Twilio_SMS.sms_templates import *
 
 
 app = Flask(__name__)
 
 @app.route('/sms', methods=['GET', 'POST'])
 
-def sms_regular_response(response=General_response):
+def sms_regular_response(response=General_ISSS_response):
     """Respond to an incoming message with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
