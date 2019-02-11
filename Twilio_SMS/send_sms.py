@@ -22,7 +22,7 @@ content_choices = [
     's - Status Verification Incomplete',
     't - Test',
     'g - General ISSS','gr - General Response',
-    'Hit Enter to skip and create a custom message'
+    '\nHit Enter to skip and create a custom message'
 ]
 
 
@@ -61,7 +61,7 @@ def send_sms(client, get_message_content):
             print(message.sid)
             print(f'Message Sent to {receiver}')
     except:
-        print('You must have a body or content in this function')
+        print('You must have a body or content in this function.')
 
 
 def send_blast_sms(client, get_blast_list, body):
@@ -80,7 +80,7 @@ def send_blast_sms(client, get_blast_list, body):
                 print(message.sid)
                 print(f'Messages sent to {number} in requested list')
     except:
-        print('You must have a body or content in this function')
+        print('You must have a body or content in this function.')
 
 
 
