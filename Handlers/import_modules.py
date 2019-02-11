@@ -67,4 +67,3 @@ from Twilio_SMS.sms_templates import *
 from Twilio_SMS.run import *
 from Twilio_SMS.send_sms import *
 
-from Handlers.file_context_manager import File_Handler
