@@ -1,14 +1,14 @@
 # SEVIS_Student_data
 A variety of files to connect Excel spreadsheet data of students for SEVIS reporting compliance. 
 
-These files allow international student advisors to build data on students via the openpyxl module in Python.
+These files allow international student advisors to build data on students via the openpyxl and pandas modules in Python.
 
 Several of these modules may require modifications based on your own reports (column values, report names and directories).
 
 The purpose of this project was to automate populating certain data required by advisors for tracking students. Data reporting
-from ISSM/fsaAtlas did not meet the needs of our office, so I built this application to improve data management efficiency.
+from ISSM did not meet the needs of our office, so I built this application to improve data management efficiency.
 
-Originally, my process was to copy and paste data from various profiles into a spreadsheet. This is now automated in Python.
+Originally, my process was to copy and paste data from various profiles into a spreadsheet and then merge these spreadsheets into one Workbook and upload to a Google TeamDrive. This is now automated in Python.
 
 This module was built with PyCharm CE and has several libraries installed on the main Python 3.7 directory: usr/local/bin/python3.7 
 
@@ -25,9 +25,7 @@ For more information on how to setup and configure the gspread module, please se
 
 ---Recent Additions---
 
-***Added Student Transfer module
-
-***Created separate module for Handlers
+***Added basic Twilio SMS integration
 
 ***Added Gmail emailing capabilities
 
