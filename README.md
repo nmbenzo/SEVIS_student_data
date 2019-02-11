@@ -1,4 +1,4 @@
-# SEVIS_Student_data
+# SEVIS_Student_Data
 A variety of files to connect Excel spreadsheet data of students for SEVIS reporting compliance. 
 
 These files allow international student advisors to build data on students via the openpyxl and pandas modules in Python.
