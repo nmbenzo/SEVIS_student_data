@@ -8,7 +8,7 @@ global_menu = menu_options.GLBL_USER_CHOICE
 
 def main():
     """
-    Master menu that allows user to select which spreadsheet they'd like to run
+    Master menu that allows user to select which functions they'd like to run
     """
     user_input = input(global_menu)
     while user_input != 'q':
@@ -16,13 +16,13 @@ def main():
             menu.build_it_all(global_menu)
         if user_input == 'f':
             menu.final_build_it(global_menu)
-        if user_input == 's':  # for google sheets
+        if user_input == 's':
             menu.sync_googlesheets(global_menu)
         if user_input == 'm':
             menu.sms(global_menu)
         if user_input == 't':
             menu.transfer_menu(global_menu)
-        if user_input == 'e':  # to send emails
+        if user_input == 'e':
             menu.emails(global_menu)
         if user_input == 'n':
             menu.new_menu(global_menu)
