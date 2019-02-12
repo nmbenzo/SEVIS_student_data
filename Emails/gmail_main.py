@@ -20,7 +20,7 @@ email_content_choices = [
     'p - Bad Phone Email',
     's - Status Verification Incomplete Email',
     'f - I-901 Fee Unpaid',
-    'Hit Enter to skip and create a custom message'
+    '\nHit Enter to skip and create a custom message'
 ]
 
 
