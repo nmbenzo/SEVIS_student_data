@@ -1,48 +1,50 @@
 import os
 os.getcwd()
+import Handlers.menu_selection_options as menu_options
+import Handlers.menus as menu
 
-from Handlers.menus import *
+global_menu = menu_options.GLBL_USER_CHOICE
 
 
 def main():
     """
     Master menu that allows user to select which spreadsheet they'd like to run
     """
-    user_input = input(GLBL_USER_CHOICE)
+    user_input = input(global_menu)
     while user_input != 'q':
         if user_input == 'b':
-            build_it_all(GLBL_USER_CHOICE)
+            menu.build_it_all(global_menu)
         if user_input == 'f':
-            final_build_it(GLBL_USER_CHOICE)
+            menu.final_build_it(global_menu)
         if user_input == 's':  # for google sheets
-            sync_googlesheets(GLBL_USER_CHOICE)
+            menu.sync_googlesheets(global_menu)
         if user_input == 'm':
-            sms(GLBL_USER_CHOICE)
+            menu.sms(global_menu)
         if user_input == 't':
-            transfer_menu(GLBL_USER_CHOICE)
+            menu.transfer_menu(global_menu)
         if user_input == 'e':  # to send emails
-            emails(GLBL_USER_CHOICE)
+            menu.emails(global_menu)
         if user_input == 'n':
-            new_menu(GLBL_USER_CHOICE)
+            menu.new_menu(global_menu)
         if user_input == 'a':
-            active_menu(GLBL_USER_CHOICE)
+            menu.active_menu(global_menu)
         if user_input == 'c':
-            cancellation_menu(GLBL_USER_CHOICE)
+            menu.cancellation_menu(global_menu)
         if user_input == 'd':
-            completed_menu(GLBL_USER_CHOICE)
+            menu.completed_menu(global_menu)
         if user_input == 'g':
-            grad_menu(GLBL_USER_CHOICE)
+            menu.grad_menu(global_menu)
 
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
         if menu_again == 'y':
-            user_input = input(GLBL_USER_CHOICE)
+            user_input = input(global_menu)
         elif menu_again == 'n':
             break
         else:
             print('Unknown command.')
-            user_input = input(GLBL_USER_CHOICE)
+            user_input = input(global_menu)
 
 
 if __name__ == '__main__':
