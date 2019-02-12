@@ -14,25 +14,25 @@ def main():
     while user_input != 'q':
         if user_input == 'b':
             menu.build_it_all(global_menu)
-        if user_input == 'f':
+        elif user_input == 'f':
             menu.final_build_it(global_menu)
-        if user_input == 's':
+        elif user_input == 's':
             menu.sync_googlesheets(global_menu)
-        if user_input == 'm':
+        elif user_input == 'm':
             menu.sms(global_menu)
-        if user_input == 't':
+        elif user_input == 't':
             menu.transfer_menu(global_menu)
-        if user_input == 'e':
+        elif user_input == 'e':
             menu.emails(global_menu)
-        if user_input == 'n':
+        elif user_input == 'n':
             menu.new_menu(global_menu)
-        if user_input == 'a':
+        elif user_input == 'a':
             menu.active_menu(global_menu)
-        if user_input == 'c':
+        elif user_input == 'c':
             menu.cancellation_menu(global_menu)
-        if user_input == 'd':
+        elif user_input == 'd':
             menu.completed_menu(global_menu)
-        if user_input == 'g':
+        elif user_input == 'g':
             menu.grad_menu(global_menu)
 
 
