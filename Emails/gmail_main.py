@@ -1,7 +1,7 @@
 from Emails.Gmail_API_Handlers import *
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
-data_sv, test_list, isss
-from Handlers.Google_Drive_IDs import my_email
+data_sv
+from Emails.emails import isss, test_list, my_email
 
 
 e_content_list = {
