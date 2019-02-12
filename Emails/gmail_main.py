@@ -1,6 +1,7 @@
 from Emails.Gmail_API_Handlers import *
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
 data_sv, test_list, isss
+from Handlers.Google_Drive_IDs import my_email
 
 
 e_content_list = {
@@ -53,14 +54,14 @@ def singular_email(get_emessage_content):
     try:
         if get_emessage_content != None:
             subject_input = input('Email Subject: ')
-            message = sendInstance.create_message('nbenzschawel@usfca.edu',
+            message = sendInstance.create_message(my_email,
             receiver_input, subject_input, get_emessage_content)
             sendInstance.send_message('me',message)
             print(f'\nEmail sent to {receiver_input}!')
         if get_emessage_content == None:
             subject_input = input('Email Subject: ')
             content = input('Please type your message: ')
-            message = sendInstance.create_message('nbenzschawel@usfca.edu',
+            message = sendInstance.create_message(my_email,
             receiver_input, subject_input, content)
             sendInstance.send_message('me', message)
             print(f'\nEmail sent to {receiver_input}!')
@@ -82,7 +83,7 @@ def multiple_emails(get_eblast_list, get_emessage_content):
         if get_emessage_content != None:
             subject_input = input('Email Subject: ')
             for email in get_eblast_list:
-                message = sendInstance.create_message('nbenzschawel@usfca.edu',
+                message = sendInstance.create_message(my_email,
                 email, subject_input, get_emessage_content)
                 sendInstance.send_message('me', message)
                 print(f'\nEmail sent to {email} in email list!')
@@ -90,7 +91,7 @@ def multiple_emails(get_eblast_list, get_emessage_content):
             subject_input = input('Email Subject: ')
             content = input('Please type your message: ')
             for email in get_eblast_list:
-                message = sendInstance.create_message('nbenzschawel@usfca.edu',
+                message = sendInstance.create_message(my_email,
                 email, subject_input, content)
                 sendInstance.send_message('me', message)
                 print(f'\nEmail sent to {email} in email list!')
