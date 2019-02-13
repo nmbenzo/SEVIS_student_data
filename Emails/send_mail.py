@@ -1,4 +1,11 @@
-from Emails.Gmail_API_Handlers import *
+import base64
+import os
+from email.mime.text import MIMEText
+from email.mime.audio import MIMEAudio
+from email.mime.image import MIMEImage
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from apiclient import errors
 import mimetypes
 
 
@@ -7,7 +14,6 @@ class SendEmail:
     """Initializes the service parameter"""
     def __init__(self, service):
         self.service = service
-
 
     def create_message(self, sender, to, subject, message_text):
         """Create a message for an email.
@@ -25,7 +31,6 @@ class SendEmail:
         message['from'] = sender
         message['subject'] = subject
         return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-
 
     def create_message_with_attachment(self, sender, to, subject, message_text,
                                        file):
@@ -75,7 +80,6 @@ class SendEmail:
         message.attach(msg)
 
         return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-
 
     def send_message(self, user_id, message):
         """Send an email message.

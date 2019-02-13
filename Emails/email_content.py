@@ -1,4 +1,5 @@
 """ Email Files """
+
 i_901_fee = '/Users/nbenzschawel/Downloads/SEVIS_Reg/Emails/I_901_fee_email.txt'
 
 bad_phone = '/Users/nbenzschawel/Downloads/SEVIS_Reg/Emails/Bad_phone.txt'

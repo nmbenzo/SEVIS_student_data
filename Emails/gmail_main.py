@@ -1,5 +1,5 @@
 import Emails.Gmail_API_Handlers as handler
-import Emails.send_mail as send_mail
+from Emails import send_mail
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
 data_sv
 from Emails.emails import isss, test_list, my_email
