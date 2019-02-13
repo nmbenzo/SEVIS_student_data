@@ -1,4 +1,5 @@
 import Emails.Gmail_API_Handlers as handler
+import Emails.send_mail as send_mail
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
 data_sv
 from Emails.emails import isss, test_list, my_email
@@ -25,6 +26,7 @@ email_content_choices = [
 
 
 def get_emessage_content(e_content_list):
+    """:returns a user's choice from the email content list"""
     print('\nWhich message would you like to send: ')
     for choice in email_content_choices:
         print(choice)
@@ -35,6 +37,7 @@ def get_emessage_content(e_content_list):
 
 
 def get_eblast_list(e_group_list):
+    """:returns a user's choice from the email e_group_list"""
     print('\nPick a target group:')
     for choice in email_group_choices:
         print(choice)
@@ -49,7 +52,7 @@ def singular_email(get_emessage_content):
     Function takes in input from a user to specify the receiver and the email
     subject and then sends a message with a defined body of content
     """
-    sendInstance = handler.send_mail.SendEmail(handler.service)
+    sendInstance = send_mail.SendEmail(handler.service)
     receiver_input = input('Receiver Email: ')
     try:
         if get_emessage_content != None:
@@ -78,7 +81,7 @@ def multiple_emails(get_eblast_list, get_emessage_content):
     subject and then sends a message with a defined body of content to several
     email addresses by looping through a list of emails [i].
     """
-    sendInstance = handler.send_mail.SendEmail(handler.service)
+    sendInstance = send_mail.SendEmail(handler.service)
     try:
         if get_emessage_content != None:
             subject_input = input('Email Subject: ')
