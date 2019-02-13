@@ -1,7 +1,8 @@
 from twilio.rest import Client
 from Twilio_SMS.auth_token import account_sid, auth_token, myTwilionum
-from Twilio_SMS.message_lists import *
-from Twilio_SMS.sms_templates import *
+from Twilio_SMS.message_lists import isss_list, test_list, k_b
+from Twilio_SMS.sms_templates import SV_body, General_ISSS_response, \
+General_response, Test_response
 
 
 client = Client(account_sid, auth_token)

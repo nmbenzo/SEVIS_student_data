@@ -1,4 +1,4 @@
-from Emails.Gmail_API_Handlers import *
+import Emails.Gmail_API_Handlers as handler
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
 data_sv
 from Emails.emails import isss, test_list, my_email
@@ -49,7 +49,7 @@ def singular_email(get_emessage_content):
     Function takes in input from a user to specify the receiver and the email
     subject and then sends a message with a defined body of content
     """
-    sendInstance = send_mail.SendEmail(service)
+    sendInstance = handler.send_mail.SendEmail(handler.service)
     receiver_input = input('Receiver Email: ')
     try:
         if get_emessage_content != None:
@@ -78,7 +78,7 @@ def multiple_emails(get_eblast_list, get_emessage_content):
     subject and then sends a message with a defined body of content to several
     email addresses by looping through a list of emails [i].
     """
-    sendInstance = send_mail.SendEmail(service)
+    sendInstance = handler.send_mail.SendEmail(handler.service)
     try:
         if get_emessage_content != None:
             subject_input = input('Email Subject: ')

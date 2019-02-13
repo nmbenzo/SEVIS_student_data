@@ -1,7 +1,7 @@
 import time
-from Google_Drive.Google_Drive_API_Handlers import *
-from Handlers.Google_Drive_IDs import td_id, \
-    Excel, drive_file_name
+import io
+from googleapiclient.http import MediaIoBaseDownload
+from Handlers.Google_Drive_IDs import td_id, Excel, drive_file_name
 from tqdm import trange
 
 

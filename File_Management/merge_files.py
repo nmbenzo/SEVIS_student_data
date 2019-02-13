@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 from tqdm import trange
-from Handlers.file_imports import *
+import Handlers.file_imports as file
 
 
 def merge_all_workbooks():
@@ -12,27 +12,27 @@ def merge_all_workbooks():
     for i in trange(100):
         time.sleep(0.1)
 
-    COL_student_data = pd.read_excel(COL_students_raw, sheet_name=0, index_col=0)
+    COL_student_data = pd.read_excel(file.COL_students_raw, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
 
-    transfer_student_data = pd.read_excel(current_transfer_data, sheet_name=0, index_col=0)
+    transfer_student_data = pd.read_excel(file.current_transfer_data, sheet_name=0, index_col=0)
     df2 = pd.DataFrame(transfer_student_data)
 
-    new_student_data = pd.read_excel(NEW_students_FINAL, sheet_name=0, index_col=0)
+    new_student_data = pd.read_excel(file.NEW_students_FINAL, sheet_name=0, index_col=0)
     df3 = pd.DataFrame(new_student_data)
 
-    active_student_data = pd.read_excel(ACTIVE_students_FINAL, sheet_name=0, index_col=0)
+    active_student_data = pd.read_excel(file.ACTIVE_students_FINAL, sheet_name=0, index_col=0)
     df4 = pd.DataFrame(active_student_data)
 
-    cancel_students = pd.read_excel(No_SHOW_students_FINAL, sheet_name=0, index_col=0)
+    cancel_students = pd.read_excel(file.No_SHOW_students_FINAL, sheet_name=0, index_col=0)
     df5 = pd.DataFrame(cancel_students)
 
-    J1_students = pd.read_excel(J_students_FINAL, sheet_name=0, index_col=0)
+    J1_students = pd.read_excel(file.J_students_FINAL, sheet_name=0, index_col=0)
     df6 = pd.DataFrame(J1_students)
 
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
-    writer = pd.ExcelWriter(Registration_file, engine='xlsxwriter', date_format='mmm d yyyy')
+    writer = pd.ExcelWriter(file.Registration_file, engine='xlsxwriter', date_format='mmm d yyyy')
 
     # need to write a function that returns a boolean if COL doesn't need to be
     # uploaded for some reason. Split the merge_all_workbooks() into multiple
@@ -137,26 +137,26 @@ def final_merge_all_workbooks():
     for i in trange(100):
         time.sleep(0.1)
 
-    COL_student_data = pd.read_excel(SEVIS_Live_Workbook, sheet_name=0, index_col=0)
+    COL_student_data = pd.read_excel(file.SEVIS_Live_Workbook, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
 
-    transfer_student_data = pd.read_excel(SEVIS_Live_Workbook, sheet_name=1, index_col=0)
+    transfer_student_data = pd.read_excel(file.SEVIS_Live_Workbook, sheet_name=1, index_col=0)
     df2 = pd.DataFrame(transfer_student_data)
 
-    new_student_data = pd.read_excel(SEVIS_Live_Workbook, sheet_name=2, index_col=0)
+    new_student_data = pd.read_excel(file.SEVIS_Live_Workbook, sheet_name=2, index_col=0)
     df3 = pd.DataFrame(new_student_data)
 
-    active_student_data = pd.read_excel(ACTIVE_students_FINAL, sheet_name=0, index_col=0)
+    active_student_data = pd.read_excel(file.ACTIVE_students_FINAL, sheet_name=0, index_col=0)
     df4 = pd.DataFrame(active_student_data)
 
-    cancel_students = pd.read_excel(SEVIS_Live_Workbook, sheet_name=4, index_col=0)
+    cancel_students = pd.read_excel(file.SEVIS_Live_Workbook, sheet_name=4, index_col=0)
     df5 = pd.DataFrame(cancel_students)
 
-    J1_students = pd.read_excel(J_students_FINAL, sheet_name=0, index_col=0)
+    J1_students = pd.read_excel(file.J_students_FINAL, sheet_name=0, index_col=0)
     df6 = pd.DataFrame(J1_students)
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
-    writer = pd.ExcelWriter(Registration_file, engine='xlsxwriter',
+    writer = pd.ExcelWriter(file.Registration_file, engine='xlsxwriter',
                             date_format='mmm d yyyy')
 
     # need to write a function that returns a boolean if COL doesn't need to be

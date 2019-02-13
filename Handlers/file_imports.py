@@ -172,7 +172,7 @@ wb1_grad = openpyxl.load_workbook(active_stud_issm_data)
 sheet_grad = wb1_grad.worksheets[0]
 ws_grad = wb1_grad.active
 
-# Think about adding a try, except function here to check the file directory.
+
 wb2_grad = openpyxl.load_workbook(
 	'/Users/nbenzschawel/Downloads/SEVIS_Reg/2019/Spring/Raw_Files/201840_graduated_students_test.xlsx'
 )
