@@ -5,6 +5,7 @@ from Handlers.file_imports import ws2, sheet, ACTIVE_students_FINAL, ACTIVE_stud
 ACTIVE_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
 from tqdm import trange
+from Handlers.import_dictionaries import sevisID_emails
 
 
 def create_active_Student_Data():
@@ -88,4 +89,43 @@ def match_advisor(advisor_major_ug, advisor_major_gr):
         if major in advisor_major_gr:
             ACTIVE_students_sheet.cell(row=rowNum, column=1).value = advisor_major_gr[major]
 
+    ACTIVE_students.save(ACTIVE_students_FINAL)
+
+
+def add_graduated_student_emails(sevisID_emails):
+    """
+    This function populates a student's OPT Type from the sevis_opt_report
+    to the graduated student list by matching it with a campusID
+    from active_stud_issm_data
+    """
+    ACTIVE_students_sheet.insert_cols(1)
+    title = ACTIVE_students_sheet.cell(row=1, column=1)
+    title.value = 'Emails'
+    for rowNum in range(2, ACTIVE_students_sheet.max_row):
+        sevisID = ACTIVE_students_sheet.cell(row=rowNum, column=7).value
+        for x in sevisID_emails:
+            if x == sevisID:
+                ACTIVE_students_sheet.cell(row=rowNum, column=1).value = sevisID_emails[x]
+
+    ACTIVE_students.save(ACTIVE_students_FINAL)
+
+
+def add_notes_column():
+    ACTIVE_students_sheet.insert_cols(1)
+    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
+    title1.value = 'Notes'
+    ACTIVE_students.save(ACTIVE_students_FINAL)
+
+
+def add_registration_status_column():
+    ACTIVE_students_sheet.insert_cols(1)
+    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
+    title1.value = 'Registration Status'
+    ACTIVE_students.save(ACTIVE_students_FINAL)
+
+
+def add_graduation_status_column():
+    ACTIVE_students_sheet.insert_cols(1)
+    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
+    title1.value = 'Graduation Status'
     ACTIVE_students.save(ACTIVE_students_FINAL)

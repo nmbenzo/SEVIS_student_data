@@ -14,14 +14,17 @@ from Compeleted_Student_Cleaning.build_comp_data import SEVISID_completed
 
 
 from Active_Students_Requiring_Registration import build_data, populate_active_data
-from Active_Students_Requiring_Registration.populate_active_data import create_active_Student_Data, active_match_SEVISID, \
-match_major_data, match_advisor, match_units
+from Active_Students_Requiring_Registration.populate_active_data import \
+create_active_Student_Data, active_match_SEVISID, match_major_data, \
+match_advisor, match_units, add_graduated_student_emails, add_notes_column, \
+add_registration_status_column, add_graduation_status_column
 from Active_Students_Requiring_Registration.sort_active_data import sort_active_data
 
 
 from New_Student_Registration import build_student_data, populate_new_student_notes
-from New_Student_Registration.populate_new_student_notes import create_new_Student_Data, new_match_SEVISID, \
-new_match_major_data, new_match_advisor, add_advisor_notes
+from New_Student_Registration.populate_new_student_notes import \
+create_new_Student_Data, new_match_SEVISID, new_match_major_data, \
+new_match_advisor, add_advisor_notes, add_registration_column
 from New_Student_Registration.sort_new_data import sort_new_data
 
 

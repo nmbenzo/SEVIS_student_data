@@ -1,39 +1,38 @@
 import os
 os.getcwd()
-import Handlers.menu_selection_options as menu_options
 import Handlers.menus as menu
-
-global_menu = menu_options.GLBL_USER_CHOICE
+from Handlers.menus import global_menu
 
 
 def main():
     """
     Master menu that allows user to select which functions they'd like to run
     """
+    menu_instance = menu.Menu()
     user_input = input(global_menu)
     while user_input != 'q':
         if user_input == 'b':
-            menu.build_it_all(global_menu)
+            menu_instance.build_it_all(global_menu)
         elif user_input == 'f':
-            menu.final_build_it(global_menu)
+            menu_instance.final_build_it(global_menu)
         elif user_input == 's':
-            menu.sync_googlesheets(global_menu)
+            menu_instance.sync_googlesheets(global_menu)
         elif user_input == 'm':
-            menu.sms(global_menu)
+            menu_instance.sms(global_menu)
         elif user_input == 't':
-            menu.transfer_menu(global_menu)
+            menu_instance.transfer_menu(global_menu)
         elif user_input == 'e':
-            menu.emails(global_menu)
+            menu_instance.emails(global_menu)
         elif user_input == 'n':
-            menu.new_menu(global_menu)
+            menu_instance.new_menu(global_menu)
         elif user_input == 'a':
-            menu.active_menu(global_menu)
+            menu_instance.active_menu(global_menu)
         elif user_input == 'c':
-            menu.cancellation_menu(global_menu)
+            menu_instance.cancellation_menu(global_menu)
         elif user_input == 'd':
-            menu.completed_menu(global_menu)
+            menu_instance.completed_menu(global_menu)
         elif user_input == 'g':
-            menu.grad_menu(global_menu)
+            menu_instance.grad_menu(global_menu)
 
 
         print('\n')

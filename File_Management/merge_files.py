@@ -10,7 +10,7 @@ def merge_all_workbooks():
     DataFrames
     """
     for i in trange(100):
-        time.sleep(0.1)
+        time.sleep(0.01)
 
     COL_student_data = pd.read_excel(file.COL_students_raw, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
@@ -100,22 +100,24 @@ def merge_all_workbooks():
     worksheet2.set_column('H:J', 13, column_format)
 
     # Format columns of New Students
-    worksheet3.set_column('A:A', 48, column_format)
-    worksheet3.set_column('C:C', 25, column_format)
-    worksheet3.set_column('D:D', 10, column_format)
+    worksheet3.set_column('A:A', 15, column_format)
+    worksheet3.set_column('B:B', 48, column_format)
+    worksheet3.set_column('C:C', 15, column_format)
+    worksheet3.set_column('D:D', 18, column_format)
     worksheet3.set_column('E:G', 16, column_format)
     worksheet3.set_column('H:H', 22, column_format)
     worksheet3.set_column('I:J', 17, column_format)
     worksheet3.set_column('K:K', 25, column_format)
 
     # Format columns of Active Students
-    worksheet4.set_column('A:A', 10, column_format)
+    worksheet4.set_column('A:A', 16, column_format)
     worksheet4.set_column('B:B', 25, column_format)
-    worksheet4.set_column('C:C', 15, column_format)
-    worksheet4.set_column('D:D', 10, column_format)
+    worksheet4.set_column('C:C', 20, column_format)
+    worksheet4.set_column('D:D', 20, column_format)
     worksheet4.set_column('E:E', 13, column_format)
-    worksheet4.set_column('F:F', 16, column_format)
-    worksheet4.set_column('G:J', 21, column_format)
+    worksheet4.set_column('F:F', 20, column_format)
+    worksheet4.set_column('G:G', 17, column_format)
+    worksheet4.set_column('H:J', 21, column_format)
 
     worksheet5.set_column('A:A', 64, column_format)
     worksheet5.set_column('B:B', 11, column_format)
@@ -135,7 +137,7 @@ def final_merge_all_workbooks():
     and then applies minimal formatting using Panda DataFrames
     """
     for i in trange(100):
-        time.sleep(0.1)
+        time.sleep(0.01)
 
     COL_student_data = pd.read_excel(file.SEVIS_Live_Workbook, sheet_name=0, index_col=0)
     df1 = pd.DataFrame(COL_student_data)
@@ -223,22 +225,24 @@ def final_merge_all_workbooks():
     worksheet2.set_column('J:M', 18, column_format)
 
     # Format columns of New Students
-    worksheet3.set_column('A:A', 24, column_format)
+    worksheet3.set_column('A:A', 15, column_format)
     worksheet3.set_column('B:B', 48, column_format)
-    worksheet3.set_column('C:D', 25, column_format)
+    worksheet3.set_column('C:C', 15, column_format)
+    worksheet3.set_column('D:D', 18, column_format)
     worksheet3.set_column('E:G', 16, column_format)
     worksheet3.set_column('H:H', 22, column_format)
     worksheet3.set_column('I:J', 17, column_format)
     worksheet3.set_column('K:K', 25, column_format)
 
     # Format columns of Active Students
-    worksheet4.set_column('A:A', 10, column_format)
+    worksheet4.set_column('A:A', 16, column_format)
     worksheet4.set_column('B:B', 25, column_format)
-    worksheet4.set_column('C:C', 15, column_format)
-    worksheet4.set_column('D:D', 10, column_format)
+    worksheet4.set_column('C:C', 18, column_format)
+    worksheet4.set_column('D:D', 20, column_format)
     worksheet4.set_column('E:E', 13, column_format)
-    worksheet4.set_column('F:F', 16, column_format)
-    worksheet4.set_column('G:J', 21, column_format)
+    worksheet4.set_column('F:F', 20, column_format)
+    worksheet4.set_column('G:G', 17, column_format)
+    worksheet4.set_column('H:J', 21, column_format)
 
     worksheet5.set_column('A:A', 64, column_format)
     worksheet5.set_column('B:B', 11, column_format)

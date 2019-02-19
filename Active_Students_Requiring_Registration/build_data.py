@@ -16,6 +16,9 @@ major_data = df['Major Field (display)'].tolist()
 df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
 units = df['07 Total Credit Hours'].tolist()
 
+df = pd.ExcelFile(active_stud_issm_data).parse('All_SEVIS-Active_Student_Tracki')
+emails = df['E-mail Address'].tolist()
+
 
 # build dict where k = SEVISID, v = campusID
 active_campusID_SEVISID = dict(zip(SEVISID, campusID))
@@ -25,3 +28,4 @@ active_SEVISID_major = dict(zip(SEVISID, major_data))
 
 active_SEVISID_units = dict(zip(SEVISID, units))
 
+sevisID_emails = dict(zip(SEVISID, emails))

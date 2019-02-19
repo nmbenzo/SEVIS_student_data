@@ -91,3 +91,11 @@ def add_advisor_notes(SEVISID_checked_in, SEVISID_cr_hours):
                     + ', Registered Units: ' + str(SEVISID_cr_hours[sevis_ID]) + ' credits'
 
     NEW_students.save(NEW_students_FINAL)
+
+
+def add_registration_column():
+    """Adds Registration Notes column"""
+    NEW_students_sheet.insert_cols(1)
+    title = NEW_students_sheet.cell(row=1, column=1)
+    title.value = 'Registration Notes'
+    NEW_students.save(NEW_students_FINAL)
