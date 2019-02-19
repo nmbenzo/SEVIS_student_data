@@ -8,6 +8,7 @@ global_menu = menu_options.GLBL_USER_CHOICE
 
 
 class Menu:
+
     def __init__(self):
         self.global_menu = global_menu
 
