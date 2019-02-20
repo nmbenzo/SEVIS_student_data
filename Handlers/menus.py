@@ -8,13 +8,18 @@ global_menu = menu_options.GLBL_USER_CHOICE
 
 
 class Menu:
-
-    def __init__(self):
+    """
+    This class organizes the various menu options into methods and where the
+    global_menu option is returned as an class attribute in each method
+    """
+    def __init__(self, global_menu):
+        """Initializes the global_menu parameter"""
         self.global_menu = global_menu
 
-    def build_it_all(self, global_menu):
+
+    def build_it_all(self):
         """
-        This function is a type of a master function that runs all necessary
+        This method is a type of a master function that runs all necessary
         functions to build populate spreadsheets, merge them into one workbook,
         and then upload them with a specified naming convention to a Google Team
         Drive
@@ -111,10 +116,10 @@ class Menu:
             return global_menu
 
 
-    def final_build_it(self, global_menu):
+    def final_build_it(self):
 
         """
-        This function merges several sheets from the current workflow in the
+        This method merges several sheets from the current workflow in the
         Google TeamDrive with a final active student data build, merges them into
         one workbook, and then upload them with a specified naming convention
         to the current ISSS TeamDrive.
@@ -173,7 +178,7 @@ class Menu:
             return global_menu
 
 
-    def transfer_menu(self, global_menu):
+    def transfer_menu(self):
         """
         Menu to access and modify transfer student data
 
@@ -208,9 +213,9 @@ class Menu:
             return global_menu
 
 
-    def sync_googlesheets(self, global_menu):
+    def sync_googlesheets(self):
         """
-        menu where users can select a spreadsheet to sync with Google_Drive
+        Menu where users can select a spreadsheet to sync with Google_Drive
         """
         user_input = input(menu_options.SYNC_GOOGLESHEETS)
         while user_input != 'q':
@@ -230,10 +235,10 @@ class Menu:
             return global_menu
 
 
-    def sms(self, global_menu):
+    def sms(self):
         """
-        Menu where users can select to send a text to a student or email blast
-        multiple students
+        Menu where users can select to send a text to a student or sms blast
+        multiple students with custom text or pre-selected templates
         """
         user_input = input(menu_options.SMS_MESSAGE)
         while user_input != 'q':
@@ -248,7 +253,7 @@ class Menu:
             return global_menu
 
 
-    def emails(self, global_menu):
+    def emails(self):
         """Menu where users can elect to send emails to students"""
         user_input = input(menu_options.EMAIL_TO_STUDENT_template)
         while user_input != 'q':
@@ -266,7 +271,7 @@ class Menu:
             return global_menu
 
 
-    def new_menu(self, global_menu):
+    def new_menu(self):
         """
         menu where users can select a section of the
         spreadsheet to populate about new students requiring registration
@@ -302,7 +307,7 @@ class Menu:
             return global_menu
 
 
-    def active_menu(self, global_menu):
+    def active_menu(self):
         """
         menu where users can select a section of the
         spreadsheet to populate about new students requiring registration
@@ -343,7 +348,7 @@ class Menu:
             return global_menu
 
 
-    def cancellation_menu(self, global_menu):
+    def cancellation_menu(self):
         """
         menu where users can merge UG and GR cancellation lists from ISSM and then
         poplate data relevant to students that haven't checked in or are not registered
@@ -384,7 +389,7 @@ class Menu:
             return global_menu
 
 
-    def completed_menu(self, global_menu):
+    def completed_menu(self):
         """
         menu where users can elect to match SEVIS COMPLETED students with their ISSM
         Profile Status
@@ -398,7 +403,7 @@ class Menu:
             return global_menu
 
 
-    def grad_menu(self, global_menu):
+    def grad_menu(self):
         """
         menu where users can select a section of the
         spreadsheet to populate about graduated students

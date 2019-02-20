@@ -7,15 +7,15 @@ from tqdm import trange
 
 class Download:
 
-    """Initializes the service parameter"""
     def __init__(self, service):
+        """Initializes the service parameter"""
         self.service = service
 
     def get_fileID(self, file_name):
         """
         Call the Drive v3 API to get the file_id for a particular file name
-         which is passed as an argument
-         """
+        which is passed as an argument
+        """
         results = self.service.files().list(
             pageSize=50,
             supportsTeamDrives=True,
