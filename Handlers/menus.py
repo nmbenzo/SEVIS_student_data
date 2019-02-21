@@ -213,7 +213,7 @@ class Menu:
             return global_menu
 
 
-    def sync_googlesheets(self):
+    def sync_google_drive(self):
         """
         Menu where users can select a spreadsheet to sync with Google_Drive
         """
