@@ -16,7 +16,7 @@ def main():
         elif user_input == 'f':
             menu_instance.final_build_it()
         elif user_input == 's':
-            menu_instance.sync_googlesheets()
+            menu_instance.sync_google_drive()
         elif user_input == 'm':
             menu_instance.sms()
         elif user_input == 't':

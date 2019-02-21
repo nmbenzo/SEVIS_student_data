@@ -5,7 +5,6 @@ from Handlers.file_imports import ws2, sheet, ACTIVE_students_FINAL, ACTIVE_stud
 ACTIVE_students_sheet
 from File_Management.copier import copy_new_Range, paste_new_Range
 from tqdm import trange
-from Handlers.import_dictionaries import sevisID_emails
 
 
 def create_active_Student_Data():
