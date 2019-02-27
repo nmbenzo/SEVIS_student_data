@@ -1,14 +1,13 @@
 import os
 os.getcwd()
-import Handlers.menus as menu
-from Handlers.menus import global_menu
+from Handlers.menus import Menu, global_menu
 
 
 def main():
     """
     Master menu that allows user to select which functions they'd like to run
     """
-    menu_instance = menu.Menu(global_menu)
+    menu_instance = Menu(global_menu)
     user_input = input(global_menu)
     while user_input != 'q':
         if user_input == 'b':
@@ -33,7 +32,6 @@ def main():
             menu_instance.completed_menu()
         elif user_input == 'g':
             menu_instance.grad_menu()
-
 
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
