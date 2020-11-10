@@ -22,7 +22,7 @@ class Auth:
         """
         Returns the proper OAuth2 credentials for a Gmail account specified by
         the client_secrets.json file.
-        :return:
+        :return: creds
         """
         store = file.Storage('credentials.json')
         creds = store.get()
@@ -33,5 +33,4 @@ class Auth:
                 creds = tools.run_flow(flow, store, flags)
             else:
                 creds = tools.run_flow(flow, store)
-
         return creds

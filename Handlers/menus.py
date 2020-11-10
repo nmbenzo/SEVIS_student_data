@@ -177,7 +177,8 @@ class Menu:
 
         def emails(self):
             """
-            Menu where users can elect to send emails to students
+            Menu where users can elect to send emails to students either manually
+            or from a return value(s) of a database call
             """
             user_input = input(menu_options.EMAIL_TO_STUDENT_template).lower()
             while user_input != 'q':

@@ -17,11 +17,9 @@ Please select one of the following to begin workflow:
 - 'q' - Quit
 """
 
-
 BUILD_REG_DATA = """
 Would you like to build a COMPLETE list of SEVIS Registration data (y/n)?: 
 """
-
 
 SYNC_GOOGLESHEETS = """
 Select what you would like to do with the Google_Drive: 
@@ -30,13 +28,11 @@ Select what you would like to do with the Google_Drive:
 - 'r' - Registration Timeline
 """
 
-
 SMS_MESSAGE = """
 Please select one of the following:
 - 's' - Send singular SMS Message
 - 'b' - Send SMS Blast
 """
-
 
 EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
@@ -63,7 +59,6 @@ Please select one of the following:
 - 'c' - Copy & Paste final data in Sheet1
 """
 
-
 NEWs_USER_CHOICE = """
 Please select one of the following:
 - 'a' - Run all functions
@@ -73,7 +68,6 @@ Please select one of the following:
 - 'n' - Add Advisor Notes
 """
 
-
 ACTIVEs_USER_CHOICE = """
 Please select one of the following:
 - 'a' - Run all functions
@@ -82,14 +76,12 @@ Please select one of the following:
 - 'e' - Match Advisor
 """
 
-
 BUILD_CANCEL_CHOICE = """
 Please select one of the following:
 - 'a' - Run all functions
 - 'm' - Merge UG and GR Cancel Lists
 - 'p' - Populate Merged Cancel List
 """
-
 
 GRADUATEs_USER_CHOICE = """
 Please select one of the following:
@@ -101,7 +93,6 @@ Please select one of the following:
 - 'p' - Add Profile End Date
 - 's' - Update Cell Email
 """
-
 
 COMPLETED_STUDENTS = """
 Would you like to generate a list of COMPLETED students in SEVIS vs ISSM Profile Status (y/n)?: 

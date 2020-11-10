@@ -13,7 +13,6 @@ def drive_sheet_upload():
     upload_sheet_td = driveInstance.import_td_folder(name=ids.uploaded_file_name,
                     folder_id=ids.folder_id, fn=ids.Registration_file,
                     mimeType=ids.SHEET_MIMETYPE)
-
     return upload_sheet_td
 
 
@@ -24,7 +23,6 @@ def drive_doc_upload():
     upload_doc_td = driveInstance.import_td_folder(name=ids.timeline_name,
                     folder_id=ids.folder_id, fn=ids.REGISTRATION_TIMELINE,
                     mimeType=ids.DOC_MIMETYPE)
-
     return upload_doc_td
 
 
@@ -36,5 +34,4 @@ def download_file():
     getID = driveInstance.get_fileID(ids.drive_file_name)
     file_download = driveInstance.download_file(ids.Excel, ids.file_name, getID)
     shutil.move(location_a, location_b)
-
     return file_download
