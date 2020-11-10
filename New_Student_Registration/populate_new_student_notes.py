@@ -10,13 +10,10 @@ issm_reg_data_success, NEW_final_MASTER, issm_add_address_phone
 
 
 outname = 'data_diff.csv'
-
 outdir = path_to_final_data_S20
 if not os.path.exists(outdir):
     os.mkdir(outdir)
-
 fullname = os.path.join(outdir, outname)
-
 
 def dataframe_difference(which=None):
     """Find rows which are different between two DataFrames."""
@@ -36,7 +33,6 @@ def dataframe_difference(which=None):
         diff_df = comparison_df[comparison_df['_merge'] == which]
     diff_df.to_csv(fullname)
     return diff_df
-
 
 def merge_new_data():
     """
@@ -74,9 +70,7 @@ def merge_new_data():
     # can be a list, a Series, an array or a scalar
     # cleaned_results.insert(loc=0, column='Registration Status', value='')
     cleaned_results.insert(loc=0, column='Registration Notes', value='')
-
     return cleaned_results
-
 
 def match_new_advisor(cleaned_results, ug_final_df, gr_final_df):
     """
@@ -95,22 +89,18 @@ def match_new_advisor(cleaned_results, ug_final_df, gr_final_df):
          'Major Field (display)']],
           on=['Level of Education (display)', 'Major Field (display)'],
           how='left')
-
     gr_results = pd.merge(ug_results, gr_final_df[
         ['Advisor',
          'Level of Education (display)',
          'Major Field (display)']],
           on=['Level of Education (display)', 'Major Field (display)'],
           how='left')
-
     # combine the two advisor DataFrame columns
     gr_results['Advisor'] = \
         gr_results.pop("Advisor_x").fillna(gr_results.pop("Advisor_y")).astype(str)
-
     writer = pd.ExcelWriter(NEW_students_FINAL)
     gr_results.to_excel(writer, 'Sheet1', index=False)
     writer.save()
-
 
 def add_advisor_notes():
     """
@@ -125,7 +115,6 @@ def add_advisor_notes():
     units = final_workbook['07 Total Credit Hours'].fillna(0)
     check_in = final_workbook['14 CHECK IN I94 or Entry Stamp']. \
         fillna('Not Complete')
-
     # convert the two Series to numpy char arrays
     a = np.char.array(check_in.values)
     b = np.char.array(units.values)
@@ -148,7 +137,6 @@ def add_advisor_notes():
                             engine='openpyxl')
         writer.save()
 
-
 def sort_new_data():
     """
     Function to sort the Dataframe and then spreadsheet by I-94 check-in
@@ -163,7 +151,6 @@ def sort_new_data():
     sorted_by_CWID.to_excel(writer, 'Sheet', index=False)
     writer.save()
 
-
 def print_new_work_done():
     work_output = ["-Built discrepancy report",
                    "-New Excel workbook built",
@@ -176,7 +163,6 @@ def print_new_work_done():
     for work in work_output:
         time.sleep(0.3)
         print(work)
-
 
 def update_checkin_status():
     """
