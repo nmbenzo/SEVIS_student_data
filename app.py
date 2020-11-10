@@ -2,7 +2,6 @@ import os
 os.getcwd()
 from Handlers.menus import Menu, global_menu
 
-
 def main():
     """
     Master menu that allows user to select which functions they'd like to run
@@ -32,7 +31,6 @@ def main():
             menu_instance.completed_menu()
         elif user_input == 'g':
             menu_instance.grad_menu()
-
         print('\n')
         menu_again = input('Would you like to see the menu again? (y/n): ')
         if menu_again == 'y':
