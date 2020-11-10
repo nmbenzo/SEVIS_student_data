@@ -1,3 +1,6 @@
+import pandas as pd
+from Handlers.file_imports import major_advisor_file
+
 advisor_major_ug = {
     'BACT-Accounting': 'Nina',
     'BADM-Business Administration': 'Nina',
@@ -25,10 +28,13 @@ advisor_major_ug = {
     'BSDS-Data Science':'Nathan',
     'ENVS-Environmental Science':'Nathan',
     'ENVA-Environmental Studies': 'Nathan',
+    'LAS-Latin American Studies': 'Nathan',
     'ENGL-English': 'Nathan',
     'CMPL-Comparative Lit. & Culture': 'Nathan',
     'ICL-Intl Transaction & Comp. Law':'Nathan',
     'IPTL-Intellectual Property Tech Law': 'Nathan',
+    'MUSE-Museum Studies': 'Nathan',
+    'BS-Economics': 'Nathan',
     'MATH-Mathematics': 'Nathan',
     'MS-Media Studies': 'Nathan',
     'FNAR-Fine Arts': 'Nathan',
@@ -45,25 +51,30 @@ advisor_major_ug = {
     'WRIT-Writing': 'Nathan'
      }
 
+
 advisor_major_gr = {
     'IDEC-Intl & Development Economics': 'Marcella',
     'ARTM-Art History/Arts Management': 'Marcella',
     'CSBR-Computer Science Bridge': 'Marcella',
     'ENVS-Environmental Science': 'Marcella',
+    'CS-Computer Science': 'Marcella',
     'ECON-Economics': 'Marcella',
     'CHEM-Chemistry': 'Marcella',
     'ENGY-Energy Systems Management': 'Marcella',
     'MSEM-Environmental Management': 'Marcella',
     'MAIS-International Studies': 'Marcella',
+    'MIMS-Migration Studies': 'Marcella',
+    'MS-Applied Economics': 'Marcella',
     'MAPC-Professional Communication': 'Marcella',
     'CPSY-Counseling Psychology': 'Marcella',
     'CAPS-Asia Pacific Graduate Studies': 'Marcella',
     'APS-Asia Pacific Studies': 'Marcella',
     'BTEC-Biotechnology': 'Marcella',
     'CSBR-Computer Science': 'Marcella',
+    'HRED - Human Rights Education': 'Marcella',
     'PA-Public Affairs': 'Marcella',
     'PSYD-Psychology': 'Marcella',
-    'SM-Sport Management': 'Macella',
+    'SM-Sport Management': 'Marcella',
     'SM-Sports Management': 'Marcella',
     'UPA-Urban and Public Affairs':'Marcella',
     'CEL-Catholic Educational Leadership': 'Cynthia',
@@ -74,8 +85,13 @@ advisor_major_gr = {
     'NURS-Nursing': 'Cynthia',
     'MBA-Business Administration': 'Cynthia',
     'MNAF-Nonprofit Administration': 'Cynthia',
+    'MGEM-Global Entrepreneurship & Mgt': 'Cynthia',
+    'MGEN-Global Entrepreneurial/Mgt': 'Cynthia',
     'MSHI-Health Informatics': 'Cynthia',
     'MSBH-Behavorial Health': 'Cynthia',
+    'ETK-Education Technology': 'Cynthia',
+    'MNA-Nonprofit Administration': 'Cythnia',
+    'MSIS-Information Systems': 'Cynthia',
     'MSEI-Entrepreneurship Innovation': 'Cynthia',
     'MSFA-Financial Analysis': 'Cynthia',
     'MSFN-Financial Analysis': 'Cynthia',
@@ -87,6 +103,113 @@ advisor_major_gr = {
     'TSOL-Teach Engl/Speakers Other Lang': 'Cynthia',
     'NUDS-Healthcare Sys.Ldrship(MSN/RN)': 'Cynthia'
 }
+
+
+major_ug = {
+    'BACT-Accounting': 'Bachelors',
+    'BADM-Business Administration': 'Bachelors',
+    'BENI-Entrepreneurship & Innovation': 'Bachelors',
+    'BMGT-Management': 'Bachelors',
+    'BNTL-International Business': 'Bachelors',
+    'BMKT-Marketing': 'Bachelors',
+    'BFIN-Finance': 'Bachelors',
+    'HM-Hospitality Management': 'Bachelors',
+    'UNBN-Undeclared Business': 'Bachelors',
+    'CS-Computer Science': 'Bachelors',
+    'COMS-Communication Studies': 'Bachelors',
+    'CHEM-Chemistry': 'Bachelors',
+    'POLS-Politics': 'Bachelors',
+    'HIST-History': 'Bachelors',
+    'BIO-Biology': 'Bachelors',
+    'BAIS-International Studies': 'Bachelors',
+    'UNLA-Undeclared Arts': 'Bachelors',
+    'UNSC-Undeclared Sciences': 'Bachelors',
+    'ADVT-Advertising': 'Bachelors',
+    'LAW-Law': 'Doctorate (JD)',
+    'PSYC-Psychology': 'Bachelors',
+    'ECON-Economics': 'Bachelors',
+    'ARCD-Architecture & Community Desig': 'Bachelors',
+    'BSDS-Data Science': 'Bachelors',
+    'ENVS-Environmental Science': 'Bachelors',
+    'ENVA-Environmental Studies': 'Bachelors',
+    'LAS-Latin American Studies': 'Bachelors',
+    'ENGL-English': 'Bachelors',
+    'CMPL-Comparative Lit. & Culture': 'Masters',
+    'ICL-Intl Transaction & Comp. Law': 'Masters',
+    'IPTL-Intellectual Property Tech Law': 'Masters',
+    'MUSE-Museum Studies': 'Bachelors',
+    'BS-Economics': 'Bachelors',
+    'MATH-Mathematics': 'Bachelors',
+    'MS-Media Studies': 'Bachelors',
+    'FNAR-Fine Arts': 'Bachelors',
+    'PASJ-Perf. Arts & Soc. Justice': 'Bachelors',
+    'PHIL-Philosophy': 'Bachelors',
+    'PHYS-Physics': 'Bachelors',
+    'SOC-Sociology': 'Bachelors',
+    'DSGN-Design': 'Bachelors',
+    'KIN-Kinesiology': 'Bachelors',
+    'JNST-Japanese Studies': 'Bachelors',
+    'ANST-Asian Studies': 'Bachelors',
+    'BIOL-Biology':'Bachelors',
+    'URBS-Urban Studies': 'Bachelors',
+    'WRIT-Writing': 'Bachelors',
+     }
+
+
+major_gr = {
+    'IDEC-Intl & Development Economics': 'Masters',
+    'ARTM-Art History/Arts Management': 'Masters',
+    'CSBR-Computer Science Bridge': 'Masters',
+    'ENVS-Environmental Science': 'Masters',
+    'CS-Computer Science': 'Masters',
+    'ECON-Economics': 'Masters',
+    'CHEM-Chemistry': 'Masters',
+    'ENGY-Energy Systems Management': 'Masters',
+    'MSEM-Environmental Management': 'Masters',
+    'MAIS-International Studies': 'Masters',
+    'MIMS-Migration Studies': 'Masters',
+    'MS-Applied Economics': 'Masters',
+    'MAPC-Professional Communication': 'Masters',
+    'CPSY-Counseling Psychology': 'Masters',
+    'CAPS-Asia Pacific Graduate Studies': 'Masters',
+    'APS-Asia Pacific Studies': 'Masters',
+    'BTEC-Biotechnology': 'Masters',
+    'CSBR-Computer Science': 'Masters',
+    'HRED - Human Rights Education': 'Masters',
+    'PA-Public Affairs': 'Masters',
+    'PSYD-Psychology': 'Masters',
+    'SM-Sport Management': 'Masters',
+    'SM-Sports Management': 'Masters',
+    'UPA-Urban and Public Affairs':'Marcella',
+    'CEL-Catholic Educational Leadership': 'Doctoral',
+    'THES-Theology & Religious Studies': 'Masters',
+    'CSF-Computer Science (4+1)': 'Masters',
+    'MS-Data Science': 'Masters',
+    'IME-Intl and Multicultural Educ.': 'Masters',
+    'NURS-Nursing': 'Masters',
+    'MBA-Business Administration': 'Masters',
+    'MNAF-Nonprofit Administration': 'Masters',
+    'MGEM-Global Entrepreneurship & Mgt': 'Masters',
+    'MGEN-Global Entrepreneurial/Mgt': 'Masters',
+    'MSHI-Health Informatics': 'Masters',
+    'MSBH-Behavorial Health': 'Masters',
+    'ETK-Education Technology': 'Masters',
+    'MNA-Nonprofit Administration': 'Masters',
+    'MSIS-Information Systems': 'Masters',
+    'MSEI-Entrepreneurship Innovation': 'Masters',
+    'MSFA-Financial Analysis': 'Masters',
+    'MSFN-Financial Analysis': 'Masters',
+    'MSAN-Analytics': 'Masters',
+    'EDUC-Education': 'Doctoral',
+    #'L&I-Learning and Instruction': 'Doctoral',
+    'L&I-Learning and Instruction': 'Masters',
+    'MPH-Public Health': 'Masters',
+    'O&L-Organization and Leadership': 'Doctoral',
+    'TSOL-Teach Engl/Speakers Other Lang': 'Masters',
+    #'TSOL-Teach Engl/Speakers Other Lang':'Other (Certificate)',
+    'NUDS-Healthcare Sys.Ldrship(MSN/RN)': 'Doctoral'
+}
+
 
 master_deg_adv = {
     'Master of Arts':'Marcella',
@@ -109,3 +232,22 @@ bachelor_deg_adv = {
     'Juris Doctor': 'Nathan',
     'Bachelor of Science in Nursing': 'Nathan'
 }
+
+
+gr_major_advisor_df = pd.DataFrame.from_dict(
+    advisor_major_gr, orient='index').T.melt()
+
+ug_major_advisor_df = pd.DataFrame.from_dict(
+    advisor_major_ug, orient='index').T.melt()
+
+ug_major_level_df = pd.DataFrame.from_dict(
+    major_ug, orient='index').T.melt()
+
+gr_major_level_df = pd.DataFrame.from_dict(
+    major_gr, orient='index').T.melt()
+
+
+ug_final_df = pd.merge(ug_major_advisor_df, ug_major_level_df, on='variable')
+
+gr_final_df = pd.merge(gr_major_advisor_df, gr_major_level_df, on='variable')
+

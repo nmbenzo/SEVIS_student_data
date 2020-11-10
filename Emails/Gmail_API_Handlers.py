@@ -10,7 +10,7 @@ from Emails import authorization
 
 
 SCOPES = 'https://mail.google.com/'
-client_secret = 'credentials.json'
+client_secret = 'client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Send Email'
 
 # Building an instance of the Gmail authorization class
@@ -20,3 +20,17 @@ credentials = authInstance.get_credentials()
 
 http = credentials.authorize(httplib2.Http())
 service = discovery.build('gmail', 'v1', http=http)
+
+
+def get_labels():
+    """Returns a list of labels from the authorized Gmail Account"""
+    results = service.users().labels().list(userId='me').execute()
+    labels = results.get('labels', [])
+
+    if not labels:
+        print('No labels found.')
+    else:
+        print('Labels:')
+        for label in labels:
+            print(label['name'])
+

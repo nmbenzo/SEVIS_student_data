@@ -10,10 +10,13 @@ issm_reg_data_success, NEW_final_MASTER, issm_add_address_phone
 
 
 outname = 'data_diff.csv'
+
 outdir = path_to_final_data_S20
 if not os.path.exists(outdir):
     os.mkdir(outdir)
+
 fullname = os.path.join(outdir, outname)
+
 
 def dataframe_difference(which=None):
     """Find rows which are different between two DataFrames."""
@@ -33,6 +36,7 @@ def dataframe_difference(which=None):
         diff_df = comparison_df[comparison_df['_merge'] == which]
     diff_df.to_csv(fullname)
     return diff_df
+
 
 def merge_new_data():
     """
@@ -70,7 +74,9 @@ def merge_new_data():
     # can be a list, a Series, an array or a scalar
     # cleaned_results.insert(loc=0, column='Registration Status', value='')
     cleaned_results.insert(loc=0, column='Registration Notes', value='')
+
     return cleaned_results
+
 
 def match_new_advisor(cleaned_results, ug_final_df, gr_final_df):
     """
@@ -89,18 +95,22 @@ def match_new_advisor(cleaned_results, ug_final_df, gr_final_df):
          'Major Field (display)']],
           on=['Level of Education (display)', 'Major Field (display)'],
           how='left')
+
     gr_results = pd.merge(ug_results, gr_final_df[
         ['Advisor',
          'Level of Education (display)',
          'Major Field (display)']],
           on=['Level of Education (display)', 'Major Field (display)'],
           how='left')
+
     # combine the two advisor DataFrame columns
     gr_results['Advisor'] = \
         gr_results.pop("Advisor_x").fillna(gr_results.pop("Advisor_y")).astype(str)
+
     writer = pd.ExcelWriter(NEW_students_FINAL)
     gr_results.to_excel(writer, 'Sheet1', index=False)
     writer.save()
+
 
 def add_advisor_notes():
     """
@@ -115,6 +125,7 @@ def add_advisor_notes():
     units = final_workbook['07 Total Credit Hours'].fillna(0)
     check_in = final_workbook['14 CHECK IN I94 or Entry Stamp']. \
         fillna('Not Complete')
+
     # convert the two Series to numpy char arrays
     a = np.char.array(check_in.values)
     b = np.char.array(units.values)
@@ -137,6 +148,7 @@ def add_advisor_notes():
                             engine='openpyxl')
         writer.save()
 
+
 def sort_new_data():
     """
     Function to sort the Dataframe and then spreadsheet by I-94 check-in
@@ -148,8 +160,10 @@ def sort_new_data():
     writer = pd.ExcelWriter(NEW_students_FINAL, engine='openpyxl')
     writer.book = NEW_students
     writer.sheets = dict((ws.title, ws) for ws in NEW_students.worksheets)
+
     sorted_by_CWID.to_excel(writer, 'Sheet', index=False)
     writer.save()
+
 
 def print_new_work_done():
     work_output = ["-Built discrepancy report",
@@ -163,6 +177,7 @@ def print_new_work_done():
     for work in work_output:
         time.sleep(0.3)
         print(work)
+
 
 def update_checkin_status():
     """
@@ -186,12 +201,14 @@ def update_checkin_status():
             writer.save()
     except:
         print("Columns don't exist. No drop performed.")
+
     finally:
         results = pd.merge(final_workbook, active_pending_issm[
             ['Campus Id', '03 Student Status Term',
              '07 Total Credit Hours', '14 CHECK IN I94 or Entry Stamp',
              'Address Type', 'Address Line 1', 'Address Line 2',
              'City', 'Phone 1']], how='left', on='Campus Id')
+
     cleaned_results = \
         results.drop_duplicates(subset=['SEVIS ID'], keep='first')
 
@@ -221,10 +238,12 @@ def update_checkin_status():
             'Eligible for Registration', 'DataLink Active',
             'Address Type', 'Address Line 1', 'Address Line 2',
             'City','Phone 1']]
+
     with pd.ExcelWriter(NEW_final_MASTER, mode='w') as writer:
         final_layout.to_excel(writer, 'Sheet1', index=False,
                               engine='openpyxl')
         writer.save()
+
 
 def match_registration_event():
     """
@@ -243,8 +262,10 @@ def match_registration_event():
             final_workbook.to_excel(writer, 'Sheet1', index=False,
                                     engine='openpyxl')
             writer.save()
+
     except:
         print("Columns don't exist. No drop performed.")
+
     finally:
         # perform merge with new data from active_pending_issm
         results = pd.merge(final_workbook, issm_reg[
@@ -268,3 +289,13 @@ def match_registration_event():
         final_layout.to_excel(writer, 'Sheet1', index=False,
                               engine='openpyxl')
         writer.save()
+
+
+if __name__ == '__main__':
+    start_time = time.time()
+    dataframe_difference(which=None)
+    match_new_advisor(merge_new_data(), ug_final_df, gr_final_df)
+    add_advisor_notes()
+    sort_new_data()
+    print_new_work_done()
+    print("--- %s seconds ---" % (time.time() - start_time))

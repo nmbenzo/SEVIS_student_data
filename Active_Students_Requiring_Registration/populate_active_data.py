@@ -32,7 +32,9 @@ def merge_active_data():
     # can be a list, a Series, an array or a scalar
     cleaned_results.insert(loc=0, column='Notes', value='')
     cleaned_results.insert(loc=1, column='Registration', value='')
+
     return cleaned_results
+
 
 def match_active_advisor(cleaned_results, ug_final_df, gr_final_df):
     """
@@ -67,6 +69,7 @@ def match_active_advisor(cleaned_results, ug_final_df, gr_final_df):
     gr_results.to_excel(writer, 'Sheet1', index=False)
     writer.save()
 
+
 def sort_active_data():
     """
     Function to sort the Dataframe and then spreadsheet by Campus ID
@@ -82,6 +85,7 @@ def sort_active_data():
     sorted_by_CWID.to_excel(writer, 'Sheet', index=False)
     writer.save()
 
+
 def print_active_work_done():
     work_output = ["-New Excel workbook built",
                    "-Read ISSM Report",
@@ -95,3 +99,9 @@ def print_active_work_done():
         time.sleep(0.3)
         print(work)
 
+
+if __name__ == '__main__':
+    start_time = time.time()
+    match_active_advisor(merge_active_data(), ug_final_df, gr_final_df)
+    sort_active_data()
+    print("--- %s seconds ---" % (time.time() - start_time))

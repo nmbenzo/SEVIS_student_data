@@ -22,7 +22,6 @@ class SendEmail:
             to: Email address of the receiver.
             subject: The subject of the email message.
             message_text: The text of the email message.
-
           Returns:
             An object containing a base64url encoded email object.
           """
@@ -41,7 +40,6 @@ class SendEmail:
             subject: The subject of the email message.
             message_text: The text of the email message.
             file: The path to the file to be attached.
-
           Returns:
             An object containing a base64url encoded email object.
           """
@@ -88,14 +86,12 @@ class SendEmail:
             user_id: User's email address. The special value "me"
             can be used to indicate the authenticated user.
             message: Message to be sent.
-
           Returns:
             Sent Message.
           """
         try:
-            message = (self.service.users().messages().send(userId=user_id,
-                                                            body=message)
-                       .execute())
+            message = (self.service.users().messages()
+                       .send(userId=user_id, body=message).execute())
             print('Message Id: %s' % message['id'])
             return message
         except errors.HttpError as error:

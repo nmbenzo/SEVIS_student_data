@@ -4,15 +4,7 @@ from tqdm import trange
 import time
 
 
-"""
-This file provides oAuth credential access to Google Drive and Team Drives
-
-Example function call:
-
-driveInstance = manage_team_drives.ManageTeamDrives(DRIVE)
-upload_sheet_td = driveInstance.import_td_folder(name=uploaded_file_name, folder_id=folder_id, \
-fn=Registration_file, mimeType=SHEET_MIMETYPE)
-"""
+"""This file provides oAuth credential access to Google Drive and Team Drives"""
 
 class ManageTeamDrives:
 
@@ -41,9 +33,20 @@ class ManageTeamDrives:
     def import_td_folder(self, name, folder_id, fn, mimeType):
         """Adds a specified file to the Team Drive
         and then converts it to a G-Suite format"""
-        body = {'name': name, 'originalFilename': fn, 'mimeType': mimeType, 'parents': [folder_id]}
+        body = {'name': name, 'originalFilename': fn, 'mimeType': mimeType,
+                'parents': [folder_id]}
         for i in trange(100):
             time.sleep(0.01)
         return self.DRIVE.files().create(body=body, media_body=fn,
                 supportsTeamDrives=True, fields='id').execute().get('id')
+
+
+"""
+Example function call:
+
+driveInstance = manage_team_drives.ManageTeamDrives(DRIVE)
+upload_sheet_td = driveInstance.import_td_folder(name=uploaded_file_name, 
+folder_id=folder_id, fn=Registration_file, mimeType=SHEET_MIMETYPE)
+"""
+
 

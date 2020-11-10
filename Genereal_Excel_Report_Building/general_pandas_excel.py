@@ -20,6 +20,8 @@ def add_departure_dates():
     results.to_csv(sl_data, index=False)
     print('Aggregation Complete!')
 
+
+
 program_end_date = sevis_reg_path + 'Program_End_Date_Report-No_OPT.csv'
 banner_202040_units = sevis_reg_path + '202040_registered_students.csv'
 ped_audit_202040 = sevis_reg_path + '202040_PED_audit.csv'

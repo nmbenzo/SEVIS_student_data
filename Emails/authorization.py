@@ -7,6 +7,7 @@ try:
 except ImportError:
     flags = NameError
 
+
 class Auth:
     """
     Auth class provides oAuth credential access to a specified Gmail account
@@ -18,11 +19,11 @@ class Auth:
 
     def get_credentials(self):
         """
-        Returns the proper OAuth2 credentials for a Gmail account specified by
-        the client_secrets.json file.
+        Returns the proper OAuth2 credentials for a Google Drive account
+        specified by the client_secrets.json file.
         :return:
         """
-        store = file.Storage('token.json')
+        store = file.Storage('credentials_email.json')
         creds = store.get()
         if not creds or creds.invalid:
             flow = client.flow_from_clientsecrets(self.client_secret, self.SCOPES)
@@ -31,5 +32,6 @@ class Auth:
                 creds = tools.run_flow(flow, store, flags)
             else:
                 creds = tools.run_flow(flow, store)
+
         return creds 
-    
+

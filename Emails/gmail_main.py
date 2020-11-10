@@ -30,6 +30,7 @@ email_content_choices = [
     '\nHit Enter to skip and create a custom message'
 ]
 
+
 def get_email_message_content(e_content_list):
     """:returns a user's choice from the email content list"""
     print('\nWhich message would you like to send: ')
@@ -40,6 +41,7 @@ def get_email_message_content(e_content_list):
         if x == content:
             return e_content_list[x]
 
+
 def get_email_blast_list(e_group_list):
     """:returns a user's choice from the email e_group_list"""
     print('\nPick a target group:')
@@ -49,6 +51,7 @@ def get_email_blast_list(e_group_list):
     for x in e_group_list.keys():
         if x == which_list:
             return e_group_list[x]
+
 
 def singular_email(get_emessage_content):
     """
@@ -74,6 +77,7 @@ def singular_email(get_emessage_content):
     except:
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
+
 
 def multiple_emails(get_eblast_list, get_emessage_content):
     """
@@ -102,6 +106,7 @@ def multiple_emails(get_eblast_list, get_emessage_content):
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
 
+
 def banner_query_singular_email(get_email_message_content):
     """
     Function takes in input from a user to specify the receiver and the email
@@ -127,6 +132,7 @@ def banner_query_singular_email(get_email_message_content):
     except:
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
+
 
 def banner_query_blast_email(get_email_message_content):
     """
@@ -157,3 +163,6 @@ def banner_query_blast_email(get_email_message_content):
     except:
         print('You must type a message body if one is not chosen '
         'from get_emessage_content')
+
+
+# singular_email(get_email_message_content(e_content_list))

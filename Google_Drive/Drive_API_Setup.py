@@ -6,7 +6,7 @@ import Google_Drive.drive_authorization as drive_auth
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-client_secret = 'client_secrets.json'
+client_secret = 'client_secret.json'
 APPLICATION_NAME = 'Google Drive API'
 
 # Building an instance of the Drive authorization class

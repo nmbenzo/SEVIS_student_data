@@ -1,8 +1,10 @@
 import time
 import pandas as pd
-from Handlers.file_imports import TRANS_students_FINAL, \
-transfer_stud_issm_data_S20, transfer_stud_sevis_data_S20, TRANS_students
-
+try:
+    from Handlers.file_imports import TRANS_students_FINAL, \
+    transfer_stud_issm_data_S20, transfer_stud_sevis_data_S20, TRANS_students
+except:
+    pass
 
 def merge_trans_data():
     """
@@ -29,6 +31,8 @@ def merge_trans_data():
                            inplace=True)
     return cleaned_results
 
+
+
 def organize_merged_data(cleaned_results):
     """
     A function which receives a pd DataFrame object and then rearranges
@@ -49,10 +53,12 @@ def organize_merged_data(cleaned_results):
     # sorts DataFrame by I-94 Entry column in ascending values
     sorted_by_I94 = cleaned_results.sort_values(['14 CHECK IN I94 or Entry Stamp'],
                                            ascending=True)
+
     with pd.ExcelWriter(TRANS_students_FINAL, mode='w') as writer:
         sorted_by_I94.to_excel(writer,'Sheet1', index=False, engine='openpyxl')
         writer.save()
     writer.close()
+
 
 def sort_trans_data():
     """
@@ -62,12 +68,14 @@ def sort_trans_data():
     trans_data = pd.read_excel(TRANS_students_FINAL, sheet_name=0)
     sorted_by_I94 = trans_data.sort_values(['14 CHECK IN I94 or Entry Stamp'],
                                            ascending=True)
+
     writer = pd.ExcelWriter(TRANS_students_FINAL, engine='openpyxl')
     writer.book = TRANS_students
     writer.sheets = dict((ws.title, ws) for ws in TRANS_students.worksheets)
 
     sorted_by_I94.to_excel(writer, 'Sheet', index=False)
     writer.save()
+
 
 def print_trans_work_done():
     """Prints out list of what the functions did did"""
@@ -80,4 +88,10 @@ def print_trans_work_done():
     for work in work_output:
         time.sleep(0.3)
         print(work)
+
+
+if __name__ == '__main__':
+    start_time = time.time()
+    organize_merged_data(merge_trans_data())
+    print("--- %s seconds ---" % (time.time() - start_time))
 

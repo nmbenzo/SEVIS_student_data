@@ -6,7 +6,8 @@ from tqdm import trange
 
 
 class Download:
-
+    """A simple class to retrieve passed file names, types, and ids
+    to download a file from google drive"""
     def __init__(self, service):
         """Initializes the service parameter"""
         self.service = service
