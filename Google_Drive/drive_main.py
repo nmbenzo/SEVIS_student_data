@@ -15,7 +15,6 @@ def drive_sheet_upload():
                     mimeType=ids.SHEET_MIMETYPE)
     return upload_sheet_td
 
-
 def drive_doc_upload():
     """Instantiates the Google Drive service and then uploads an .docx file to
        the Team Drive of a specified ID"""
@@ -24,7 +23,6 @@ def drive_doc_upload():
                     folder_id=ids.folder_id, fn=ids.REGISTRATION_TIMELINE,
                     mimeType=ids.DOC_MIMETYPE)
     return upload_doc_td
-
 
 def download_file():
     """Instantiates the Google Drive service and then runs the get_fileID

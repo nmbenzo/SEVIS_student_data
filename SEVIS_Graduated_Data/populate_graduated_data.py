@@ -1,9 +1,7 @@
 import os
 os.getcwd()
-import openpyxl
-from SEVIS_Graduated_Data.build_grad_data import campusID_SEVISID, campusID_work_auth, campusID_end_date, campusID_workend, campusID_emails
-from Handlers.major_advisor_data import master_deg_adv, bachelor_deg_adv
-from Handlers.file_imports import wb2_grad, wb3Live_grad, sheet2_grad, sheet3_grad, ws2_grad, ws3_grad
+from Handlers.file_imports import wb2_grad, wb3Live_grad, sheet2_grad, \
+sheet3_grad, ws2_grad, ws3_grad, graduated_students
 
 
 def add_advisor(master_deg_adv, bachelor_deg_adv):
@@ -21,10 +19,10 @@ def add_advisor(master_deg_adv, bachelor_deg_adv):
         if major in bachelor_deg_adv:
             ws2_grad.cell(row=row, column=1).value = bachelor_deg_adv[major]
 
-    wb2_grad.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
+    wb2_grad.save(graduated_students)
 
 
-def match_SEVISID(campusID_SEVISID):
+def match_SEVISID_grad(campusID_SEVISID):
     """Builds a column of SEVISIDs for students based on the
     campusID_SEVISID dictionary
     """
@@ -32,13 +30,15 @@ def match_SEVISID(campusID_SEVISID):
     title = ws2_grad.cell(row=1, column=1)
     title.value = 'SEVISID'
     for rowNum in range(2, ws2_grad.max_row):
-        campusID = ws2_grad.cell(row=rowNum, column=3).value
+        campusID = ws2_grad.cell(row=rowNum, column=2).value
         for x in campusID_SEVISID:
             if x == campusID:
-                ws2_grad.cell(row=rowNum, column=1).value = campusID_SEVISID[campusID]
+                ws2_grad.cell(row=rowNum, column=1).value = \
+                campusID_SEVISID[campusID]
 
-    wb2_grad.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
+    wb2_grad.save(graduated_students)
 
+#match_SEVISID_grad(campusID_SEVISID_grad)
 
 def add_work_type(campusID_work_auth):
     """Builds an empty column. Loops through a range of campusIDs and then
@@ -50,12 +50,13 @@ def add_work_type(campusID_work_auth):
     title = ws2_grad.cell(row=1, column=1)
     title.value = 'Work Authorization Type'
     for rowNum in range(2, ws2_grad.max_row):
-        campusID = ws2_grad.cell(row=rowNum, column=4).value
+        campusID = ws2_grad.cell(row=rowNum, column=3).value
         for x in campusID_work_auth:
             if x == campusID:
-                ws2_grad.cell(row=rowNum, column=1).value = campusID_work_auth[campusID]
+                ws2_grad.cell(row=rowNum, column=1).value = \
+                campusID_work_auth[campusID]
 
-    wb2_grad.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
+    wb2_grad.save(graduated_students)
 
 
 def add_work_enddate(campusID_workend):
@@ -68,12 +69,13 @@ def add_work_enddate(campusID_workend):
     title = ws2_grad.cell(row=1, column=1)
     title.value = 'Work Authorization End Date'
     for rowNum in range(2, ws2_grad.max_row):
-        campusID = ws2_grad.cell(row=rowNum, column=5).value
+        campusID = ws2_grad.cell(row=rowNum, column=4).value
         for i in campusID_workend:
             if i == campusID:
-                ws2_grad.cell(row=rowNum, column=1).value = campusID_workend[campusID]
+                ws2_grad.cell(row=rowNum, column=1).value = \
+                campusID_workend[campusID]
 
-    wb2_grad.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
+    wb2_grad.save(graduated_students)
 
 
 def add_profile_enddate(campusID_end_date):
@@ -86,12 +88,13 @@ def add_profile_enddate(campusID_end_date):
     title = ws2_grad.cell(row=1, column=1)
     title.value = 'Profile End Date'
     for rowNum in range(2, ws2_grad.max_row):
-        campusID = ws2_grad.cell(row=rowNum, column=6).value
+        campusID = ws2_grad.cell(row=rowNum, column=5).value
         for i in campusID_end_date:
             if i == campusID:
-                ws2_grad.cell(row=rowNum, column=1).value = campusID_end_date[campusID]
+                ws2_grad.cell(row=rowNum, column=1).value = \
+                campusID_end_date[campusID]
 
-    wb2_grad.save('/Users/nbenzschawel/Downloads/201840_graduated_students_test.xlsx')
+    wb2_grad.save(graduated_students)
 
 
 def add_emails(campusID_emails):
@@ -102,8 +105,9 @@ def add_emails(campusID_emails):
         campusID = ws3_grad.cell(row=rowNum, column=6).value
         for i in campusID_emails:
             if i == campusID:
-                ws3_grad.cell(row=rowNum, column=1).value = campusID_emails[campusID]
+                ws3_grad.cell(row=rowNum, column=1).value = \
+                campusID_emails[campusID]
 
-    wb3Live_grad.save('/Users/nbenzschawel/Desktop/201820_201830_graduated_students.xlsx')
+    wb3Live_grad.save(graduated_students)
 
 

@@ -7,7 +7,6 @@ try:
 except ImportError:
     flags = NameError
 
-
 class Auth:
     """
     Auth class provides oAuth credential access to a specified Gmail account
@@ -32,6 +31,5 @@ class Auth:
                 creds = tools.run_flow(flow, store, flags)
             else:
                 creds = tools.run_flow(flow, store)
-
         return creds 
     

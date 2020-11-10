@@ -8,26 +8,27 @@ banner_ods_handler, banner_ODSP_emails
 import Banner_Connections.queries as query
 
 
-e_content_list = \
-    {'a': data_bad_addy,
+e_content_list = {
+    'a': data_bad_addy,
     'p': data_bad_phone,
     's': data_sv,
     'f': data_901,
-    'lt': loa_term}
+    'lt': loa_term
+}
 
 e_group_list = {'is': isss, 'rd': redundancy_test, 'ts': test_list}
 
 email_group_choices = ['is - ISSS Staff','ts - Test', 'rd - Redundant Test',
                        'sl - student list']
 
-email_content_choices = \
-    ['a - Bad Address Email',
+email_content_choices = [
+    'a - Bad Address Email',
     'p - Bad Phone Email',
     's - Status Verification Incomplete Email',
     'f - I-901 Fee Unpaid',
     'lt - LOA Termination Email'
-    '\nHit Enter to skip and create a custom message']
-
+    '\nHit Enter to skip and create a custom message'
+]
 
 def get_email_message_content(e_content_list):
     """:returns a user's choice from the email content list"""
@@ -39,7 +40,6 @@ def get_email_message_content(e_content_list):
         if x == content:
             return e_content_list[x]
 
-
 def get_email_blast_list(e_group_list):
     """:returns a user's choice from the email e_group_list"""
     print('\nPick a target group:')
@@ -49,7 +49,6 @@ def get_email_blast_list(e_group_list):
     for x in e_group_list.keys():
         if x == which_list:
             return e_group_list[x]
-
 
 def singular_email(get_emessage_content):
     """
@@ -75,7 +74,6 @@ def singular_email(get_emessage_content):
     except:
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
-
 
 def multiple_emails(get_eblast_list, get_emessage_content):
     """
@@ -104,7 +102,6 @@ def multiple_emails(get_eblast_list, get_emessage_content):
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
 
-
 def banner_query_singular_email(get_email_message_content):
     """
     Function takes in input from a user to specify the receiver and the email
@@ -130,7 +127,6 @@ def banner_query_singular_email(get_email_message_content):
     except:
         print('You must type a message body if one is not chosen '
               'from get_emessage_content')
-
 
 def banner_query_blast_email(get_email_message_content):
     """

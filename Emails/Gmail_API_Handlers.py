@@ -20,16 +20,3 @@ credentials = authInstance.get_credentials()
 
 http = credentials.authorize(httplib2.Http())
 service = discovery.build('gmail', 'v1', http=http)
-
-
-def get_labels():
-    """Returns a list of labels from the authorized Gmail Account"""
-    results = service.users().labels().list(userId='me').execute()
-    labels = results.get('labels', [])
-
-    if not labels:
-        print('No labels found.')
-    else:
-        print('Labels:')
-        for label in labels:
-            print(label['name'])

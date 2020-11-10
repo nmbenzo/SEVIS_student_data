@@ -1,130 +1,97 @@
-import os
-os.getcwd()
 import time
-from Handlers.file_imports import ws2, sheet, ACTIVE_students_FINAL, ACTIVE_students, \
-ACTIVE_students_sheet
-from File_Management.copier import copy_new_Range, paste_new_Range
-from tqdm import trange
+import pandas as pd
+from Handlers.file_imports import ACTIVE_students_FINAL, \
+    ACTIVE_students
+from Handlers.file_imports import active_stud_issm_data, active_student_req_reg
+from Handlers.major_advisor_data import ug_final_df, gr_final_df
 
 
-def create_active_Student_Data():
-    """Pastes copied range to new sheet which needs to be updated"""
-    print(f'\nCurrent Row Range = {ACTIVE_students_sheet.max_row}')
-    time.sleep(0.5)
-    print('Processing data...')
-
-    if ACTIVE_students_sheet.cell(row=1, column=1).value is None:
-        selectedRange = copy_new_Range(1, 1, sheet.max_column, sheet.max_row, ws2)
-        paste_new_Range(1, 1, sheet.max_column, sheet.max_row, ACTIVE_students_sheet, selectedRange)
-
-    ACTIVE_students.save(ACTIVE_students_FINAL)
-    time.sleep(0.5)
-    print(f'Data copied: Current Range = {ACTIVE_students_sheet.max_row}')
-
-
-def active_match_SEVISID(active_campusID_SEVISID):
+def merge_active_data():
     """
-    match_SEVISID compares SEVISIDs from two separate workbooks(ws, ws2) 
-    and then populates a blank column with the appropriate BannerID(campusID)
+    Merges data via pandas merge function and then exports the updated
+    Dataframe to an Excel spreadsheet. The function also removes
+    duplicates.
     """
-    ACTIVE_students_sheet.insert_cols(1)
-    title = ACTIVE_students_sheet.cell(row=1, column=1)
-    title.value = 'campusID'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
-        sevis_ID = ACTIVE_students_sheet.cell(row=rowNum, column=2).value
-        for x in active_campusID_SEVISID:
-            if x == sevis_ID:
-                ACTIVE_students_sheet.cell(row=rowNum, column=1).value = active_campusID_SEVISID[sevis_ID]
+    active_issm = pd.read_csv(active_stud_issm_data)
+    active_sevis = pd.read_csv(active_student_req_reg)
 
-    ACTIVE_students.save(ACTIVE_students_FINAL)
+    results = pd.merge(active_sevis, active_issm[
+        ['Campus Id', 'SEVIS ID', 'Level of Education (display)',
+         'Major Field (display)', '03 Student Status Term',
+         '07 Total Credit Hours','Phone 1', 'E-mail Address']],
+         on='SEVIS ID', how='left')
+    # indicator=True)
+    cleaned_results = \
+        results.drop_duplicates(subset=['SEVIS ID'], keep='first').copy()
+    cleaned_results = cleaned_results[
+        ['Surname/Primary Name', 'Given Name', 'Campus Id',
+        'SEVIS ID', 'Class of Admission', 'Level of Education (display)',
+        'Major Field (display)', '03 Student Status Term',
+        '07 Total Credit Hours', 'Next Session Start Date',
+        'Eligible for Registration', 'Phone 1','E-mail Address']]
+    # can be a list, a Series, an array or a scalar
+    cleaned_results.insert(loc=0, column='Notes', value='')
+    cleaned_results.insert(loc=1, column='Registration', value='')
+    return cleaned_results
 
-
-def match_units(active_SEVISID_units):
-    """
-    match_units compares SEVISIDs against unit data and then populates
-    a blank column with the appropriate unit data when a SEVISID match is found.
-    """
-    ACTIVE_students_sheet.insert_cols(1)
-    title = ACTIVE_students_sheet.cell(row=1, column=1)
-    title.value = 'Unit Registration'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
-        sevis_ID = ACTIVE_students_sheet.cell(row=rowNum, column=3).value
-        for x in active_SEVISID_units:
-            if x == sevis_ID:
-                ACTIVE_students_sheet.cell(row=rowNum, column=1).value = active_SEVISID_units[sevis_ID]
-
-    ACTIVE_students.save(ACTIVE_students_FINAL)
-
-
-def match_major_data(active_SEVISID_major):
-    """
-    match_major_data compares SEVISIDs against major data and then populates
-    a blank column with the appropriate major data when a SEVISID match is found.
-    """
-    ACTIVE_students_sheet.insert_cols(1)
-    title = ACTIVE_students_sheet.cell(row=1, column=1)
-    title.value = 'Major'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
-        sevis_ID = ACTIVE_students_sheet.cell(row=rowNum, column=4).value
-        for x in active_SEVISID_major:
-            if x == sevis_ID:
-                ACTIVE_students_sheet.cell(row=rowNum, column=1).value = active_SEVISID_major[sevis_ID]
-
-    ACTIVE_students.save(ACTIVE_students_FINAL)
-
-
-def match_advisor(advisor_major_ug, advisor_major_gr):
+def match_active_advisor(cleaned_results, ug_final_df, gr_final_df):
     """
     match_advisor checks the majors in a column of workbook(ws) and
-    then matches them with the advisor in a dictionary from the module: data
+    then matches them with the advisor in a dictionary from the module:
+    major_advisor_data.
     """
-    ACTIVE_students_sheet.insert_cols(1)
-    title = ACTIVE_students_sheet.cell(row=1, column=1)
-    title.value = 'Advisor'
-    for rowNum in trange(2, ACTIVE_students_sheet.max_row):
-        major = ACTIVE_students_sheet.cell(row=rowNum, column=2).value
-        if major in advisor_major_ug:
-            ACTIVE_students_sheet.cell(row=rowNum, column=1).value = advisor_major_ug[major]
-        if major in advisor_major_gr:
-            ACTIVE_students_sheet.cell(row=rowNum, column=1).value = advisor_major_gr[major]
+    cleaned_results = cleaned_results
 
-    ACTIVE_students.save(ACTIVE_students_FINAL)
+    ug_final_df.columns = ['Major Field (display)', 'Advisor', 'Level of Education (display)']
+    gr_final_df.columns = ['Major Field (display)', 'Advisor', 'Level of Education (display)']
 
+    ug_results = pd.merge(cleaned_results, ug_final_df[[
+        'Advisor',
+        'Level of Education (display)',
+        'Major Field (display)']],
+         on=['Level of Education (display)', 'Major Field (display)'],
+         how='left')
 
-def add_graduated_student_emails(sevisID_emails):
+    gr_results = pd.merge(ug_results, gr_final_df[[
+        'Advisor',
+        'Level of Education (display)',
+        'Major Field (display)']],
+         on=['Level of Education (display)', 'Major Field (display)'],
+         how='left')
+
+    # combine the two advisor DataFrame columns
+    gr_results['Advisor'] = \
+        gr_results.pop("Advisor_x").fillna(gr_results.pop("Advisor_y")).astype(str)
+
+    writer = pd.ExcelWriter(ACTIVE_students_FINAL)
+    gr_results.to_excel(writer, 'Sheet1', index=False)
+    writer.save()
+
+def sort_active_data():
     """
-    This function populates a student's OPT Type from the sevis_opt_report
-    to the graduated student list by matching it with a campusID
-    from active_stud_issm_data
+    Function to sort the Dataframe and then spreadsheet by Campus ID
+    entry and then by campusID
     """
-    ACTIVE_students_sheet.insert_cols(1)
-    title = ACTIVE_students_sheet.cell(row=1, column=1)
-    title.value = 'Emails'
-    for rowNum in range(2, ACTIVE_students_sheet.max_row):
-        sevisID = ACTIVE_students_sheet.cell(row=rowNum, column=7).value
-        for x in sevisID_emails:
-            if x == sevisID:
-                ACTIVE_students_sheet.cell(row=rowNum, column=1).value = sevisID_emails[x]
+    active_data = pd.read_excel(ACTIVE_students_FINAL, sheet_name=0)
+    sorted_by_CWID = active_data.sort_values(['Campus Id'], ascending=True)
 
-    ACTIVE_students.save(ACTIVE_students_FINAL)
+    writer = pd.ExcelWriter(ACTIVE_students_FINAL, engine='openpyxl')
+    writer.book = ACTIVE_students
+    writer.sheets = dict((ws.title, ws) for ws in ACTIVE_students.worksheets)
 
+    sorted_by_CWID.to_excel(writer, 'Sheet', index=False)
+    writer.save()
 
-def add_notes_column():
-    ACTIVE_students_sheet.insert_cols(1)
-    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
-    title1.value = 'Notes'
-    ACTIVE_students.save(ACTIVE_students_FINAL)
+def print_active_work_done():
+    work_output = ["-New Excel workbook built",
+                   "-Read ISSM Report",
+                   "-Read SEVIS Report",
+                   "-Data between reports matched on SEVIS ID",
+                   "-Matched Advisors based on Major data",
+                   "-Build custom notes for Advisors to work from",
+                   "-New Data saved to ACTIVE_Final workbook",
+                   "-Sorted by CWID"]
+    for work in work_output:
+        time.sleep(0.3)
+        print(work)
 
-
-def add_registration_status_column():
-    ACTIVE_students_sheet.insert_cols(1)
-    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
-    title1.value = 'Registration Status'
-    ACTIVE_students.save(ACTIVE_students_FINAL)
-
-
-def add_graduation_status_column():
-    ACTIVE_students_sheet.insert_cols(1)
-    title1 = ACTIVE_students_sheet.cell(row=1, column=1)
-    title1.value = 'Graduation Status'
-    ACTIVE_students.save(ACTIVE_students_FINAL)

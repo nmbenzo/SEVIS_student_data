@@ -8,12 +8,12 @@ General_response, Test_response
 client = Client(account_sid, auth_token)
 
 
-content_list = {
+content_list = \
+    {
     's': SV_body,
     't': Test_response,
     'g': General_ISSS_response,
-    'gr': General_response
-}
+    'gr': General_response}
 
 group_list = {'is': isss_list, 'ts': test_list, 'kb': k_b}
 
@@ -26,7 +26,6 @@ content_choices = [
     '\nHit Enter to skip and create a custom message'
 ]
 
-
 def get_message_content(content_list):
     print('\nWhich message would you like to send: ')
     for choice in content_choices:
@@ -36,7 +35,6 @@ def get_message_content(content_list):
         if x == content:
             return content_list[x]
 
-
 def get_blast_list(group_list):
     print('\nPick a target group:')
     for choice in group_choices:
@@ -45,7 +43,6 @@ def get_blast_list(group_list):
     for x in group_list.keys():
         if x == which_list:
             return group_list[x]
-
 
 def send_sms(client, get_message_content):
     try:
@@ -63,7 +60,6 @@ def send_sms(client, get_message_content):
             print(f'Message Sent to {receiver}')
     except:
         print('You must have a body or content in this function.')
-
 
 def send_blast_sms(client, get_blast_list, body):
     try:

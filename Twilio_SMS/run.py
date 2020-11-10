@@ -11,12 +11,9 @@ def sms_regular_response(response=template.General_ISSS_response):
     """Respond to an incoming message with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
-
     # Add a message
     resp.message(response)
-
     return str(resp)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

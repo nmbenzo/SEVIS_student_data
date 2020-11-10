@@ -1,93 +1,83 @@
 import time
-from Handlers.file_imports import current_transfer_data, \
-    wb2_trans, old_sheet, new_sheet, row_max_old, col_max_old, final_sheet, \
-    row_max_current, col_max_current, row_max_final, col_max_final
-from File_Management.copier import copy_new_Range, paste_new_Range
-from tqdm import trange
-
-def create_new_Data():
-    """Pastes copied range to new sheet which needs to be updated"""
-    print(f'Old Row Range = {new_sheet.max_row}')
-    print('Processing data...')
-
-    if new_sheet.cell(row=1, column=1).value is None:
-        selectedRange = copy_new_Range(1, 1, col_max_old, row_max_old,
-                                       old_sheet)
-        paste_new_Range(1, 1, col_max_old, row_max_old, new_sheet,
-                        selectedRange)
-
-    elif new_sheet.cell(row=1, column=1).value == 'SEVIS ID':
-        selectedRange = copy_new_Range(1, 2, col_max_old, row_max_old,
-                                       old_sheet)
-        paste_new_Range(1, (row_max_current + 1), col_max_old, (
-                row_max_current + row_max_old - 1), new_sheet, selectedRange)
-
-    wb2_trans.save(current_transfer_data)
-    print('\nRange copied and pasted')
-    print(f'New Row Range = {new_sheet.max_row}')
+import pandas as pd
+from Handlers.file_imports import TRANS_students_FINAL, \
+transfer_stud_issm_data_S20, transfer_stud_sevis_data_S20, TRANS_students
 
 
-def transfer_match_major_data(SEVISID_major):
-    """match_major_data compares SEVISIDs against major data and then populates
-    a blank column with the appropriate major data when a SEVISID match is found.
+def merge_trans_data():
     """
-    new_sheet.insert_cols(2)
-    title = new_sheet.cell(row=1, column=2)
-    title.value = 'Major'
-    for rowNum in range(2, new_sheet.max_row):
-        sevis_ID = new_sheet.cell(row=rowNum, column=1).value
-        for x in SEVISID_major:
-            if x == sevis_ID:
-                new_sheet.cell(row=rowNum, column=2).value = SEVISID_major[sevis_ID]
+    The function reads two csv files in  two separate DataFrames
+    and then merges them on a common Series value and returns a
+    copy of the sliced DataFrame as an object to be passed as
+    an argument.
+    """
+    transfer_issm = pd.read_csv(transfer_stud_issm_data_S20)
+    transfer_sevis = pd.read_csv(transfer_stud_sevis_data_S20)
 
-    wb2_trans.save(current_transfer_data)
+    results = pd.merge(transfer_sevis, transfer_issm[
+             ['Campus Id', 'SEVIS ID', 'Level of Education (display)',
+             'Profile Status', 'Profile Start Date', '05 Banner Student Status',
+             '03 Student Status Term', '07 Total Credit Hours',
+             'Major Field (display)', '14 CHECK IN I94 or Entry Stamp',
+             'E-mail Address']], on='SEVIS ID', how='left')
+               #indicator=True)
+    cleaned_results = \
+        results.drop_duplicates(subset=['SEVIS ID'], keep='first').copy()
+    # make a copy of the DataFrame to remove SettingWithCopyWarning: A value is trying to be set
+    # on a copy of a slice from a DataFrame warning message
+    cleaned_results.rename(columns={'Profile Status':'ISSM SEVIS STATUS'},
+                           inplace=True)
+    return cleaned_results
 
+def organize_merged_data(cleaned_results):
+    """
+    A function which receives a pd DataFrame object and then rearranges
+    the columns for readability and sorts them by the I-94 Entry column
+    """
+    # rearranges DataFrame object's columns
+    cleaned_results = cleaned_results[['SEVIS ID','Campus Id',
+    'Class of Admission','Surname/Primary Name','Given Name',
+    'ISSM SEVIS STATUS','Profile Start Date','14 CHECK IN I94 or Entry Stamp',
+    'Level of Education (display)','Major Field (display)',
+    '05 Banner Student Status','03 Student Status Term','07 Total Credit Hours',
+    'Release Date','From School Name Campus Name','From School Code',
+    'Request Status','Student Status','E-mail Address']]
 
-def check_in_fsa():
-    """Marks new data that needs to be input into ISSM"""
-    title = new_sheet.cell(row=1, column=11)
-    title.value = 'ISSM Status'
-    for rowNum in range(1, new_sheet.max_row):
-        status = new_sheet.cell(row=rowNum, column=10).value
-        if status == 'INITIAL':
-            new_sheet.cell(row=rowNum, column=11).value = 'Add to ISSM'
-    print('\nAdded notes for ISSM')
+    cleaned_results.insert(loc=0, column='Registration Status', value='')
+    cleaned_results.insert(loc=0, column='Transfer Complete I-20 Issued',
+                           value='')
+    # sorts DataFrame by I-94 Entry column in ascending values
+    sorted_by_I94 = cleaned_results.sort_values(['14 CHECK IN I94 or Entry Stamp'],
+                                           ascending=True)
+    with pd.ExcelWriter(TRANS_students_FINAL, mode='w') as writer:
+        sorted_by_I94.to_excel(writer,'Sheet1', index=False, engine='openpyxl')
+        writer.save()
+    writer.close()
 
-    wb2_trans.save(current_transfer_data)
+def sort_trans_data():
+    """
+    Sorts data by specified coloumn name via the sort_values
+    function in pandas
+    """
+    trans_data = pd.read_excel(TRANS_students_FINAL, sheet_name=0)
+    sorted_by_I94 = trans_data.sort_values(['14 CHECK IN I94 or Entry Stamp'],
+                                           ascending=True)
+    writer = pd.ExcelWriter(TRANS_students_FINAL, engine='openpyxl')
+    writer.book = TRANS_students
+    writer.sheets = dict((ws.title, ws) for ws in TRANS_students.worksheets)
 
+    sorted_by_I94.to_excel(writer, 'Sheet', index=False)
+    writer.save()
 
-def paste_to_final():
-    """Pastes copied range from new sheet to final sheet - do this after sorting data"""
-    print(f'Final Sheet Initial Row Range = {row_max_current}')
-    print('Processing data...')
-    wb2_trans.save(current_transfer_data)
-    time.sleep(1.5)
-    selectedRange = copy_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, new_sheet)
-    paste_new_Range(1, 1, new_sheet.max_column, new_sheet.max_row, final_sheet, selectedRange)
+def print_trans_work_done():
+    """Prints out list of what the functions did did"""
+    work_output = ["-New Excel workbook built",
+                   "-Read ISSM Report",
+                   "-Read SEVIS Report",
+                   "-Data between reports matched on SEVIS ID",
+                   "-New Data saved to TRANSFER_Final workbook",
+                   "-Sorted by I-94 Entry Stamp"]
+    for work in work_output:
+        time.sleep(0.3)
+        print(work)
 
-    wb2_trans.save(current_transfer_data)
-    print('\nRange copied and pasted')
-    print(f'Final Sheet New Row Range = {final_sheet.max_row}')
-
-
-def find_in_fsa():
-    """Checks the status of final data to see if it is already in ISSM"""
-    for rowNum in range(1, final_sheet.max_row):
-        status = final_sheet.cell(row=rowNum, column=11).value
-        if status == 'Add to ISSM':
-            final_sheet.cell(row=rowNum, column=11).value = 'Old Data: in ISSM'
-    print('\nUpdated ISSM notes for new data')
-
-    wb2_trans.save(current_transfer_data)
-
-
-def grab_final_data():
-    """Copies old "Final" data into new_sheet to allow updated data comparison."""
-    print(f'Current Row Range = {final_sheet.max_row}')
-    print('Grabbing most recent data...')
-    selectedRange = copy_new_Range(1, 1, col_max_final, row_max_final, final_sheet)
-    paste_new_Range(1, 1, col_max_final, row_max_final, new_sheet, selectedRange)
-
-    wb2_trans.save(current_transfer_data)
-    print('Range copied and pasted')
-    print(f'New Row Range = {new_sheet.max_row}')
