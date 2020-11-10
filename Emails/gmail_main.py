@@ -161,6 +161,3 @@ def banner_query_blast_email(get_email_message_content):
     except:
         print('You must type a message body if one is not chosen '
         'from get_emessage_content')
-
-
-# singular_email(get_email_message_content(e_content_list))
